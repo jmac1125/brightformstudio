@@ -390,7 +390,8 @@ header{
 /////////////////////////////////////////////////////////////////////*/
 
 #testimonial {
-    background: url(../images/wood.webp);
+    /* background: url(../images/wood.webp); */
+	background-color: #000;
     padding: 80px 0px 80px 0px;
     color: #fff;
     background-attachment: fixed;
