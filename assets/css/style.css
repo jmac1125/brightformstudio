@@ -390,7 +390,7 @@ header{
 /////////////////////////////////////////////////////////////////////*/
 
 #testimonial {
-    /* background: url(../images/wood.webp); */
+    background: url(../images/wood.webp);
 	background-color: #000;
     padding: 80px 0px 80px 0px;
     color: #fff;
@@ -631,7 +631,7 @@ footer {
 @media all and (max-width: 991px) {
 
 	header{
-		background: url(../images/bg-small.jpg) no-repeat;
+		background: url(../images/bg-small.webp) no-repeat;
 		background-size: cover;
 		background-attachment: fixed;
 		background-position: 50% -50px;
