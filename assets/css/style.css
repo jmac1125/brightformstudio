@@ -262,7 +262,7 @@ header{
 .port {
 	list-style: none;
 	text-align: left;
-	padding-bottom: 40px;
+	/* padding-bottom: 40px; */
 }
 
 .port .item {
@@ -271,6 +271,16 @@ header{
 	position: relative;
 }
 
+.port-sub {
+	font-size: 2em;
+	font-weight: 300;
+	margin: 0;
+	padding-bottom: 10px;
+}
+
+.port-sub.inner {
+	margin-top:1.5em;
+}
 .port figure {
 	margin: 0;
 	position: relative;
