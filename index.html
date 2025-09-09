@@ -15,8 +15,8 @@
         
         <!-- stylesheets -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/font_icon/css/pe-icon-7-stroke.css">
-        <link rel="stylesheet" href="assets/font_icon/css/helper.css">
+        <link rel="stylesheet" href="assets/pe_icons/css/pe-icon-7-stroke.css">
+        <link rel="stylesheet" href="assets/pe_icons/css/helper.css">
         <link rel="stylesheet" href="assets/css/owl.carousel.css">
         <link rel="stylesheet" href="assets/css/owl.theme.css">
         <link rel="stylesheet" href="assets/css/animate.css">
@@ -28,6 +28,7 @@
        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
         <script src="assets/js/modernizr.js"></script>
+        <link rel="stylesheet" href="assets/css/glightbox.css" />
 
     </head>
     <body id="body">
@@ -45,7 +46,7 @@
                 <a data-scroll href="#navigation" class="scrollDown animated pulse" id="scrollToContent"><i class="pe-7s-angle-down-circle pe-va"></i></a>
             </div>
         </header>
-
+        <!-- header -->
         <!-- Navigation area -->
         <section id="navigation">
             <div class="container">
@@ -62,6 +63,7 @@
                                      <li><a data-scroll href="#body">Home <i class="pe-7s-home"></i></a><span class="menu-effect"></span></li>
                                      <li><a data-scroll href="#services">Service <i class="pe-7s-config"></i></a><span class="menu-effect"></span></li>
                                      <li><a data-scroll href="#portfolio">Portfolio <i class="pe-7s-glasses"></i></a><span class="menu-effect"></span></li>
+                                     <li><a data-scroll href="#portfolio">Resume <i class="pe-7s-file"></i></a><span class="menu-effect"></span></li>
                                      <li><a data-scroll href="#testimonial">Testimonial <i class="pe-7s-comment"></i><span class="menu-effect"></span></a></li>
                                      <li><a data-scroll href="#contact">Contact <i class="pe-7s-help1"></i></a><span class="menu-effect"></span></li>
                                  </ul>
@@ -194,7 +196,7 @@
                             <figcaption>
                                 <h3>Smiling Boy</h3>
                                 <span>Photography</span>
-                                <a href="#" class="button" >Take a look</a>
+                                <a href="assets/images/smile-lg.jpg" class="button glightbox" >Take a look</a>
                             </figcaption>
                         </figure>
                     </div>
@@ -204,7 +206,7 @@
                             <figcaption>
                                 <h3>Musician</h3>
                                 <span>Photography</span>
-                                <a href="#" class="button" >Take a look</a>
+                                <a href="assets/images/toothpick-lg.jpg" class="button glightbox" >Take a look</a>
                             </figcaption> 
                         </figure>
                     </div>
@@ -214,7 +216,7 @@
                             <figcaption>
                                 <h3>Fair</h3>
                                 <span>Photography</span>
-                                <a href="#" class="button" >Take a look</a>
+                                <a href="assets/images/fair-lg.jpg" class="button glightbox" >Take a look</a>
                             </figcaption>
                         </figure>
                     </div>
@@ -224,7 +226,7 @@
                             <figcaption>
                                 <h3>Cobbler</h3>
                                 <span>Photography</span>
-                                <a href="#" class="button" >Take a look</a>
+                                <a href="assets/images/cobbler-lg.jpg" class="button glightbox" >Take a look</a>
                             </figcaption>
                         </figure>
                     </div>
@@ -234,7 +236,7 @@
                             <figcaption>
                                 <h3>Paulie</h3>
                                 <span>Photography</span>
-                                <a href="#" class="button" >Take a look</a>
+                                <a href="assets/images/paulie-lg.jpg" class="button glightbox" >Take a look</a>
                             </figcaption> 
                         </figure>
                     </div>
@@ -244,7 +246,7 @@
                             <figcaption>
                                 <h3>Smoke</h3>
                                 <span>Photography</span>
-                                <a href="#" class="button" >Take a look</a>
+                                <a href="assets/images/smoke-lg.jpg" class="button glightbox" >Take a look</a>
                             </figcaption>
                         </figure>
                     </div>
@@ -254,7 +256,7 @@
                             <figcaption>
                                 <h3>DFW 3D Printing Club</h3>
                                 <span>Logo</span>
-                                <a href="#" class="button" >Take a look</a>
+                                <a href="assets/images/" class="button" >Take a look</a>
                             </figcaption>
                         </figure>
                     </div>
@@ -264,7 +266,7 @@
                             <figcaption>
                                 <h3>JP's Kajun Kookin</h3>
                                 <span>Logo</span>
-                                <a href="#" class="button" >Take a look</a>
+                                <a href="assets/images/" class="button" >Take a look</a>
                             </figcaption>
                         </figure>
                     </div>
@@ -274,7 +276,7 @@
                             <figcaption>
                                 <h3>Rolfson Oil Wallpaper</h3>
                                 <span>Wallpaper</span>
-                                <a href="#" class="button" >Take a look</a>
+                                <a href="assets/images/" class="button" >Take a look</a>
                             </figcaption>
                         </figure>
                     </div>
@@ -399,11 +401,17 @@
         <!-- Necessery scripts -->
         <script src="assets/js/jquery-2.1.3.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+        <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script> -->
         <script src="assets/js/jquery.actual.min.js"></script>
         <script src="assets/js/smooth-scroll.js"></script>
         <script src="assets/js/owl.carousel.js"></script>
         <script src="assets/js/script.js"></script>
+        <script src="assets/js/glightbox.min.js"></script>
+
+        <script>var lightbox = GLightbox();
+            lightbox.on('open', (target) => {
+                console.log('lightbox opened');
+            });</script>
 
     </body>
 </html>
