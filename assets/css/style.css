@@ -99,6 +99,7 @@ header{
 	background-size: cover;
 	background-attachment: fixed;
 	background-position: 50% -150px;
+	/* height: 100vh; */
 }
 .center {
     text-align: center;
@@ -130,6 +131,19 @@ header{
 	transition: 0.4s ease all;
 }
 
+#services-icons {
+	position: fixed;
+  	bottom: 85px;             /* Distance from the bottom */
+  	left: 50%;
+  	transform: translateX(-50%);
+  	display: flex;
+  	gap: 40px; 
+}
+
+.service-icon {
+	font-size: 2rem; /* Size of icons */
+  	cursor: pointer;
+}
 
 /* ///////////////////////////////////////////////////////////////////// 
 //  03 - Navigation 
