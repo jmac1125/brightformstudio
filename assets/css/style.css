@@ -685,6 +685,17 @@ footer {
 	    top: 70%;
 	    left: 46%;
 	}
+	.cs-style-3 figcaption {
+		opacity: 1;
+		-webkit-transform: translateY(0%);
+		-moz-transform: translateY(0%);
+		-ms-transform: translateY(0%);
+		transform: translateY(0%);
+		/* -webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+		-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+		transition: transform 0.4s, opacity 0.1s 0.3s; */
+
+	}
 }
 @media all and (max-width: 380px) {
 
