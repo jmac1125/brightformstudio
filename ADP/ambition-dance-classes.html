@@ -35,7 +35,7 @@
       text-transform: uppercase; letter-spacing: -0.01em;
       color: #fff; line-height: 1.0;
     }
-    .page-header h1 em { font-style: normal; color: var(--teal); }
+    .page-header h1 em { font-style: normal; color: var(--gold); }
     .page-header p {
       font-size: 15px; font-weight: 300;
       color: rgba(255,255,255,0.5); max-width: 560px;
@@ -52,19 +52,45 @@
     .free-pill span {
       font-family: var(--font-body); font-size: 12px;
       font-weight: 500; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--teal);
+      text-transform: uppercase; color: var(--gold);
+    }
+
+    /* ── Location colour tokens ── */
+    :root {
+      --gv: #c8a96e;
+      --hv: #7a9fd4;
     }
 
     /* ── FILTER BAR ── */
     .filter-wrap {
       position: relative; z-index: 5;
       padding: 36px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
-    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .filter-row-label {
+      font-family: var(--font-display);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      flex-shrink: 0;
+      min-width: 58px;
+    }
+    .filter-bar { display: flex; gap: 6px; flex-wrap: wrap; }
     .filter-btn {
+      display: inline-flex; align-items: center; gap: 7px;
       font-family: var(--font-body); font-size: 11px;
       font-weight: 500; letter-spacing: 0.1em;
-      text-transform: uppercase; padding: 9px 18px;
+      text-transform: uppercase; padding: 8px 16px;
       border-radius: 2px; border: 0.5px solid rgba(255,255,255,0.15);
       background: transparent; color: rgba(255,255,255,0.45);
       cursor: pointer; transition: all 0.18s;
@@ -73,6 +99,21 @@
     .filter-btn.active {
       background: var(--gold); border-color: var(--gold); color: var(--bg);
       font-weight: 700;
+    }
+    /* Location-specific active colours */
+    .gv-btn.active {
+      background: var(--gv); border-color: var(--gv); color: #0a0a0f;
+    }
+    .hv-btn.active {
+      background: var(--hv); border-color: var(--hv); color: #0a0a0f;
+    }
+    .filter-dot {
+      width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+    }
+    /* Divider between the two filter rows */
+    .filter-row + .filter-row {
+      padding-top: 10px;
+      border-top: 0.5px solid rgba(255,255,255,0.06);
     }
 
     /* ── SECTIONS ── */
@@ -111,7 +152,7 @@
       padding: 3px 9px; border-radius: 2px; margin-bottom: 14px;
       background: rgba(200,169,110,0.1);
       border: 0.5px solid rgba(200,169,110,0.22);
-      color: var(--teal);
+      color: var(--gold);
     }
     .class-card h3 {
       font-family: var(--font-display); font-weight: 700;
@@ -166,7 +207,7 @@
     
     
       to   { transform: translateX(-33.333%); }
-    
+    }
 
     /* ── HIDDEN ── */
     .hidden { display: none !important; }
@@ -203,7 +244,7 @@
     <div class="page-header">
       <div class="eyebrow">
         <div class="eyebrow-line"></div>
-        <span class="eyebrow-text">All Classes · Grapevine, TX</span>
+        <span class="eyebrow-text">All Classes · Grapevine &amp; Highland Village, TX</span>
       </div>
       <h1>Find Your <em>Class</em></h1>
       <p>Technique classes for every age and level — from first steps to professional performance. All instructors are highly qualified with college degrees in dance or significant professional experience.</p>
@@ -215,59 +256,81 @@
 
     <!-- Filter -->
     <div class="filter-wrap">
-      <div class="filter-bar" role="tablist" aria-label="Filter classes by category">
-        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Classes</button>
-        <button class="filter-btn" data-filter="young" role="tab" aria-selected="false">Young Children</button>
-        <button class="filter-btn" data-filter="technique" role="tab" aria-selected="false">Technique &amp; Training</button>
-        <button class="filter-btn" data-filter="performance" role="tab" aria-selected="false">Performance &amp; Career</button>
+
+      <!-- Row 1: Location -->
+      <div class="filter-row" role="group" aria-label="Filter by location">
+        <span class="filter-row-label">Location</span>
+        <div class="filter-bar">
+          <button class="filter-btn loc-btn active" data-loc="all" aria-selected="true">All Locations</button>
+          <button class="filter-btn loc-btn gv-btn" data-loc="gv" aria-selected="false">
+            <span class="filter-dot" style="background:var(--gv);"></span>
+            Grapevine
+          </button>
+          <button class="filter-btn loc-btn hv-btn" data-loc="hv" aria-selected="false">
+            <span class="filter-dot" style="background:var(--hv);"></span>
+            Highland Village
+          </button>
+        </div>
       </div>
+
+      <!-- Row 2: Category -->
+      <div class="filter-row" role="group" aria-label="Filter by category">
+        <span class="filter-row-label">Category</span>
+        <div class="filter-bar">
+          <button class="filter-btn cat-btn active" data-cat="all" aria-selected="true">All Classes</button>
+          <button class="filter-btn cat-btn" data-cat="young" aria-selected="false">Young Children</button>
+          <button class="filter-btn cat-btn" data-cat="technique" aria-selected="false">Technique &amp; Training</button>
+          <button class="filter-btn cat-btn" data-cat="performance" aria-selected="false">Performance &amp; Career</button>
+        </div>
+      </div>
+
     </div>
 
     <!-- Classes -->
     <div class="classes-wrap">
 
       <!-- Young Children -->
-      <div class="class-section" id="sec-young" data-section="young">
+      <div class="class-section" data-loc="gv hv" id="sec-young" data-section="young">
         <div class="section-label">Young Children's Program · Ages 2–8</div>
         <p class="section-desc">Introduces dancers to the joy of movement in a fun, nurturing environment while building foundational skills in coordination, rhythm, balance, and musicality.</p>
         <div class="cards-grid">
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="young">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="young">
             <div class="card-age">Ages 3–5</div>
             <h3>Ballet, Tap &amp; Tumble</h3>
             <p>Coordination, balance, rhythm, and basic movement skills — all in one fun and engaging class. Confidence and classroom structure in a supportive environment.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="young">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="young">
             <div class="card-age">Ages 5–8</div>
             <h3>Ballet, Tap &amp; Jazz</h3>
             <p>Three foundational styles in one class. Basic ballet technique, rhythmic tap movement, and energetic jazz combinations. Coordination, musicality, and confidence.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="young">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="young">
             <div class="card-age">Ages 3+</div>
             <h3>Pre-Ballet</h3>
             <p>Fundamentals of ballet through imaginative movement, music, and basic technique. Coordination, balance, rhythm, and a love for dance in a nurturing environment.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="young">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="young">
             <div class="card-age">Ages 4+</div>
             <h3>Beginner Hip Hop</h3>
             <p>High-energy introduction to hip hop movement in a fun, age-appropriate environment. Rhythm, coordination, and confidence through foundational steps and simple choreography.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="young">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="young">
             <div class="card-age">Ages 4+</div>
             <h3>Intro to Acro</h3>
             <p>Basic acrobatic skills — strength, flexibility, and body control. Rolls, bridges, balances, and beginner acro movements in a safe and supportive setting.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="young">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="young">
             <div class="card-age">Ages 5+</div>
             <h3>Intro to Leaps &amp; Turns</h3>
             <p>Foundational techniques for jumps, leaps, and turns. Strength, balance, coordination, and flexibility — the building blocks for advanced technique classes.</p>
@@ -278,75 +341,75 @@
       </div>
 
       <!-- Technique -->
-      <div class="class-section" id="sec-technique" data-section="technique">
+      <div class="class-section" data-loc="gv hv" id="sec-technique" data-section="technique">
         <div class="section-label">Technique &amp; Training</div>
         <p class="section-desc">Focused on developing strong dance technique, strength, flexibility, and performance quality. Supporting dancers of all levels — including those training for competitive dance, college programs, and professional careers.</p>
         <div class="cards-grid">
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="technique">
             <div class="card-age">All Levels</div>
             <h3>Ballet</h3>
             <p>The foundation of all dance styles. Technique, alignment, strength, flexibility, and artistry through barre work, center exercises, and across-the-floor combinations.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="technique">
             <div class="card-age">All Levels</div>
             <h3>Tap</h3>
             <p>Musicality, timing, and intricate footwork. Create rhythms and patterns with your feet while developing coordination, clarity of sound, and speed.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="technique">
             <div class="card-age">All Levels</div>
             <h3>Jazz &amp; Lyrical</h3>
             <p>The strength and energy of jazz combined with the expressive movement of lyrical dance. Turns, leaps, flexibility, and musicality in one powerful class.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="technique">
             <div class="card-age">All Levels</div>
             <h3>Hip Hop</h3>
             <p>Street-style movement and current dance trends. Rhythm, coordination, and confidence through dynamic choreography and freestyle movement.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="technique">
             <div class="card-age">All Levels</div>
             <h3>Musical Theater</h3>
             <p>Dance, acting, and performance inspired by Broadway-style productions. Expressive choreography, stage presence, character, and storytelling through movement.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="technique">
             <div class="card-age">Intermediate+</div>
             <h3>Leaps &amp; Turns</h3>
             <p>Drills and progressions to improve essential skills — turns, jumps, leaps, balance, and flexibility — designed to build strength and control.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="technique">
             <div class="card-age">All Levels</div>
             <h3>Acro &amp; Flexibility</h3>
             <p>Dance technique combined with acrobatic elements and flexibility training. Strength, control, and skills such as balances, limbers, and walkovers.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="technique">
             <div class="card-age">All Levels</div>
             <h3>Tumbling</h3>
             <p>Floor-based acrobatic skills — cartwheels, walkovers, and handsprings. Strength, coordination, and body control while safely progressing your tumbling abilities.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="technique">
             <div class="card-age">Intermediate</div>
             <h3>Pre-Pointe</h3>
             <p>Strengthening exercises and technical training to safely prepare for pointe work. Foot and ankle strength, alignment, and balance.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="technique">
             <div class="card-age">Advanced</div>
             <h3>Pointe</h3>
             <p>Advanced ballet technique for dancers with the strength and control required to dance on pointe shoes. Classical technique on foot, ankle, and artistry.</p>
@@ -357,33 +420,33 @@
       </div>
 
       <!-- Performance & Career -->
-      <div class="class-section" id="sec-performance" data-section="performance">
+      <div class="class-section" data-loc="gv hv" id="sec-performance" data-section="performance">
         <div class="section-label">Performance &amp; Career Preparation</div>
         <p class="section-desc">For dancers interested in competitive dance, collegiate dance teams, and professional performance opportunities. Real pathways to real stages.</p>
         <div class="cards-grid">
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="performance">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="performance">
             <div class="card-age">Audition Prep</div>
             <h3>Company Prep</h3>
             <p>Prepares dancers for the expectations of competitive dance. Technique, performance quality, work ethic, and versatility for company auditions.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="performance">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="performance">
             <div class="card-age">MS · HS · College</div>
             <h3>Drill Team Prep</h3>
             <p>For dancers interested in middle school, high school, or collegiate drill team auditions. Kicks, turns, jumps, flexibility, precision, and performance confidence.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="performance">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="performance">
             <div class="card-age">College Track</div>
             <h3>College Dance Team Prep</h3>
             <p>Technique and performance skills required for collegiate dance team auditions. Jazz technique, turns, jumps, kicks, and audition-style combinations.</p>
             <div class="card-link">View Class <span class="card-arrow">↗</span></div>
           </a>
 
-          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="performance">
+          <a class="class-card" data-loc="gv hv" href="ambition-dance-class-detail.html" data-cat="performance">
             <div class="card-age">Professional</div>
             <h3>Pro Style</h3>
             <p>Training for professional dance teams — NFL and NBA cheer and dance. Powerful jazz-based choreography, kicks, turns, precision, and professional stage presence.</p>
@@ -394,16 +457,15 @@
       </div>
 
       <!-- Bottom CTA -->
+      
       <div class="bottom-cta">
-        <div class="bottom-cta-text">
-          <strong>Not Sure Which Class Is Right?</strong>
-          <p>Contact us and we'll help find the perfect fit for your dancer's age, level, and goals. First trial class is always free.</p>
-        </div>
-        <div class="bottom-cta-actions">
-          <a class="btn-primary" href="https://app.thestudiodirector.com/ambitiondancepro/portal.sd">Register Now</a>
-          <a class="btn-secondary" href="/cdn-cgi/l/email-protection#37405259534e77565a555e435e585953565954524745581954585a">Email Us →</a>
-        </div>
+      <h2>Not Sure<br>Which Class Is <em>Right</em>?</h2>
+      <p>Contact us and we'll help find the perfect fit for your dancer's age, level, and goals. First trial class is always free.</p>
+      <div class="cta-buttons">
+        <a class="btn-primary" href="https://app.thestudiodirector.com/ambitiondancepro/portal.sd">Register Now</a>
+        <a class="btn-secondary" href="/cdn-cgi/l/email-protection#d6a1b3b8b2af96b7bbb4bfa2bfb9b8b2b7b8b5b3a6a4b9f8b5b9bb">Email Wendy About Auditions</a>
       </div>
+    </div>
 
     </div><!-- /.classes-wrap -->
   </div><!-- /.container -->
@@ -417,32 +479,69 @@
     </div>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const sections = document.querySelectorAll('.class-section');
+  <script>
+    // ── Dual filter: location × category ──────────────────────────────
+    // Each card carries:  data-cat="young|technique|performance"
+    //                     data-loc="gv hv"  (space-separated, any combo)
+    //
+    // To make a class Grapevine-only: data-loc="gv"
+    // To make a class HV-only:        data-loc="hv"
+    // To show at both:                data-loc="gv hv"
+    // ──────────────────────────────────────────────────────────────────
 
-    filterBtns.forEach(btn => {
+    let activeLoc = 'all';
+    let activeCat = 'all';
+
+    const locBtns = document.querySelectorAll('.loc-btn');
+    const catBtns = document.querySelectorAll('.cat-btn');
+    const sections = document.querySelectorAll('.class-section');
+    const allCards = document.querySelectorAll('.class-card');
+
+    function applyFilters() {
+      // Filter each card
+      allCards.forEach(card => {
+        const cardCat = card.dataset.cat;
+        const cardLocs = (card.dataset.loc || 'gv hv').split(' ');
+
+        const catMatch = activeCat === 'all' || cardCat === activeCat;
+        const locMatch = activeLoc === 'all' || cardLocs.includes(activeLoc);
+
+        card.style.display = (catMatch && locMatch) ? '' : 'none';
+      });
+
+      // Show/hide section headers based on whether any card inside is visible
+      sections.forEach(sec => {
+        const sectionCat = sec.dataset.section;
+        const catVisible = activeCat === 'all' || sectionCat === activeCat;
+
+        // Also check if at least one card in this section is visible
+        const visibleCards = Array.from(sec.querySelectorAll('.class-card'))
+          .filter(c => c.style.display !== 'none');
+
+        sec.style.display = (catVisible && visibleCards.length > 0) ? '' : 'none';
+      });
+    }
+
+    locBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterBtns.forEach(b => {
-          b.classList.remove('active');
-          b.setAttribute('aria-selected', 'false');
-        });
+        locBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
         btn.classList.add('active');
         btn.setAttribute('aria-selected', 'true');
+        activeLoc = btn.dataset.loc;
+        applyFilters();
+      });
+    });
 
-        const filter = btn.dataset.filter;
-
-        sections.forEach(sec => {
-          if (filter === 'all' || sec.dataset.section === filter) { 
-            sec.classList.remove('hidden');
-          } else {
-            sec.classList.add('hidden');
-          }
-        });
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        catBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        activeCat = btn.dataset.cat;
+        applyFilters();
       });
     });
   </script>
-         
   <script src="nav.js"></script>
 </body>
 </html>

@@ -6,6 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Ambition Dance Productions</title>
   <style>
+    /* ── Location colour tokens ── */
+    :root {
+      --gv:    #c8a96e;
+      --gv-bg: rgba(200, 169, 110, 0.08);
+      --gv-bd: rgba(200, 169, 110, 0.22);
+      --hv:    #7a9fd4;
+      --hv-bg: rgba(122, 159, 212, 0.08);
+      --hv-bd: rgba(122, 159, 212, 0.22);
+    }
     /* ── BACKGROUNDS ── */
     
     
@@ -216,6 +225,14 @@
       border-bottom: 0.5px solid rgba(255,255,255,0.07);
       position: relative;
     }
+
+    .modal-body {
+      overflow-y: auto;
+      padding: 28px;
+      flex: 1;
+      display: flex;
+    }
+
     .modal-photo {
       width: 180px; flex-shrink: 0;
       background: #111118; overflow: hidden;
@@ -327,6 +344,54 @@
     .sf-text {
       font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.6);
     }
+    /* ── Location tab panel ── */
+    .loc-tab-panel { width: 100%; }
+
+    .loc-tab-bar {
+      display: flex;
+      gap: 0;
+    }
+
+    .loc-tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid rgba(255,255,255,0.08);
+      border-bottom: none;
+      cursor: pointer;
+      transition: color 0.18s, background 0.18s;
+      border-radius: 6px 6px 0 0;
+    }
+    .loc-tab-btn:first-child { margin-right: 4px; }
+    .loc-tab-btn:hover { color: rgba(255,255,255,0.75); }
+    .loc-tab-btn.active {
+      color: #fff;
+      background: var(--gold-light);
+      border-color: var(--gold-border);
+      z-index: 1;
+      position: relative;
+    }
+    .loc-tab-btn.hv-active {
+      background: rgba(122,159,212,0.08);
+      border-color: rgba(122,159,212,0.25);
+    }
+    .loc-tab-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .loc-tab-content { display: block; }
+    .loc-tab-content.hidden { display: none; }
+
     /* address card */
     .address-card {
       background: var(--gold-light); border: 0.5px solid var(--gold-border);
@@ -445,7 +510,7 @@
         <div>
           <div class="eyebrow">
             <div class="eyebrow-line"></div>
-            <span class="eyebrow-text">About Us · Grapevine, TX</span>
+            <span class="eyebrow-text">About Us · Grapevine &amp; Highland Village, TX</span>
           </div>
           <h1>Built on <em>Passion.</em><br>Driven by <em>Purpose.</em></h1>
           <p class="hero-desc">Ambition Dance Productions is a DFW-based dance education and production company offering technique classes, a competitive dance company, drill team training, professional choreography, and college &amp; professional mentorship — for dancers of every age and level.</p>
@@ -772,40 +837,82 @@ In addition to performing, Tina has a deep passion for teaching and hopes to con
 
     <!-- ══ STUDIO ══ -->
     <div class="studio-section" id="studio">
-      <div class="section-label">Our Studio</div>
+      <div class="section-label">Our Studios</div>
       <div class="studio-grid">
         <div>
-          <h2 class="studio-headline">Brand-New <em>Facility.</em><br>7 Dance Rooms.</h2>
-          <p class="studio-desc">We're now open at Grapevine Town Center Plaza — a brand-new, purpose-built dance facility with 7 dedicated dance rooms, designed to give every class the space, floors, and mirrors it deserves. Located next to PopShelf off Highway 114.</p>
+          <h2 class="studio-headline">Two <em>Locations.</em><br>One Community.</h2>
+          <p class="studio-desc">We operate two purpose-built studios in the DFW area — Grapevine and Highland Village — so dancers across Southlake, Colleyville, Flower Mound, Lewisville, Keller, and beyond have a home close by. Every room is designed with the right floors, mirrors, and space for serious training.</p>
           <div class="studio-features">
             <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">7 dedicated dance rooms</span></div>
             <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Sprung wood floors</span></div>
             <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Full-length wall mirrors</span></div>
             <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Barres in every ballet room</span></div>
-            <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Dedicated waiting area</span></div>
-            <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Free parking on-site</span></div>
+            <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Dedicated waiting areas</span></div>
+            <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Free parking at both locations</span></div>
             <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Easy highway access</span></div>
-            <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Next to PopShelf</span></div>
+            <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Classes at both studios</span></div>
           </div>
         </div>
         <div>
-          <div class="address-card">
-            <div class="ac-label">Location</div>
-            <div class="ac-name">Grapevine Town Center Plaza</div>
-            <div class="ac-address">1217 W State Hwy 114, Suite 118<br>Grapevine, TX 76051</div>
-            <div class="ac-note"><strong>Grapevine Town Center Plaza</strong> · Next to PopShelf. Free parking directly in front of Suite 118.</div>
-            <a class="map-btn" href="https://maps.google.com/?q=1217+W+State+Hwy+114+Suite+118+Grapevine+TX+76051" target="_blank" rel="noopener">Get Directions ↗</a>
-          </div>
-          <div class="rooms-card">
-            <div class="rc-label">Studio Rooms</div>
-            <div class="room-row"><span class="room-num">01</span><span class="room-name">Main Ballet Studio</span></div>
-            <div class="room-row"><span class="room-num">02</span><span class="room-name">Jazz &amp; Tap Studio</span></div>
-            <div class="room-row"><span class="room-num">03</span><span class="room-name">Contemporary Studio</span></div>
-            <div class="room-row"><span class="room-num">04</span><span class="room-name">Hip Hop Studio</span></div>
-            <div class="room-row"><span class="room-num">05</span><span class="room-name">Young Children's Studio</span></div>
-            <div class="room-row"><span class="room-num">06</span><span class="room-name">Acro &amp; Tumbling Room</span></div>
-            <div class="room-row"><span class="room-num">07</span><span class="room-name">Rehearsal &amp; Flex Studio</span></div>
-          </div>
+
+          <!-- ── Tabbed location panel ── -->
+          <div class="loc-tab-panel">
+
+            <!-- Tab buttons -->
+            <div class="loc-tab-bar" role="tablist" aria-label="Select studio location">
+              <button class="loc-tab-btn active" role="tab" aria-selected="true"
+                      aria-controls="tab-gv" id="btn-gv" data-target="tab-gv">
+                <span class="loc-tab-dot" style="background:var(--gv);"></span>
+                Grapevine
+              </button>
+              <button class="loc-tab-btn" role="tab" aria-selected="false"
+                      aria-controls="tab-hv" id="btn-hv" data-target="tab-hv">
+                <span class="loc-tab-dot" style="background:var(--hv);"></span>
+                Highland Village
+              </button>
+            </div>
+
+            <!-- Grapevine panel -->
+            <div class="loc-tab-content" id="tab-gv" role="tabpanel" aria-labelledby="btn-gv">
+              <div class="address-card" style="border-radius:0 0 6px 6px;border-top:none;">
+                <div class="ac-label" style="color:var(--gv);">Grapevine Studio</div>
+                <div class="ac-name">Grapevine Town Center Plaza</div>
+                <div class="ac-address">1217 W State Hwy 114, Suite 118<br>Grapevine, TX 76051</div>
+                <div class="ac-note"><strong>Next to PopShelf</strong> off Hwy 114. Free parking directly in front of Suite 118. Accessible from Southlake, Colleyville &amp; Keller.</div>
+                <a class="map-btn" href="https://maps.google.com/?q=1217+W+State+Hwy+114+Suite+118+Grapevine+TX+76051" target="_blank" rel="noopener">Get Directions ↗</a>
+              </div>
+              <div class="rooms-card" style="margin-top:14px;">
+                <div class="rc-label">Studio Rooms</div>
+                <div class="room-row"><span class="room-num">01</span><span class="room-name">Main Ballet Studio</span></div>
+                <div class="room-row"><span class="room-num">02</span><span class="room-name">Jazz &amp; Tap Studio</span></div>
+                <div class="room-row"><span class="room-num">03</span><span class="room-name">Contemporary Studio</span></div>
+                <div class="room-row"><span class="room-num">04</span><span class="room-name">Hip Hop Studio</span></div>
+                <div class="room-row"><span class="room-num">05</span><span class="room-name">Young Children's Studio</span></div>
+                <div class="room-row"><span class="room-num">06</span><span class="room-name">Acro &amp; Tumbling Room</span></div>
+                <div class="room-row"><span class="room-num">07</span><span class="room-name">Rehearsal &amp; Flex Studio</span></div>
+              </div>
+            </div>
+
+            <!-- Highland Village panel -->
+            <div class="loc-tab-content hidden" id="tab-hv" role="tabpanel" aria-labelledby="btn-hv">
+              <div class="address-card" style="border-radius:0 0 6px 6px;border-top:none;background:var(--hv-bg);border-color:var(--hv-bd);">
+                <div class="ac-label" style="color:var(--hv);">Highland Village Studio</div>
+                <div class="ac-name">Village Pkwy</div>
+                <div class="ac-address">2800 Village Pkwy, Suite 710<br>Highland Village, TX 75077</div>
+                <div class="ac-note">Free parking on-site. Accessible from Flower Mound, Lewisville, Argyle &amp; Denton.</div>
+                <a class="map-btn" href="https://maps.google.com/?q=2800+Village+Pkwy+Suite+710+Highland+Village+TX+75077" target="_blank" rel="noopener" style="background:var(--hv);">Get Directions ↗</a>
+              </div>
+              <div class="rooms-card" style="margin-top:14px;">
+                <div class="rc-label">Studio Rooms</div>
+                <div class="room-row"><span class="room-num">01</span><span class="room-name">Ballet &amp; Technique Studio</span></div>
+                <div class="room-row"><span class="room-num">02</span><span class="room-name">Jazz &amp; Hip Hop Studio</span></div>
+                <div class="room-row"><span class="room-num">03</span><span class="room-name">Young Children's Studio</span></div>
+                <div class="room-row"><span class="room-num">04</span><span class="room-name">Drill Team &amp; Flex Room</span></div>
+              </div>
+            </div>
+
+          </div><!-- /.loc-tab-panel -->
+
         </div>
       </div>
     </div>
@@ -825,9 +932,9 @@ In addition to performing, Tina has a deep passion for teaching and hopes to con
   <!-- ══ TICKER ══ -->
   <div class="ticker-wrap" aria-label="About Ambition Dance Productions">
     <div class="ticker-track">
-      <span class="ticker-item">DFW's Premier Dance Studio · <strong>Grapevine, TX</strong> · Est. 2015 · 7 Dance Rooms · <strong>Ages 2 &amp; Up</strong> · Jazz · Ballet · Hip Hop · Contemporary · Drill Team · <strong>Company &amp; Mentorship</strong> ·&nbsp;</span>
-      <span class="ticker-item">DFW's Premier Dance Studio · <strong>Grapevine, TX</strong> · Est. 2015 · 7 Dance Rooms · <strong>Ages 2 &amp; Up</strong> · Jazz · Ballet · Hip Hop · Contemporary · Drill Team · <strong>Company &amp; Mentorship</strong> ·&nbsp;</span>
-      <span class="ticker-item">DFW's Premier Dance Studio · <strong>Grapevine, TX</strong> · Est. 2015 · 7 Dance Rooms · <strong>Ages 2 &amp; Up</strong> · Jazz · Ballet · Hip Hop · Contemporary · Drill Team · <strong>Company &amp; Mentorship</strong> ·&nbsp;</span>
+      <span class="ticker-item">DFW's Premier Dance Studio · <strong>Grapevine</strong> · <strong>Highland Village</strong> · Est. 2015 · 7 Dance Rooms · <strong>Ages 2 &amp; Up</strong> · Jazz · Ballet · Hip Hop · Contemporary · Drill Team · <strong>Company &amp; Mentorship</strong> ·&nbsp;</span>
+      <span class="ticker-item">DFW's Premier Dance Studio · <strong>Grapevine</strong> · <strong>Highland Village</strong> · Est. 2015 · 7 Dance Rooms · <strong>Ages 2 &amp; Up</strong> · Jazz · Ballet · Hip Hop · Contemporary · Drill Team · <strong>Company &amp; Mentorship</strong> ·&nbsp;</span>
+      <span class="ticker-item">DFW's Premier Dance Studio · <strong>Grapevine</strong> · <strong>Highland Village</strong> · Est. 2015 · 7 Dance Rooms · <strong>Ages 2 &amp; Up</strong> · Jazz · Ballet · Hip Hop · Contemporary · Drill Team · <strong>Company &amp; Mentorship</strong> ·&nbsp;</span>
     </div>
   </div>
 
@@ -938,6 +1045,25 @@ In addition to performing, Tina has a deep passion for teaching and hopes to con
     });
   </script>
 
+  <script>
+    // Studio location tab switcher
+    document.querySelectorAll('.loc-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update buttons
+        document.querySelectorAll('.loc-tab-btn').forEach(b => {
+          b.classList.remove('active', 'hv-active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        if (btn.dataset.target === 'tab-hv') btn.classList.add('hv-active');
+        btn.setAttribute('aria-selected', 'true');
+
+        // Update panels
+        document.querySelectorAll('.loc-tab-content').forEach(p => p.classList.add('hidden'));
+        document.getElementById(btn.dataset.target).classList.remove('hidden');
+      });
+    });
+  </script>
   <script src="nav.js"></script>
 </body>
 </html>

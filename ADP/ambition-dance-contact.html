@@ -6,6 +6,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — Ambition Dance Productions</title>
   <style>
+    /* ── Location colour tokens ── */
+    :root {
+      --gv:    #c8a96e;
+      --gv-bg: rgba(200, 169, 110, 0.08);
+      --gv-bd: rgba(200, 169, 110, 0.22);
+      --hv:    #7a9fd4;
+      --hv-bg: rgba(122, 159, 212, 0.08);
+      --hv-bd: rgba(122, 159, 212, 0.22);
+    }
+
+    /* ── Location tab switcher ── */
+    .loc-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .loc-tab {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      padding: 11px 20px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      cursor: pointer;
+      transition: border-color 0.18s, color 0.18s, background 0.18s;
+    }
+    .loc-tab:hover {
+      color: rgba(255,255,255,0.8);
+      border-color: rgba(255,255,255,0.2);
+    }
+    .loc-tab.active {
+      background: var(--gold-light);
+      border-color: var(--gold-border);
+      color: #fff;
+    }
+    .loc-tab-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .gv-dot { background: var(--gv); }
+    .hv-dot { background: var(--hv); }
+
+    .loc-panel.hidden { display: none; }
+
+    /* ── Map CTA button ── */
+    .map-cta-btn {
+      display: block;
+      background: var(--gold);
+      color: var(--bg);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 13px 20px;
+      border-radius: 2px;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .map-cta-btn:hover { background: var(--gold-dark); }
     /* ── BACKGROUNDS ── */
     
     
@@ -92,6 +162,10 @@
     .form-note {
       font-size: 12px; font-weight: 300;
       color: rgba(255,255,255,0.28); line-height: 1.5;
+    }
+
+    .form-success {
+          margin-top: 2rem;
     }
 
     /* ── CONTACT INFO SIDEBAR ── */
@@ -426,17 +500,36 @@
             </div>
           </div>
 
-          <!-- Address -->
+          <!-- Grapevine -->
           <div class="info-card">
-            <div class="info-card-label">Studio Location</div>
+            <div class="info-card-label" style="color:var(--gv);">
+              <span class="loc-badge-dot gv-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gv);margin-right:6px;vertical-align:middle;"></span>
+              Grapevine Studio
+            </div>
             <div class="address-block">
-              <div class="address-name">Ambition Dance Productions</div>
+              <div class="address-name">Grapevine Town Center</div>
               <div class="address-line">
-                1217 W State Hwy 114<br>
-                Suite 118<br>
-                Grapevine, TX 76051
+                1217 W State Hwy 114, Suite 118<br>
+                Grapevine, TX 76051<br>
+                <span style="font-size:11px;color:rgba(255,255,255,0.28);">Next to PopShelf</span>
               </div>
               <a class="map-link" href="https://maps.google.com/?q=1217+W+State+Hwy+114+Suite+118+Grapevine+TX+76051" target="_blank" rel="noopener">Get Directions</a>
+            </div>
+          </div>
+
+          <!-- Highland Village -->
+          <div class="info-card">
+            <div class="info-card-label" style="color:var(--hv);">
+              <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--hv);margin-right:6px;vertical-align:middle;"></span>
+              Highland Village Studio
+            </div>
+            <div class="address-block">
+              <div class="address-name">Village Pkwy</div>
+              <div class="address-line">
+                2800 Village Pkwy, Suite 710<br>
+                Highland Village, TX 75077
+              </div>
+              <a class="map-link" href="https://maps.google.com/?q=2800+Village+Pkwy+Suite+710+Highland+Village+TX+75077" target="_blank" rel="noopener">Get Directions</a>
             </div>
           </div>
 
@@ -511,44 +604,101 @@
     <!-- ══ MAP ══ -->
     <div class="map-section">
       <div class="section-label">Find Us</div>
-      <div class="map-wrap">
-        <div class="map-frame">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.3!2d-97.125!3d32.942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s1217+W+State+Hwy+114+Suite+118+Grapevine+TX+76051!5e0!3m2!1sen!2sus!4v1"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Ambition Dance Productions location map"
-          ></iframe>
-        </div>
-        <div class="map-details">
-          <div class="map-detail-card">
-            <div class="mdc-label">Address</div>
-            <div class="mdc-val">
-              <strong>1217 W State Hwy 114, Suite 118</strong><br>
-              Grapevine, TX 76051
+
+      <!-- Location tab switcher -->
+      <div class="loc-tabs" role="tablist" aria-label="Select studio location">
+        <button class="loc-tab active" role="tab" aria-selected="true" data-loc="grapevine" aria-controls="loc-grapevine">
+          <span class="loc-tab-dot gv-dot"></span>
+          Grapevine Studio
+        </button>
+        <button class="loc-tab" role="tab" aria-selected="false" data-loc="highland" aria-controls="loc-highland">
+          <span class="loc-tab-dot hv-dot"></span>
+          Highland Village Studio
+        </button>
+      </div>
+
+      <!-- Grapevine -->
+      <div class="loc-panel" id="loc-grapevine" role="tabpanel">
+        <div class="map-wrap">
+          <div class="map-frame">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.5!2d-97.1252!3d32.9423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864dd6f9b0a1a741%3A0x0!2s1217+W+State+Hwy+114+%23118%2C+Grapevine%2C+TX+76051!5e0!3m2!1sen!2sus!4v1700000001"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ambition Dance Productions — Grapevine studio"
+            ></iframe>
+          </div>
+          <div class="map-details">
+            <div class="map-detail-card">
+              <div class="mdc-label" style="color:var(--gv);">Grapevine Studio</div>
+              <div class="mdc-val">
+                <strong>1217 W State Hwy 114, Suite 118</strong><br>
+                Grapevine, TX 76051
+              </div>
             </div>
+            <div class="map-detail-card">
+              <div class="mdc-label">Landmark</div>
+              <div class="mdc-val">Grapevine Town Center Plaza — <strong>next to PopShelf</strong> off Hwy 114.</div>
+            </div>
+            <div class="map-detail-card">
+              <div class="mdc-label">Parking</div>
+              <div class="mdc-val">Free parking directly in front of Suite 118.</div>
+            </div>
+            <div class="map-detail-card">
+              <div class="mdc-label">Nearby</div>
+              <div class="mdc-val">Accessible from Southlake, Colleyville, Keller, and greater DFW.</div>
+            </div>
+            <a
+              href="https://maps.google.com/?q=1217+W+State+Hwy+114+Suite+118+Grapevine+TX+76051"
+              target="_blank" rel="noopener"
+              class="map-cta-btn"
+            >Open in Google Maps ↗</a>
           </div>
-          <div class="map-detail-card">
-            <div class="mdc-label">Parking</div>
-            <div class="mdc-val">Free parking is available in the lot directly in front of the suite. Look for Suite 118.</div>
-          </div>
-          <div class="map-detail-card">
-            <div class="mdc-label">Nearby</div>
-            <div class="mdc-val">Located just off Highway 114 in Grapevine. Easily accessible from Southlake, Colleyville, Keller, and the greater DFW area.</div>
-          </div>
-          <a
-            href="https://maps.google.com/?q=1217+W+State+Hwy+114+Suite+118+Grapevine+TX+76051"
-            target="_blank"
-            rel="noopener"
-            style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--bg);font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:13px 20px;border-radius:2px;text-decoration:none;transition:background .2s;justify-content:center;"
-            onmouseover="this.style.background='var(--gold-dark)'"
-            onmouseout="this.style.background='var(--gold)'"
-          >
-            Open in Google Maps ↗
-          </a>
         </div>
       </div>
+
+      <!-- Highland Village -->
+      <div class="loc-panel hidden" id="loc-highland" role="tabpanel">
+        <div class="map-wrap">
+          <div class="map-frame">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3344.8!2d-97.0568!3d33.0921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c3e56a1a1a1a1%3A0x0!2s2800+Village+Pkwy+%23710%2C+Highland+Village%2C+TX+75077!5e0!3m2!1sen!2sus!4v1700000002"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ambition Dance Productions — Highland Village studio"
+            ></iframe>
+          </div>
+          <div class="map-details">
+            <div class="map-detail-card">
+              <div class="mdc-label" style="color:var(--hv);">Highland Village Studio</div>
+              <div class="mdc-val">
+                <strong>2800 Village Pkwy, Suite 710</strong><br>
+                Highland Village, TX 75077
+              </div>
+            </div>
+            <div class="map-detail-card">
+              <div class="mdc-label">Landmark</div>
+              <div class="mdc-val">Located in the <strong>Village Pkwy corridor</strong> in Highland Village.</div>
+            </div>
+            <div class="map-detail-card">
+              <div class="mdc-label">Parking</div>
+              <div class="mdc-val">Free parking available on-site. Look for Suite 710.</div>
+            </div>
+            <div class="map-detail-card">
+              <div class="mdc-label">Nearby</div>
+              <div class="mdc-val">Accessible from Flower Mound, Lewisville, Argyle, and the northern DFW area.</div>
+            </div>
+            <a
+              href="https://maps.google.com/?q=2800+Village+Pkwy+Suite+710+Highland+Village+TX+75077"
+              target="_blank" rel="noopener"
+              class="map-cta-btn"
+            >Open in Google Maps ↗</a>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- ══ FAQs ══ -->
@@ -604,23 +754,40 @@
   <!-- ══ TICKER ══ -->
   <div class="ticker-wrap" aria-label="Contact information">
     <div class="ticker-track">
-      <span class="ticker-item"><strong>469-218-2400</strong> · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d4a585359447d5c505f5449545253595c535e584d4f52135e5250">[email&#160;protected]</a> · <strong>1217 W State Hwy 114, Suite 118</strong> · Grapevine, TX 76051 · First Trial Class Free · Ages 2 &amp; Up ·&nbsp;</span>
-      <span class="ticker-item"><strong>469-218-2400</strong> · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e6918388829fa6878b848f928f89888287888583969489c885898b">[email&#160;protected]</a> · <strong>1217 W State Hwy 114, Suite 118</strong> · Grapevine, TX 76051 · First Trial Class Free · Ages 2 &amp; Up ·&nbsp;</span>
-      <span class="ticker-item"><strong>469-218-2400</strong> · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f88f9d969c81b899959a918c9197969c99969b9d888a97d69b9795">[email&#160;protected]</a> · <strong>1217 W State Hwy 114, Suite 118</strong> · Grapevine, TX 76051 · First Trial Class Free · Ages 2 &amp; Up ·&nbsp;</span>
+      <span class="ticker-item"><strong>469-218-2400</strong> · wendy@ambitiondancepro.com · <strong>Grapevine:</strong> 1217 W State Hwy 114, Suite 118 · <strong>Highland Village:</strong> 2800 Village Pkwy, Suite 710 · First Trial Class Free · Ages 2 &amp; Up ·&nbsp;</span>
+      <span class="ticker-item"><strong>469-218-2400</strong> · wendy@ambitiondancepro.com · <strong>Grapevine:</strong> 1217 W State Hwy 114, Suite 118 · <strong>Highland Village:</strong> 2800 Village Pkwy, Suite 710 · First Trial Class Free · Ages 2 &amp; Up ·&nbsp;</span>
+      <span class="ticker-item"><strong>469-218-2400</strong> · wendy@ambitiondancepro.com · <strong>Grapevine:</strong> 1217 W State Hwy 114, Suite 118 · <strong>Highland Village:</strong> 2800 Village Pkwy, Suite 710 · First Trial Class Free · Ages 2 &amp; Up ·&nbsp;</span>
     </div>
   </div>
 
-  <!-- <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> -->
-  <script src="https://gist.github.com/zhanglianxin/79b9fc200607d01d8bcce28fd095e7c9.js"></script>
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     function handleSubmit() {
       const firstName = document.getElementById('first-name').value.trim();
-      const lastName = document.getElementById('last-name').value.trim();
       const email = document.getElementById('email').value.trim();
-      const topic = document.getElementById('topic').value;
       const message = document.getElementById('message').value.trim();
+      if (!firstName || !email || !message) {
+        alert('Please fill in your name, email, and message before sending.');
+        return;
+      }
+      document.getElementById('form-wrap').style.display = 'none';
+      document.getElementById('form-success').classList.add('visible');
     }
-    </script>
+
+    // Location tab switcher
+    document.querySelectorAll('.loc-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.loc-tab').forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        const target = btn.dataset.loc === 'grapevine' ? 'loc-grapevine' : 'loc-highland';
+        document.querySelectorAll('.loc-panel').forEach(p => p.classList.add('hidden'));
+        document.getElementById(target).classList.remove('hidden');
+      });
+    });
+  </script>
   <script src="nav.js"></script>
 </body>
 </html>
