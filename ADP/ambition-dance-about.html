@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="global.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Ambition Dance Productions</title>
+  <style>
+    /* ── BACKGROUNDS ── */
+    
+    
+    
+
+    /* ── CONTAINER ── */
+    
+
+    /* ── BREADCRUMB ── */
+    
+    
+    
+    
+    
+
+    /* ── SECTION LABEL ── */
+    
+    
+
+    /* ── PAGE HERO ── */
+    
+    
+    
+    
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    
+    
+    
+    .hero-mission {
+      background: var(--gold-light); border: 0.5px solid var(--gold-border);
+      border-radius: 6px; padding: 24px 28px;
+      position: relative; overflow: hidden;
+    }
+    .hero-mission::before {
+      content: '\201C';
+      position: absolute; top: -10px; left: 16px;
+      font-family: var(--font-display); font-size: 80px; font-weight: 900;
+      color: rgba(200,169,110,0.12); line-height: 1;
+      pointer-events: none;
+    }
+    .mission-label {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .mission-text {
+      font-size: 15px; font-weight: 300; font-style: italic;
+      color: rgba(255,255,255,0.75); line-height: 1.8; position: relative; z-index: 1;
+    }
+    /* right column stats */
+    .hero-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .stat-card {
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 24px;
+      transition: border-color 0.18s;
+    }
+    .stat-card:hover { border-color: var(--gold-border); }
+    .stat-num {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 36px; color: var(--gold); line-height: 1; margin-bottom: 6px;
+    }
+    .stat-desc {
+      font-size: 12.5px; font-weight: 300; color: var(--text-muted); line-height: 1.5;
+    }
+    .stat-card.wide {
+      grid-column: span 2;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .stat-card.wide .stat-num { font-size: 28px; flex-shrink: 0; }
+
+    /* ── VALUES ── */
+    .values-section {
+      position: relative; z-index: 5;
+      padding: 64px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .values-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    }
+    .value-card {
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 24px;
+      transition: border-color 0.18s, transform 0.18s;
+    }
+    .value-card:hover { border-color: var(--gold-border); transform: translateY(-2px); }
+    .value-icon { width: 28px; height: 28px; margin-bottom: 14px; }
+    .value-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .value-desc {
+      font-size: 13px; font-weight: 300;
+      color: var(--text-muted); line-height: 1.72;
+    }
+
+    /* ── FACULTY GRID ── */
+    .faculty-section {
+      position: relative; z-index: 5;
+      padding: 64px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .faculty-intro {
+      font-size: 15px; font-weight: 300; color: var(--text-muted);
+      line-height: 1.8; max-width: 620px; margin-bottom: 40px;
+    }
+    .faculty-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    }
+    .faculty-card {
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 6px; overflow: hidden; cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+    }
+    .faculty-card:hover {
+      border-color: var(--gold-border);
+      transform: translateY(-3px);
+    }
+    .faculty-card:focus-visible {
+      outline: 2px solid var(--gold); outline-offset: 2px;
+    }
+    /* photo area */
+    .faculty-photo {
+      width: 100%; aspect-ratio: 3/4; overflow: hidden;
+      background: #111118; position: relative;
+    }
+    .faculty-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+      filter: grayscale(20%); transition: filter 0.3s, transform 0.3s;
+      display: block;
+    }
+    .faculty-card:hover .faculty-photo img {
+      filter: grayscale(0%); transform: scale(1.03);
+    }
+    /* placeholder when no image */
+    .faculty-photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #14141e, #1a1a28);
+    }
+    .faculty-initials {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 40px; color: rgba(200,169,110,0.25);
+      letter-spacing: 0.05em;
+    }
+    /* hover overlay */
+    .faculty-hover-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,10,15,0.85) 0%, transparent 50%);
+      opacity: 0; transition: opacity 0.25s;
+      display: flex; align-items: flex-end; padding: 16px;
+    }
+    .faculty-card:hover .faculty-hover-overlay { opacity: 1; }
+    .hover-cta {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); display: flex; align-items: center; gap: 6px;
+    }
+    /* card info */
+    .faculty-info { padding: 16px; }
+    .faculty-name {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 13.5px; text-transform: uppercase; letter-spacing: 0.04em;
+      color: #fff; margin-bottom: 4px; line-height: 1.2;
+    }
+    .faculty-role {
+      font-size: 11.5px; font-weight: 300;
+      color: rgba(255,255,255,0.4); line-height: 1.45;
+    }
+    .faculty-tag {
+      display: inline-block; margin-top: 8px;
+      font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 3px 8px; border-radius: 2px;
+      background: var(--gold-light); border: 0.5px solid var(--gold-border);
+      color: var(--gold);
+    }
+
+    /* ── INSTRUCTOR MODAL ── */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(5, 5, 10, 0.88);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .modal-backdrop.open {
+      opacity: 1; pointer-events: auto;
+    }
+    .modal {
+      background: #13131e;
+      border: 0.5px solid rgba(200,169,110,0.22);
+      border-radius: 8px; overflow: hidden;
+      width: 100%; max-width: 780px;
+      max-height: 88vh; display: flex; flex-direction: column;
+      transform: translateY(16px);
+      transition: transform 0.25s;
+    }
+    .modal-backdrop.open .modal { transform: translateY(0); }
+    .modal-header {
+      display: flex; gap: 0; flex-shrink: 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.07);
+      position: relative;
+    }
+    .modal-photo {
+      width: 180px; flex-shrink: 0;
+      background: #111118; overflow: hidden;
+    }
+    .modal-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top;
+      display: block;
+    }
+    .modal-photo-placeholder {
+      width: 100%; height: 100%; min-height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #14141e, #1a1a28);
+    }
+    .modal-photo-initials {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 52px; color: rgba(200,169,110,0.2);
+    }
+    .modal-meta {
+      flex: 1; padding: 28px 28px 24px; display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .modal-tag {
+      display: inline-block; margin-bottom: 12px;
+      font-size: 9.5px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 2px;
+      background: var(--gold-light); border: 0.5px solid var(--gold-border);
+      color: var(--gold); align-self: flex-start;
+    }
+    .modal-name {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 26px; text-transform: uppercase; letter-spacing: -0.01em;
+      color: #fff; line-height: 1.05; margin-bottom: 6px;
+    }
+    .modal-role {
+      font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.45);
+      line-height: 1.45;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,0.06); border: 0.5px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 16px; color: rgba(255,255,255,0.5);
+      transition: background 0.2s, color 0.2s; flex-shrink: 0;
+      line-height: 1;
+    }
+    .modal-close:hover { background: rgba(200,169,110,0.15); color: var(--gold); }
+    .modal-
+    .modal-bio {
+      font-size: 14px; font-weight: 300;
+      color: rgba(255,255,255,0.6); line-height: 1.85;
+    }
+    .modal-bio-placeholder {
+      font-size: 14px; font-weight: 300; font-style: italic;
+      color: rgba(255,255,255,0.3); line-height: 1.7;
+    }
+    .modal-footer {
+      padding: 16px 28px; border-top: 0.5px solid rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .modal-nav-btn {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+      background: none; border: none; cursor: pointer;
+      padding: 8px 0; transition: color 0.18s;
+    }
+    .modal-nav-btn:hover { color: var(--gold); }
+    .modal-nav-btn:disabled { opacity: 0.2; cursor: default; }
+    .modal-counter {
+      font-size: 11px; color: rgba(255,255,255,0.25);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── STUDIO SECTION ── */
+    .studio-section {
+      position: relative; z-index: 5;
+      padding: 64px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .studio-grid {
+      display: grid; grid-template-columns: 1fr 380px; gap: 48px; align-items: start;
+    }
+    .studio-headline {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: clamp(32px, 4vw, 48px);
+      text-transform: uppercase; letter-spacing: -0.01em;
+      color: #fff; line-height: 1.05; margin-bottom: 18px;
+    }
+    .studio-headline em { font-style: normal; color: var(--gold); }
+    .studio-desc {
+      font-size: 15px; font-weight: 300;
+      color: var(--text-muted); line-height: 1.8; margin-bottom: 32px;
+    }
+    .studio-features {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    }
+    .studio-feature {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 4px; padding: 13px 16px;
+      transition: border-color 0.18s;
+    }
+    .studio-feature:hover { border-color: var(--gold-border); }
+    .sf-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+    .sf-text {
+      font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.6);
+    }
+    /* address card */
+    .address-card {
+      background: var(--gold-light); border: 0.5px solid var(--gold-border);
+      border-radius: 6px; padding: 28px; margin-bottom: 14px;
+    }
+    .ac-label {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+    }
+    .ac-name {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 17px; text-transform: uppercase; letter-spacing: 0.04em;
+      color: #fff; margin-bottom: 6px;
+    }
+    .ac-address {
+      font-size: 14px; font-weight: 300;
+      color: rgba(255,255,255,0.5); line-height: 1.65; margin-bottom: 18px;
+    }
+    .ac-note {
+      font-size: 12.5px; font-weight: 300;
+      color: rgba(255,255,255,0.38); line-height: 1.6;
+      padding-top: 14px; border-top: 0.5px solid rgba(200,169,110,0.15);
+    }
+    .ac-note strong { color: rgba(255,255,255,0.6); font-weight: 500; }
+    .map-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--bg);
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 12px 20px; border-radius: 2px; text-decoration: none;
+      transition: background 0.2s; margin-top: 16px; display: block; text-align: center;
+    }
+    .map-btn:hover { background: var(--gold-dark); }
+    .rooms-card {
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 24px;
+    }
+    .rc-label {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+    }
+    .room-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 9px 0; border-bottom: 0.5px solid var(--border);
+    }
+    .room-row:last-child { border-bottom: none; }
+    .room-num {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 11px; color: rgba(200,169,110,0.5); min-width: 20px;
+    }
+    .room-name { font-size: 13px; color: rgba(255,255,255,0.6); }
+
+    /* ── BOTTOM CTA ── */
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    /* ── TICKER ── */
+    
+    
+    
+    
+    
+      to   { transform: translateX(-33.333%); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1200px) {
+      .faculty-grid { grid-template-columns: repeat(3, 1fr); }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 1000px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .studio-grid { grid-template-columns: 1fr; }
+      .modal { flex-direction: column; }
+      .modal-photo { width: 100%; height: 200px; }
+    }
+    @media (max-width: 768px) {
+      
+
+      .faculty-grid { grid-template-columns: repeat(2, 1fr); }
+      .studio-features { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .faculty-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow-2" aria-hidden="true"></div>
+
+<div class="container">
+
+    <div class="breadcrumb">
+      <a href="ambition-dance-hero.html">Home</a>
+      <span class="sep">›</span>
+      <span class="current">About</span>
+    </div>
+
+    <!-- ══ PAGE HERO ══ -->
+    <div class="page-hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">
+            <div class="eyebrow-line"></div>
+            <span class="eyebrow-text">About Us · Grapevine, TX</span>
+          </div>
+          <h1>Built on <em>Passion.</em><br>Driven by <em>Purpose.</em></h1>
+          <p class="hero-desc">Ambition Dance Productions is a DFW-based dance education and production company offering technique classes, a competitive dance company, drill team training, professional choreography, and college &amp; professional mentorship — for dancers of every age and level.</p>
+          <div class="hero-mission">
+            <div class="mission-label">Our Mission</div>
+            <p class="mission-text">To provide dancers, singers, and actors of all ages an encouraging environment of technique classes, workshops, performances, and individualized guidance — where every student is given the opportunity to grow, excel their technical abilities, and build lasting confidence.</p>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="stat-num">8+</div>
+            <div class="stat-desc">Years serving the DFW dance community</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">7</div>
+            <div class="stat-desc">Dance rooms in our brand-new Grapevine studio</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">12</div>
+            <div class="stat-desc">Dance styles and class types offered</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">Age 2</div>
+            <div class="stat-desc">Youngest age we welcome into our programs</div>
+          </div>
+          <div class="stat-card wide">
+            <div class="stat-num">Free</div>
+            <div class="stat-desc">First trial class — no commitment, no cost. The best way to find your fit.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ VALUES ══ -->
+    <div class="values-section">
+      <div class="section-label">What We Stand For</div>
+      <div class="values-grid">
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 3L17.5 11H27L19.5 16L22.5 25L14 19.5L5.5 25L8.5 16L1 11H10.5L14 3Z" stroke="#c8a96e" stroke-width="1.4" stroke-linejoin="round"/>
+          </svg>
+          <div class="value-title">Technical Excellence</div>
+          <div class="value-desc">Strong, safe foundations from day one. Every instructor brings college-level training or significant professional experience — so technique is never an afterthought.</div>
+        </div>
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 5C14 5 7 10 7 17C7 20.9 10.1 24 14 24C17.9 24 21 20.9 21 17C21 10 14 5 14 5Z" stroke="#c8a96e" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M14 12V18M11 15H17" stroke="#c8a96e" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <div class="value-title">Individual Growth</div>
+          <div class="value-desc">Every dancer is seen and valued. We nurture each student's unique artistry and confidence — meeting them where they are and guiding them to where they want to be.</div>
+        </div>
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="5" stroke="#c8a96e" stroke-width="1.4"/>
+            <circle cx="20" cy="14" r="5" stroke="#c8a96e" stroke-width="1.4"/>
+            <path d="M14 10C14 10 16 12 16 14" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <div class="value-title">Community</div>
+          <div class="value-desc">A family where dancers feel safe, supported, and challenged. The friendships, teamwork, and studio culture we build are just as important as what happens on stage.</div>
+        </div>
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 4L14 24M6 10L14 4L22 10" stroke="#c8a96e" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 24H20" stroke="#c8a96e" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <div class="value-title">Real Opportunity</div>
+          <div class="value-desc">Performance, competition, mentorship, and clear pathways to college and professional dance. We open doors — and help dancers walk through them ready.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ FACULTY ══ -->
+    <div class="faculty-section" id="faculty">
+      <div class="section-label">Our Faculty</div>
+      <p class="faculty-intro">Our instructors bring decades of professional, competitive, and academic experience to every class. Click any instructor to learn more about their background and specialties.</p>
+
+      <div class="faculty-grid" id="faculty-grid">
+
+        <!-- Wendy Jenkins -->
+        <div class="faculty-card" tabindex="0" role="button" aria-label="View bio for Wendy Jenkins"
+          data-name="Wendy Jenkins"
+          data-role="Executive Director &amp; Owner"
+          data-tag="Leadership"
+          data-img="https://ambitiondancepro.com/wp-content/uploads/2017/07/Wendy-HS-.jpg"
+          data-bio="Wendy is a highly accomplished executive and business leader with demonstrated technical, operations, and business management experience. She has notable success articulating organizational vision and executing strategies to maximize operations performance and profitability.
+
+Wendy left her executive role after 21 years in financial services and technology. She spent a year consulting in the dance industry in studio operations and management, and decided her next venture would leverage her business experience and her lifelong love of dance.
+
+Wendy danced for 13 years — ballet, pointe, jazz, and tap — with a focus on competitive baton twirling. She won many state and national championships and was captain of her dance/baton twirling team in high school.
+
+Born and raised in New Bedford, Massachusetts, Wendy graduated from Bryant University in Rhode Island with a Bachelor of Science in Business Administration with a concentration in Finance. She spent her professional career in Boston and relocated to Texas in 2011.
+
+Wendy lives in Southlake, TX with her husband Michael, her daughter Emma (who is also a dancer), and two shih-tzu poodle fur babies, Brenson and Brody. She loves seeing dancers explore their passion for dance — and the joy she witnesses both in and outside the classroom and on stage.">
+          <div class="faculty-photo">
+            <img src="https://ambitiondancepro.com/wp-content/uploads/2017/07/Wendy-HS-.jpg" alt="Wendy Jenkins" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'faculty-photo-placeholder\'><span class=\'faculty-initials\'>WJ</span></div>'" />
+            <div class="faculty-hover-overlay">
+              <span class="hover-cta">Read Bio ↗</span>
+            </div>
+          </div>
+          <div class="faculty-info">
+            <div class="faculty-name">Wendy Jenkins</div>
+            <div class="faculty-role">Executive Director &amp; Owner</div>
+            <span class="faculty-tag">Leadership</span>
+          </div>
+        </div>
+
+        <!-- Angela Sellers -->
+        <div class="faculty-card" tabindex="0" role="button" aria-label="View bio for Angela Sellers"
+          data-name="Angela Sellers"
+          data-role="Jazz / Lyrical Technique &amp; Company Choreography"
+          data-tag="Jazz · Lyrical · Choreography"
+          data-img="https://ambitiondancepro.com/wp-content/uploads/2021/04/Angie-Sellers-HS.jpg"
+          data-bio="Angie Sellers, a former Disney World dancer, is the Director and Choreographer for many award-winning entertainment companies that produce shows for multiple theme parks, touring shows, and corporate events across the country and abroad. She recently was awarded the distinguished 'Spotlight Award' as Creative Director of the Year.
+
+Throughout her career she has directed and choreographed many Six Flags productions, industrials, professional basketball dance teams, and television specials including NFL halftime shows. She choreographed the touring production of 'The World's Greatest Magic' and 'The World of Magic' in Branson, MO.
+
+Angie is co-owner of the production company Two4one Productions, which choreographs for Darci Lynne and Friends, winner of America's Got Talent. She is honored to have co-produced and choreographed a live televised special that won an Emmy Award for Best Special Event.
+
+A member of Dance Masters of America, Angie has established herself as a master teacher, choreographer, and performer. She is passionate about sharing her love of dance and travels with many organizations judging and teaching across the United States.">
+          <div class="faculty-photo">
+            <img src="https://ambitiondancepro.com/wp-content/uploads/2021/04/Angie-Sellers-HS.jpg" alt="Angela Sellers" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'faculty-photo-placeholder\'><span class=\'faculty-initials\'>AS</span></div>'" />
+            <div class="faculty-hover-overlay">
+              <span class="hover-cta">Read Bio ↗</span>
+            </div>
+          </div>
+          <div class="faculty-info">
+            <div class="faculty-name">Angela Sellers</div>
+            <div class="faculty-role">Jazz / Lyrical &amp; Company Choreography</div>
+            <span class="faculty-tag">Jazz · Lyrical · Choreography</span>
+          </div>
+        </div>
+
+        <!-- Cara Switzer -->
+        <div class="faculty-card" tabindex="0" role="button" aria-label="View bio for Cara Switzer"
+          data-name="Cara Switzer"
+          data-role="Young Children's Program, Jazz, Technique, Drill Team Instructor &amp; Choreographer"
+          data-tag="Jazz · Drill Team · Young Children's"
+          data-img="https://ambitiondancepro.com/wp-content/uploads/2017/07/CaraSwitzerHeadshot.jpg"
+          data-bio="Cara Switzer brings over 19 years of teaching and directing experience. An accomplished dancer, singer, instructor, and choreographer, she graduated from the University of North Texas in 2003 with a degree in Business Administration. Studio-trained since age 4, her experience combined with a focus on building student confidence is a proven recipe for success.
+
+Cara's dance resume includes over 35 years of studio experience and teaching in the DFW area since 1998 at various reputable studios, including 11 years as a Dance Company Director and Instructor at Lifesong Studio and 7 years as an Instructor at Doubletake Dance Studio.
+
+As a child, Cara grew up in the entertainment industry with credits in television, film, and print — including JC Penney, Dillard's, and the Saturday morning TV show 'All Star Kids.' She worked alongside artists such as Jo Anne Worley and many others.
+
+She has coached and choreographed several National Champion soloists and groups, with routines winning numerous overall and top awards at Regional and National competitions. Her coveted 'Critics Choice' award at both the 2010 and 2011 Onstage NY Competition reflects her creative choreographic voice.
+
+Cara has extensive drill team experience as an instructor, choreographer, and adjudicator for American Dance/Drill Team School, and is a veteran judge for Crowd Pleasers Dance Company with over 15 years of judging experience. She also serves on their core judging panel and gives seminars at dance and drill team events.
+
+Cara and her students have participated in many televised events including the Macy's Thanksgiving Parade, the FedEx Orange Bowl, and Dallas Cowboys Halftime Performances with artists including Destiny's Child, Carrie Underwood, Kelly Clarkson, The Jonas Brothers, and many others.">
+          <div class="faculty-photo">
+            <img src="https://ambitiondancepro.com/wp-content/uploads/2017/07/CaraSwitzerHeadshot.jpg" alt="Cara Switzer" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'faculty-photo-placeholder\'><span class=\'faculty-initials\'>CS</span></div>'" />
+            <div class="faculty-hover-overlay">
+              <span class="hover-cta">Read Bio ↗</span>
+            </div>
+          </div>
+          <div class="faculty-info">
+            <div class="faculty-name">Cara Switzer</div>
+            <div class="faculty-role">Young Children's, Jazz, Technique &amp; Drill Team</div>
+            <span class="faculty-tag">Jazz · Drill Team · Young Children's</span>
+          </div>
+        </div>
+
+        <!-- Constance Dolph -->
+        <div class="faculty-card" tabindex="0" role="button" aria-label="View bio for Constance Dolph"
+          data-name="Constance Dolph"
+          data-role="Ballet, Pointe &amp; Modern"
+          data-tag="Ballet · Pointe · Modern"
+          data-img="https://ambitiondancepro.com/wp-content/uploads/2016/05/Constance-Dolph-ballet.png"
+          data-bio="Constance Dolph, a native of Dallas, Texas, began her classical training under Nathalie Krassovska of the Ballet Russe. She was a pre-professional dancer with Dance Institute of Dallas, where she performed lead roles including Lilac Fairy, Giselle, and Odette.
+
+In May 2013, Constance graduated from Southern Methodist University with a BFA in Dance Performance, where she performed works by Martha Graham, Shen Wei, Millicent Johnnie, Max Stone, Bruce Woods, and Mel Tomlinson.
+
+Following graduation, she performed with Martha Graham's second company — Graham II — in the works Lamentations, Temptations of the Moon, Appellation Springs, Cortege of Eagles, and Acts of Light.
+
+Recently returning to Dallas from New York City, Constance brings extraordinary classical credentials and a deep love for sharing that knowledge with the next generation of dancers.">
+          <div class="faculty-photo">
+            <img src="https://ambitiondancepro.com/wp-content/uploads/2016/05/Constance-Dolph-ballet.png" alt="Constance Dolph" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'faculty-photo-placeholder\'><span class=\'faculty-initials\'>CD</span></div>'" />
+            <div class="faculty-hover-overlay">
+              <span class="hover-cta">Read Bio ↗</span>
+            </div>
+          </div>
+          <div class="faculty-info">
+            <div class="faculty-name">Constance Dolph</div>
+            <div class="faculty-role">Ballet, Pointe &amp; Modern</div>
+            <span class="faculty-tag">Ballet · Pointe · Modern</span>
+          </div>
+        </div>
+
+        <!-- Janya Cook -->
+        <div class="faculty-card" tabindex="0" role="button" aria-label="View bio for Janya Cook"
+          data-name="Janya Cook"
+          data-role="Hip Hop, Jazz &amp; Drill Team Technique"
+          data-tag="Hip Hop · Jazz · Drill Team"
+          data-img="https://ambitiondancepro.com/wp-content/uploads/2019/12/Janya-Cook-HS.jpeg"
+          data-bio="Janya is originally from Paris, TX, where she trained and competed with the Elite Dance Academy of Paris. She studied dance at Tyler Junior College and was a member of the Apache Bells.
+
+She currently attends the University of Texas at Arlington, studying Kinesiology with a minor in dance. Trained in all styles including jazz, jazz funk, hip hop, and lyrical/modern, Janya brings both athletic precision and creative flair to every class.
+
+She is a choreographer and instructor for the Young Audiences Program of Northeast Texas, and a member of the Texas Live Lonestar Dance Team — experience that shapes her teaching with a high-energy, performance-driven approach.">
+          <div class="faculty-photo">
+            <img src="https://ambitiondancepro.com/wp-content/uploads/2019/12/Janya-Cook-HS.jpeg" alt="Janya Cook" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'faculty-photo-placeholder\'><span class=\'faculty-initials\'>JC</span></div>'" />
+            <div class="faculty-hover-overlay">
+              <span class="hover-cta">Read Bio ↗</span>
+            </div>
+          </div>
+          <div class="faculty-info">
+            <div class="faculty-name">Janya Cook</div>
+            <div class="faculty-role">Hip Hop, Jazz &amp; Drill Team Technique</div>
+            <span class="faculty-tag">Hip Hop · Jazz · Drill Team</span>
+          </div>
+        </div>
+
+        <!-- Jessie Brown -->
+        <div class="faculty-card" tabindex="0" role="button" aria-label="View bio for Jessie Brown"
+          data-name="Jessie Brown"
+          data-role="Hip Hop"
+          data-tag="Hip Hop"
+          data-img="https://ambitiondancepro.com/wp-content/uploads/2021/04/Jessie-brown.jpg"
+          data-bio="Jessie is from Dallas, Texas and has been training in hip-hop for over 12 years. Through participating in numerous competitive dance teams and learning from elite choreographers from around the world, she has discovered and run with a huge passion for hip-hop dance.
+
+Jessie has been teaching her choreography for several years at many different studios, while also holding an officer and choreographer position for UNT's Choreoblock. She is humbled to continue sharing her creativity and love of dance.
+
+Jessie joined the faculty of Ambition Dance Productions in 2020 and is excited to share her passion with her students, bringing a dynamic, culture-rooted style to every class.">
+          <div class="faculty-photo">
+            <img src="https://ambitiondancepro.com/wp-content/uploads/2021/04/Jessie-brown.jpg" alt="Jessie Brown" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'faculty-photo-placeholder\'><span class=\'faculty-initials\'>JB</span></div>'" />
+            <div class="faculty-hover-overlay">
+              <span class="hover-cta">Read Bio ↗</span>
+            </div>
+          </div>
+          <div class="faculty-info">
+            <div class="faculty-name">Jessie Brown</div>
+            <div class="faculty-role">Hip Hop</div>
+            <span class="faculty-tag">Hip Hop</span>
+          </div>
+        </div>
+
+        <!-- Tina Tobias -->
+        <div class="faculty-card" tabindex="0" role="button" aria-label="View bio for Tina Tobias"
+          data-name="Tina Tobias"
+          data-role="Contemporary &amp; Jazz Technique"
+          data-tag="Contemporary · Jazz"
+          data-img="https://ambitiondancepro.com/wp-content/uploads/2021/01/Tina-Tobias-HS.jpeg"
+          data-bio="Tina Tobias was born and raised in Flower Mound, Texas and has been training all around the Dallas/Fort Worth metroplex for nine years. Tina was an inaugural member of the Ambition Dance Company.
+
+She attended the University of North Texas pursuing a BA in Dance Performance, where she performed in UNT's Faculty Dance Concert and the New Choreographers Concert in 2018, 2019, and 2020. She also performed alongside Todrick Hall at a Black Tie Charity Event in 2017.
+
+In addition to performing, Tina has a deep passion for teaching and hopes to continue doing both — bringing a fluid, emotionally intelligent approach to contemporary and jazz that connects technique with storytelling.">
+          <div class="faculty-photo">
+            <img src="https://ambitiondancepro.com/wp-content/uploads/2021/01/Tina-Tobias-HS.jpeg" alt="Tina Tobias" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'faculty-photo-placeholder\'><span class=\'faculty-initials\'>TT</span></div>'" />
+            <div class="faculty-hover-overlay">
+              <span class="hover-cta">Read Bio ↗</span>
+            </div>
+          </div>
+          <div class="faculty-info">
+            <div class="faculty-name">Tina Tobias</div>
+            <div class="faculty-role">Contemporary &amp; Jazz Technique</div>
+            <span class="faculty-tag">Contemporary · Jazz</span>
+          </div>
+        </div>
+
+        <!-- Sarah Wales -->
+        <div class="faculty-card" tabindex="0" role="button" aria-label="View bio for Sarah Wales"
+          data-name="Sarah Wales"
+          data-role="Contemporary &amp; Jazz Technique"
+          data-tag="Contemporary · Jazz"
+          data-img=""
+          data-bio="Bio coming soon. We look forward to introducing you to Sarah — stay tuned for her full biography and background.">
+          <div class="faculty-photo">
+            <div class="faculty-photo-placeholder"><span class="faculty-initials">SW</span></div>
+            <div class="faculty-hover-overlay">
+              <span class="hover-cta">Read Bio ↗</span>
+            </div>
+          </div>
+          <div class="faculty-info">
+            <div class="faculty-name">Sarah Wales</div>
+            <div class="faculty-role">Contemporary &amp; Jazz Technique</div>
+            <span class="faculty-tag">Contemporary · Jazz</span>
+          </div>
+        </div>
+
+        <!-- Jeremy Greer -->
+        <div class="faculty-card" tabindex="0" role="button" aria-label="View bio for Jeremy Greer"
+          data-name="Jeremy Greer"
+          data-role="Contemporary &amp; Jazz Technique"
+          data-tag="Contemporary · Jazz"
+          data-img=""
+          data-bio="Bio coming soon. We look forward to introducing you to Jeremy — stay tuned for his full biography and background.">
+          <div class="faculty-photo">
+            <div class="faculty-photo-placeholder"><span class="faculty-initials">JG</span></div>
+            <div class="faculty-hover-overlay">
+              <span class="hover-cta">Read Bio ↗</span>
+            </div>
+          </div>
+          <div class="faculty-info">
+            <div class="faculty-name">Jeremy Greer</div>
+            <div class="faculty-role">Contemporary &amp; Jazz Technique</div>
+            <span class="faculty-tag">Contemporary · Jazz</span>
+          </div>
+        </div>
+
+        <!-- Paige Allen -->
+        <div class="faculty-card" tabindex="0" role="button" aria-label="View bio for Paige Allen"
+          data-name="Paige Allen"
+          data-role="Jazz, Hip Hop &amp; Drill Team Technique"
+          data-tag="Jazz · Hip Hop · Drill Team"
+          data-img=""
+          data-bio="Bio coming soon. We look forward to introducing you to Paige — stay tuned for her full biography and background.">
+          <div class="faculty-photo">
+            <div class="faculty-photo-placeholder"><span class="faculty-initials">PA</span></div>
+            <div class="faculty-hover-overlay">
+              <span class="hover-cta">Read Bio ↗</span>
+            </div>
+          </div>
+          <div class="faculty-info">
+            <div class="faculty-name">Paige Allen</div>
+            <div class="faculty-role">Jazz, Hip Hop &amp; Drill Team Technique</div>
+            <span class="faculty-tag">Jazz · Hip Hop · Drill Team</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ STUDIO ══ -->
+    <div class="studio-section" id="studio">
+      <div class="section-label">Our Studio</div>
+      <div class="studio-grid">
+        <div>
+          <h2 class="studio-headline">Brand-New <em>Facility.</em><br>7 Dance Rooms.</h2>
+          <p class="studio-desc">We're now open at Grapevine Town Center Plaza — a brand-new, purpose-built dance facility with 7 dedicated dance rooms, designed to give every class the space, floors, and mirrors it deserves. Located next to PopShelf off Highway 114.</p>
+          <div class="studio-features">
+            <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">7 dedicated dance rooms</span></div>
+            <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Sprung wood floors</span></div>
+            <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Full-length wall mirrors</span></div>
+            <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Barres in every ballet room</span></div>
+            <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Dedicated waiting area</span></div>
+            <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Free parking on-site</span></div>
+            <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Easy highway access</span></div>
+            <div class="studio-feature"><div class="sf-dot"></div><span class="sf-text">Next to PopShelf</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="address-card">
+            <div class="ac-label">Location</div>
+            <div class="ac-name">Grapevine Town Center Plaza</div>
+            <div class="ac-address">1217 W State Hwy 114, Suite 118<br>Grapevine, TX 76051</div>
+            <div class="ac-note"><strong>Grapevine Town Center Plaza</strong> · Next to PopShelf. Free parking directly in front of Suite 118.</div>
+            <a class="map-btn" href="https://maps.google.com/?q=1217+W+State+Hwy+114+Suite+118+Grapevine+TX+76051" target="_blank" rel="noopener">Get Directions ↗</a>
+          </div>
+          <div class="rooms-card">
+            <div class="rc-label">Studio Rooms</div>
+            <div class="room-row"><span class="room-num">01</span><span class="room-name">Main Ballet Studio</span></div>
+            <div class="room-row"><span class="room-num">02</span><span class="room-name">Jazz &amp; Tap Studio</span></div>
+            <div class="room-row"><span class="room-num">03</span><span class="room-name">Contemporary Studio</span></div>
+            <div class="room-row"><span class="room-num">04</span><span class="room-name">Hip Hop Studio</span></div>
+            <div class="room-row"><span class="room-num">05</span><span class="room-name">Young Children's Studio</span></div>
+            <div class="room-row"><span class="room-num">06</span><span class="room-name">Acro &amp; Tumbling Room</span></div>
+            <div class="room-row"><span class="room-num">07</span><span class="room-name">Rehearsal &amp; Flex Studio</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ BOTTOM CTA ══ -->
+    <div class="bottom-cta">
+      <h2>Come See Us <em>In Person</em></h2>
+      <p>The best way to experience Ambition Dance Productions is to walk through the door. Your first class is free — no commitment needed.</p>
+      <div class="cta-buttons">
+        <a class="btn-primary" href="https://app.thestudiodirector.com/ambitiondancepro/portal.sd">Register Now</a>
+        <a class="btn-text-link" href="ambition-dance-contact.html">Get in Touch</a>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+
+  <!-- ══ TICKER ══ -->
+  <div class="ticker-wrap" aria-label="About Ambition Dance Productions">
+    <div class="ticker-track">
+      <span class="ticker-item">DFW's Premier Dance Studio · <strong>Grapevine, TX</strong> · Est. 2015 · 7 Dance Rooms · <strong>Ages 2 &amp; Up</strong> · Jazz · Ballet · Hip Hop · Contemporary · Drill Team · <strong>Company &amp; Mentorship</strong> ·&nbsp;</span>
+      <span class="ticker-item">DFW's Premier Dance Studio · <strong>Grapevine, TX</strong> · Est. 2015 · 7 Dance Rooms · <strong>Ages 2 &amp; Up</strong> · Jazz · Ballet · Hip Hop · Contemporary · Drill Team · <strong>Company &amp; Mentorship</strong> ·&nbsp;</span>
+      <span class="ticker-item">DFW's Premier Dance Studio · <strong>Grapevine, TX</strong> · Est. 2015 · 7 Dance Rooms · <strong>Ages 2 &amp; Up</strong> · Jazz · Ballet · Hip Hop · Contemporary · Drill Team · <strong>Company &amp; Mentorship</strong> ·&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ══ INSTRUCTOR MODAL ══ -->
+  <div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-name-display">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <div class="modal-photo" id="modal-photo-wrap">
+          <div class="modal-photo-placeholder">
+            <span class="modal-photo-initials" id="modal-initials"></span>
+          </div>
+        </div>
+        <div class="modal-meta">
+          <span class="modal-tag" id="modal-tag"></span>
+          <h2 class="modal-name" id="modal-name-display"></h2>
+          <p class="modal-role" id="modal-role-display"></p>
+        </div>
+        <button class="modal-close" id="modal-close" aria-label="Close">&#x2715;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-bio" id="modal-bio"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-nav-btn" id="modal-prev">← Previous</button>
+        <span class="modal-counter" id="modal-counter"></span>
+        <button class="modal-nav-btn" id="modal-next">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const cards = Array.from(document.querySelectorAll('.faculty-card'));
+    const backdrop = document.getElementById('modal-backdrop');
+    const modalClose = document.getElementById('modal-close');
+    const modalPhotoWrap = document.getElementById('modal-photo-wrap');
+    const modalInitials = document.getElementById('modal-initials');
+    const modalTag = document.getElementById('modal-tag');
+    const modalName = document.getElementById('modal-name-display');
+    const modalRole = document.getElementById('modal-role-display');
+    const modalBio = document.getElementById('modal-bio');
+    const modalPrev = document.getElementById('modal-prev');
+    const modalNext = document.getElementById('modal-next');
+    const modalCounter = document.getElementById('modal-counter');
+
+    let currentIndex = 0;
+
+    function getInitials(name) {
+      return name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+    }
+
+    function openModal(index) {
+      currentIndex = index;
+      const card = cards[index];
+      const name = card.dataset.name;
+      const role = card.dataset.role;
+      const tag = card.dataset.tag;
+      const img = card.dataset.img;
+      const bio = card.dataset.bio;
+
+      modalTag.textContent = tag;
+      modalName.textContent = name;
+      modalRole.innerHTML = role;
+      modalCounter.textContent = (index + 1) + ' / ' + cards.length;
+      modalPrev.disabled = index === 0;
+      modalNext.disabled = index === cards.length - 1;
+
+      // Bio — render line breaks as paragraphs
+      const paras = bio.split('\n\n').filter(p => p.trim());
+      modalBio.innerHTML = paras.map(p => `<p style="margin-bottom:1rem;">${p.trim()}</p>`).join('');
+
+      // Photo
+      const initials = getInitials(name);
+      if (img) {
+        modalPhotoWrap.innerHTML = `<img src="${img}" alt="${name}" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;" onerror="this.parentElement.innerHTML='<div class=\\'modal-photo-placeholder\\'><span class=\\'modal-photo-initials\\'>${initials}</span></div>'" />`;
+      } else {
+        modalPhotoWrap.innerHTML = `<div class="modal-photo-placeholder"><span class="modal-photo-initials">${initials}</span></div>`;
+      }
+
+      backdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      modalClose.focus();
+    }
+
+    function closeModal() {
+      backdrop.classList.remove('open');
+      document.body.style.overflow = '';
+      cards[currentIndex].focus();
+    }
+
+    cards.forEach((card, i) => {
+      card.addEventListener('click', () => openModal(i));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(i); }
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', e => { if (e.target === backdrop) closeModal(); });
+
+    modalPrev.addEventListener('click', () => { if (currentIndex > 0) openModal(currentIndex - 1); });
+    modalNext.addEventListener('click', () => { if (currentIndex < cards.length - 1) openModal(currentIndex + 1); });
+
+    document.addEventListener('keydown', e => {
+      if (!backdrop.classList.contains('open')) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowLeft' && currentIndex > 0) openModal(currentIndex - 1);
+      if (e.key === 'ArrowRight' && currentIndex < cards.length - 1) openModal(currentIndex + 1);
+    });
+  </script>
+
+  <script src="nav.js"></script>
+</body>
+</html>

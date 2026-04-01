@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="global.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drill Team — Ambition Dance Productions</title>
+  <style>
+    :root {
+    /* ── Location accent colours ── */
+    --gv:    #c8a96e;
+    --gv-bg: rgba(200, 169, 110, 0.08);
+    --gv-bd: rgba(200, 169, 110, 0.22);
+    --hv:    #7a9fd4;
+    --hv-bg: rgba(122, 159, 212, 0.08);
+    --hv-bd: rgba(122, 159, 212, 0.22);
+    }
+
+    /* ── BACKGROUNDS ── */
+    
+    
+    
+
+    /* ── CONTAINER ── */
+    
+
+    /* ── BREADCRUMB ── */
+    
+    
+    
+    
+    
+
+    /* ── SHARED TYPOGRAPHY ── */
+    
+    
+    
+    
+    
+
+    /* ── PAGE HERO ── */
+    
+    .page-hero-grid {
+      display: grid; grid-template-columns: 1fr 360px;
+      gap: 64px; align-items: start;
+    }
+    
+    
+    
+    .hero-tags {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px;
+    }
+    .hero-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 6px 14px; border-radius: 2px;
+      background: var(--gold-light); border: 0.5px solid var(--gold-border);
+      color: var(--gold);
+    }
+    .hero-cta-row {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    
+    
+    
+    
+
+    /* ── QUICK-INFO CARD (right column) ── */
+    .quick-info {
+      background: var(--gold-light);
+      border: 0.5px solid var(--gold-border);
+      border-radius: 6px; padding: 26px;
+    }
+    .qi-label {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .qi-pulse {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.45; transform: scale(0.75); }
+    }
+    .qi-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 9px 0; border-bottom: 0.5px solid rgba(200,169,110,0.15);
+      gap: 12px;
+    }
+    .qi-row:last-of-type { border-bottom: none; }
+    .qi-key {
+      font-size: 11px; color: rgba(255,255,255,0.35);
+      letter-spacing: 0.05em; flex-shrink: 0;
+    }
+    .qi-val {
+      font-size: 12px; font-weight: 500; color: #fff;
+      text-align: right; line-height: 1.4;
+    }
+    .qi-divider {
+      height: 0.5px; background: rgba(200,169,110,0.15);
+      margin: 14px 0;
+    }
+    .qi-cta-link {
+      display: block; margin-top: 16px;
+      background: var(--gold); color: var(--bg);
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 13px 20px; border-radius: 2px; text-decoration: none;
+      text-align: center; transition: background 0.2s;
+    }
+    .qi-cta-link:hover { background: var(--gold-dark); }
+
+    /* ── FOCUS STYLES STRIP ── */
+    .focus-strip {
+      position: relative; z-index: 5;
+      padding: 56px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .focus-grid {
+      display: grid; grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+    .focus-card {
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 20px 16px; text-align: center;
+      transition: border-color 0.18s, background 0.18s, transform 0.18s;
+    }
+    .focus-card:hover {
+      border-color: var(--gold-border);
+      background: rgba(200,169,110,0.04);
+      transform: translateY(-2px);
+    }
+    .focus-icon { width: 28px; height: 28px; margin: 0 auto 12px; opacity: 0.75; }
+    .focus-name {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;
+      color: #fff;
+    }
+
+    /* ── WEEKLY SCHEDULE ── */
+    .schedule-section {
+      position: relative; z-index: 5;
+      padding: 64px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .schedule-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .location-block {
+      border-radius: 6px; padding: 30px; border: 0.5px solid;
+    }
+    .location-block.gv {
+      background: var(--gv-bg); border-color: var(--gv-bd);
+    }
+    .location-block.hv {
+      background: var(--hv-bg); border-color: var(--hv-bd);
+    }
+    .loc-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 22px;
+    }
+    .loc-dot {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+    .loc-dot.gv { background: var(--gv); }
+    .loc-dot.hv { background: var(--hv); }
+    .loc-name {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 16px; text-transform: uppercase; letter-spacing: 0.06em;
+      color: #fff;
+    }
+    .loc-sub {
+      font-size: 11px; color: var(--text-faint);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-left: auto;
+    }
+    .class-row {
+      display: grid; grid-template-columns: auto 1fr auto;
+      align-items: baseline; gap: 10px 16px;
+      padding: 11px 0; border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .class-row:last-child { border-bottom: none; }
+    .class-day {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 3px 8px; border-radius: 2px; white-space: nowrap;
+    }
+    .class-day.gv-day { background: rgba(200,169,110,0.12); color: var(--gv); }
+    .class-day.hv-day { background: rgba(122,159,212,0.12); color: var(--hv); }
+    .class-name {
+      font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.75);
+      line-height: 1.4;
+    }
+    .class-time {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 11.5px; color: rgba(255,255,255,0.45);
+      white-space: nowrap;
+    }
+
+    /* ── WORKSHOP CALENDAR ── */
+    .workshops-section {
+      position: relative; z-index: 5;
+      padding: 64px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .workshops-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .workshop-block {
+      border-radius: 6px; padding: 28px; border: 0.5px solid;
+    }
+    .workshop-block.gv { background: var(--gv-bg); border-color: var(--gv-bd); }
+    .workshop-block.hv { background: var(--hv-bg); border-color: var(--hv-bd); }
+    .wb-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 6px;
+    }
+    .wb-location {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; color: #fff;
+    }
+    .wb-time {
+      font-size: 12px; font-weight: 500; margin-bottom: 18px;
+      letter-spacing: 0.04em;
+    }
+    .wb-time.gv-t { color: var(--gv); }
+    .wb-time.hv-t { color: var(--hv); }
+    .dates-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .date-chip {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 6px 12px; border-radius: 2px; border: 0.5px solid;
+      white-space: nowrap;
+    }
+    .date-chip.gv-c {
+      background: rgba(200,169,110,0.08); border-color: rgba(200,169,110,0.22); color: var(--gv);
+    }
+    .date-chip.hv-c {
+      background: rgba(122,159,212,0.08); border-color: rgba(122,159,212,0.22); color: var(--hv);
+    }
+
+    /* ── AUDITION CLINICS ── */
+    .clinics-section {
+      position: relative; z-index: 5;
+      padding: 64px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .clinics-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    }
+    .clinic-card {
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 24px;
+      transition: border-color 0.18s, background 0.18s, transform 0.18s;
+      position: relative;
+    }
+    .clinic-card:hover {
+      border-color: var(--gold-border);
+      background: rgba(200,169,110,0.04);
+      transform: translateY(-2px);
+    }
+    .clinic-school {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 15px; text-transform: uppercase; letter-spacing: 0.04em;
+      color: #fff; margin-bottom: 4px; line-height: 1.2;
+    }
+    .clinic-team {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .clinic-detail-row {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 7px;
+    }
+    .clinic-detail-row:last-child { margin-bottom: 0; }
+    .clinic-icon { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.5; }
+    .clinic-detail-row span {
+      font-size: 12.5px; font-weight: 300;
+      color: rgba(255,255,255,0.5); line-height: 1.4;
+    }
+    .clinic-location-tag {
+      position: absolute; top: 16px; right: 16px;
+      font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 3px 8px; border-radius: 2px;
+    }
+    .clinic-location-tag.gv-tag {
+      background: rgba(200,169,110,0.1); color: var(--gv);
+      border: 0.5px solid rgba(200,169,110,0.2);
+    }
+    .clinic-location-tag.hv-tag {
+      background: rgba(122,159,212,0.1); color: var(--hv);
+      border: 0.5px solid rgba(122,159,212,0.2);
+    }
+
+    /* ── SPONSORS ── */
+    .sponsors-section {
+      position: relative; z-index: 5;
+      padding: 64px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .sponsors-intro {
+      font-size: 15px; font-weight: 300; color: var(--text-muted);
+      line-height: 1.8; max-width: 680px; margin-bottom: 36px;
+    }
+    .sponsors-intro strong { color: #fff; font-weight: 500; }
+    .sponsor-chips {
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    .sponsor-chip {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 4px; padding: 14px 20px;
+      transition: border-color 0.18s, background 0.18s;
+    }
+    .sponsor-chip:hover {
+      border-color: var(--gold-border);
+      background: rgba(200,169,110,0.04);
+    }
+    .sponsor-star {
+      width: 14px; height: 14px; flex-shrink: 0;
+    }
+    .sponsor-chip span {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ── BOTTOM CTA ── */
+    
+    
+    
+    
+    
+    .btn-secondary-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: rgba(255,255,255,0.55); font-weight: 500;
+      font-size: 13px; text-decoration: none; transition: color 0.2s;
+    }
+    .btn-secondary-link::after { content: '→'; color: var(--gold); }
+    .btn-secondary-link:hover { color: #fff; }
+
+    /* ── TICKER ── */
+    
+    
+    
+    
+    
+      to   { transform: translateX(-33.333%); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .focus-grid { grid-template-columns: repeat(3, 1fr); }
+      .clinics-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .page-hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .schedule-grid { grid-template-columns: 1fr; }
+      .workshops-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      
+
+      .focus-grid { grid-template-columns: repeat(2, 1fr); }
+      .clinics-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow-2" aria-hidden="true"></div>
+
+<div class="container">
+
+    <!-- ══ BREADCRUMB ══ -->
+    <div class="breadcrumb">
+      <a href="ambition-dance-hero.html">Home</a>
+      <span class="sep">›</span>
+      <span class="current">Drill Team</span>
+    </div>
+
+    <!-- ══ PAGE HERO ══ -->
+    <div class="page-hero">
+      <div class="page-hero-grid">
+
+        <!-- Left: copy -->
+        <div>
+          <div class="eyebrow">
+            <div class="eyebrow-line"></div>
+            <span class="eyebrow-text">Workshops &amp; Audition Clinics</span>
+          </div>
+          <h1>Drill Team <em>Training</em></h1>
+          <p class="hero-desc">Intermediate and advanced training for dancers ages 13 and up with their sights set on school drill team. Intensive workshops, school-specific audition clinics, and year-round weekly classes designed to get you on the team.</p>
+          <div class="hero-tags">
+            <span class="hero-tag">Int / Adv Levels</span>
+            <span class="hero-tag">Ages 13+</span>
+            <span class="hero-tag">Grapevine &amp; Highland Village</span>
+            <span class="hero-tag">Sundays 1–4 PM</span>
+          </div>
+          <div class="hero-cta-row">
+            <a class="btn-primary" href="https://app.thestudiodirector.com/ambitiondancepro/portal.sd">Register Now</a>
+            <a class="btn-outline" href="https://ambitiondancepro.com/wp-content/uploads/2026/01/26-FLYER-ALL-WORKSHOPS-AND-CLINICS-POST.pdf" target="_blank" rel="noopener">Download 2026 Flyer ↗</a>
+          </div>
+        </div>
+
+        <!-- Right: quick info -->
+        <div class="quick-info">
+          <div class="qi-label">
+            <div class="qi-pulse"></div>
+            2026 Season — Now Enrolling
+          </div>
+          <div class="qi-row">
+            <span class="qi-key">Focus Styles</span>
+            <span class="qi-val">Jazz, Kick-Line, Pom,<br>Technique, Flexibility &amp; Conditioning</span>
+          </div>
+          <div class="qi-row">
+            <span class="qi-key">Levels</span>
+            <span class="qi-val">Intermediate &amp; Advanced</span>
+          </div>
+          <div class="qi-row">
+            <span class="qi-key">Ages</span>
+            <span class="qi-val">13 and Up</span>
+          </div>
+          <div class="qi-row">
+            <span class="qi-key">Workshop Days</span>
+            <span class="qi-val">Sundays 1–4 PM</span>
+          </div>
+          <div class="qi-row">
+            <span class="qi-key">Locations</span>
+            <span class="qi-val">Grapevine &amp; Highland Village</span>
+          </div>
+          <div class="qi-divider"></div>
+          <div class="qi-row">
+            <span class="qi-key">Questions?</span>
+            <span class="qi-val" style="color:var(--gold);">
+              <a href="/cdn-cgi/l/email-protection#5d2a383339241d3c303f3429343233393c333e382d2f32733e3230" style="color:var(--gold);text-decoration:none;"><span class="__cf_email__" data-cfemail="fb8c9e959f82bb9a9699928f9294959f9a95989e8b8994d5989496">[email&#160;protected]</span></a>
+            </span>
+          </div>
+          <a class="qi-cta-link" href="https://app.thestudiodirector.com/ambitiondancepro/portal.sd">Register Now →</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ WHAT WE FOCUS ON ══ -->
+    <div class="focus-strip">
+      <div class="section-label">Workshop Focus Areas</div>
+      <div class="focus-grid">
+
+        <div class="focus-card">
+          <svg class="focus-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 4L14 24M7 11L14 4L21 11" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="focus-name">Jazz</div>
+        </div>
+
+        <div class="focus-card">
+          <svg class="focus-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M4 20L14 8L24 20" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 16H20" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="focus-name">Kick-Line</div>
+        </div>
+
+        <div class="focus-card">
+          <svg class="focus-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="14" cy="10" r="5" stroke="#c8a96e" stroke-width="1.5"/>
+            <path d="M8 24C8 20.7 10.7 18 14 18C17.3 18 20 20.7 20 24" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="focus-name">Pom</div>
+        </div>
+
+        <div class="focus-card">
+          <svg class="focus-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M7 21L14 7L21 21" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 16H18" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="14" cy="7" r="2" fill="rgba(200,169,110,0.4)"/>
+          </svg>
+          <div class="focus-name">Technique</div>
+        </div>
+
+        <div class="focus-card">
+          <svg class="focus-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M6 22C6 16 10 12 14 10C18 12 22 16 22 22" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M14 10V6" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="14" cy="5" r="2" fill="rgba(200,169,110,0.4)"/>
+          </svg>
+          <div class="focus-name">Flexibility</div>
+        </div>
+
+        <div class="focus-card">
+          <svg class="focus-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect x="5" y="12" width="18" height="10" rx="2" stroke="#c8a96e" stroke-width="1.5"/>
+            <path d="M9 12V9C9 6.8 11.2 5 14 5C16.8 5 19 6.8 19 9V12" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="focus-name">Conditioning</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ WEEKLY CLASSES ══ -->
+    <div class="schedule-section">
+      <div class="section-label">Weekly Classes</div>
+      <div class="schedule-grid">
+
+        <!-- Grapevine -->
+        <div class="location-block gv">
+          <div class="loc-header">
+            <div class="loc-dot gv"></div>
+            <span class="loc-name">Grapevine Studio</span>
+            <span class="loc-sub">1217 W State Hwy 114</span>
+          </div>
+
+          <div class="class-row">
+            <span class="class-day gv-day">Mon</span>
+            <span class="class-name">Int / Adv Drill Team</span>
+            <span class="class-time">8–9 PM</span>
+          </div>
+          <div class="class-row">
+            <span class="class-day gv-day">Tue</span>
+            <span class="class-name">Int / Adv Drill Team</span>
+            <span class="class-time">8–9 PM</span>
+          </div>
+          <div class="class-row">
+            <span class="class-day gv-day">Thu</span>
+            <span class="class-name">Intermediate Drill Team</span>
+            <span class="class-time">8–9 PM</span>
+          </div>
+          <div class="class-row">
+            <span class="class-day gv-day">Thu</span>
+            <span class="class-name">College Dance Team Prep</span>
+            <span class="class-time">8–9 PM</span>
+          </div>
+        </div>
+
+        <!-- Highland Village -->
+        <div class="location-block hv">
+          <div class="loc-header">
+            <div class="loc-dot hv"></div>
+            <span class="loc-name">Highland Village Studio</span>
+            <span class="loc-sub">HV Location</span>
+          </div>
+
+          <div class="class-row">
+            <span class="class-day hv-day">Tue</span>
+            <span class="class-name">Intermediate Drill Team</span>
+            <span class="class-time">6–7 PM</span>
+          </div>
+          <div class="class-row">
+            <span class="class-day hv-day">Tue</span>
+            <span class="class-name">Int / Adv Drill Team</span>
+            <span class="class-time">7–8 PM</span>
+          </div>
+          <div class="class-row">
+            <span class="class-day hv-day">Thu</span>
+            <span class="class-name">Int / Adv Drill Team</span>
+            <span class="class-time">8–9 PM</span>
+          </div>
+          <div class="class-row">
+            <span class="class-day hv-day">Thu</span>
+            <span class="class-name">College Dance Team Prep</span>
+            <span class="class-time">8–9 PM</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ WORKSHOP CALENDAR ══ -->
+    <div class="workshops-section">
+      <div class="section-label">2026 Workshop Dates · Sundays 1–4 PM</div>
+      <div class="workshops-grid">
+
+        <!-- Grapevine -->
+        <div class="workshop-block gv">
+          <div class="wb-header">
+            <div class="loc-dot gv"></div>
+            <span class="wb-location">Grapevine Studio</span>
+          </div>
+          <div class="wb-time gv-t">Sundays 1–4 PM · January through March</div>
+          <div class="dates-wrap">
+            <span class="date-chip gv-c">Jan 11</span>
+            <span class="date-chip gv-c">Jan 18</span>
+            <span class="date-chip gv-c">Feb 1</span>
+            <span class="date-chip gv-c">Feb 15</span>
+            <span class="date-chip gv-c">Feb 22</span>
+            <span class="date-chip gv-c">Mar 1</span>
+            <span class="date-chip gv-c">Mar 8</span>
+            <span class="date-chip gv-c">Mar 15</span>
+            <span class="date-chip gv-c">Mar 22</span>
+          </div>
+        </div>
+
+        <!-- Highland Village -->
+        <div class="workshop-block hv">
+          <div class="wb-header">
+            <div class="loc-dot hv"></div>
+            <span class="wb-location">Highland Village Studio</span>
+          </div>
+          <div class="wb-time hv-t">Sundays 1–4 PM · March &amp; April</div>
+          <div class="dates-wrap">
+            <span class="date-chip hv-c">Mar 29</span>
+            <span class="date-chip hv-c">Apr 12</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ AUDITION CLINICS ══ -->
+    <div class="clinics-section">
+      <div class="section-label">2026 School Audition Clinics</div>
+      <p style="font-size:14px;font-weight:300;color:var(--text-muted);line-height:1.75;max-width:620px;margin-bottom:32px;">School-specific clinics tailored to each team's audition style, music, and judging criteria. All clinics run 7–9 PM at the listed studio location.</p>
+
+      <div class="clinics-grid">
+
+        <div class="clinic-card">
+          <span class="clinic-location-tag gv-tag">Grapevine</span>
+          <div class="clinic-school">Southlake Carroll</div>
+          <div class="clinic-team">Emerald Belles</div>
+          <div class="clinic-detail-row">
+            <svg class="clinic-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <rect x="1" y="2" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M1 5H13" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M4 1V3M10 1V3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>March 23–25, 2026</span>
+          </div>
+          <div class="clinic-detail-row">
+            <svg class="clinic-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>7–9 PM nightly</span>
+          </div>
+        </div>
+
+        <div class="clinic-card">
+          <span class="clinic-location-tag gv-tag">Grapevine</span>
+          <div class="clinic-school">Grapevine HS</div>
+          <div class="clinic-team">Fillies &amp; Belles</div>
+          <div class="clinic-detail-row">
+            <svg class="clinic-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <rect x="1" y="2" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M1 5H13" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M4 1V3M10 1V3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>April 14–15, 2026</span>
+          </div>
+          <div class="clinic-detail-row">
+            <svg class="clinic-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>7–9 PM nightly</span>
+          </div>
+        </div>
+
+        <div class="clinic-card">
+          <span class="clinic-location-tag gv-tag">Grapevine</span>
+          <div class="clinic-school">Colleyville Heritage</div>
+          <div class="clinic-team">Panteras</div>
+          <div class="clinic-detail-row">
+            <svg class="clinic-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <rect x="1" y="2" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M1 5H13" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M4 1V3M10 1V3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>March 31 &amp; April 1, 2026</span>
+          </div>
+          <div class="clinic-detail-row">
+            <svg class="clinic-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>7–9 PM nightly</span>
+          </div>
+        </div>
+
+        <div class="clinic-card">
+          <span class="clinic-location-tag hv-tag">Highland Village</span>
+          <div class="clinic-school">Marcus HS</div>
+          <div class="clinic-team">Marquettes</div>
+          <div class="clinic-detail-row">
+            <svg class="clinic-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <rect x="1" y="2" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M1 5H13" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M4 1V3M10 1V3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>April 14–15, 2026</span>
+          </div>
+          <div class="clinic-detail-row">
+            <svg class="clinic-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>7–9 PM nightly</span>
+          </div>
+        </div>
+
+        <div class="clinic-card">
+          <span class="clinic-location-tag hv-tag">Highland Village</span>
+          <div class="clinic-school">Flower Mound HS</div>
+          <div class="clinic-team">Rosettes</div>
+          <div class="clinic-detail-row">
+            <svg class="clinic-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <rect x="1" y="2" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M1 5H13" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M4 1V3M10 1V3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>April 27–29, 2026</span>
+          </div>
+          <div class="clinic-detail-row">
+            <svg class="clinic-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>7–9 PM nightly</span>
+          </div>
+        </div>
+
+        <!-- Empty card — register prompt -->
+        <div class="clinic-card" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:12px;border-color:var(--gold-border);background:var(--gold-light);">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="14" cy="14" r="12" stroke="#c8a96e" stroke-width="1.2" stroke-dasharray="3 3"/>
+            <path d="M14 9V19M9 14H19" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <p style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.5);line-height:1.55;">More clinics may be added.<br>Contact us for updates.</p>
+          <a href="/cdn-cgi/l/email-protection#4136242f253801202c232835282e2f25202f222431332e6f222e2c" style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);text-decoration:none;">Email Wendy →</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ SPONSORS ══ -->
+    <div class="sponsors-section">
+      <div class="section-label">Proud Sponsors</div>
+      <p class="sponsors-intro">
+        Ambition Dance Productions is a <strong>proud sponsor</strong> of some of the most award-winning drill teams in the DFW area. Our instructors bring insider knowledge of each team's style, expectations, and audition format directly into your clinic prep.
+      </p>
+      <div class="sponsor-chips">
+
+        <div class="sponsor-chip">
+          <svg class="sponsor-star" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M7 1L8.8 5.2H13.5L9.7 7.8L11.1 12.5L7 9.7L2.9 12.5L4.3 7.8L0.5 5.2H5.2L7 1Z" fill="rgba(200,169,110,0.6)"/>
+          </svg>
+          <span>Southlake Carroll Emerald Belles</span>
+        </div>
+
+        <div class="sponsor-chip">
+          <svg class="sponsor-star" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M7 1L8.8 5.2H13.5L9.7 7.8L11.1 12.5L7 9.7L2.9 12.5L4.3 7.8L0.5 5.2H5.2L7 1Z" fill="rgba(200,169,110,0.6)"/>
+          </svg>
+          <span>Birdville Golden Motion</span>
+        </div>
+
+        <div class="sponsor-chip">
+          <svg class="sponsor-star" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M7 1L8.8 5.2H13.5L9.7 7.8L11.1 12.5L7 9.7L2.9 12.5L4.3 7.8L0.5 5.2H5.2L7 1Z" fill="rgba(200,169,110,0.6)"/>
+          </svg>
+          <span>Colleyville Heritage Panteras &amp; Pantherettes</span>
+        </div>
+
+        <div class="sponsor-chip">
+          <svg class="sponsor-star" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M7 1L8.8 5.2H13.5L9.7 7.8L11.1 12.5L7 9.7L2.9 12.5L4.3 7.8L0.5 5.2H5.2L7 1Z" fill="rgba(200,169,110,0.6)"/>
+          </svg>
+          <span>Grapevine HS Fillies &amp; JV Belles</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ BOTTOM CTA ══ -->
+    <div class="bottom-cta">
+      <h2>Ready to Make <em>the Team?</em></h2>
+      <p>Workshops are open now. Join us Sundays 1–4 PM in Grapevine or Highland Village and get the edge you need to walk into auditions ready.</p>
+      <div class="cta-buttons">
+        <a class="btn-primary" href="https://app.thestudiodirector.com/ambitiondancepro/portal.sd">Register Now</a>
+        <a class="btn-secondary-link" href="https://ambitiondancepro.com/wp-content/uploads/2026/01/26-FLYER-ALL-WORKSHOPS-AND-CLINICS-POST.pdf" target="_blank" rel="noopener">Download Full 2026 Flyer</a>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+
+  <!-- ══ TICKER ══ -->
+  <div class="ticker-wrap" aria-label="Drill team focus areas">
+    <div class="ticker-track">
+      <span class="ticker-item">Jazz · <strong>Kick-Line</strong> · Pom · Technique · <strong>Flexibility</strong> · Conditioning · <strong>Audition Prep</strong> · Grapevine · Highland Village · Int / Adv · Ages 13+ · Sundays 1–4 PM ·&nbsp;</span>
+      <span class="ticker-item">Jazz · <strong>Kick-Line</strong> · Pom · Technique · <strong>Flexibility</strong> · Conditioning · <strong>Audition Prep</strong> · Grapevine · Highland Village · Int / Adv · Ages 13+ · Sundays 1–4 PM ·&nbsp;</span>
+      <span class="ticker-item">Jazz · <strong>Kick-Line</strong> · Pom · Technique · <strong>Flex
+  <script src="nav.js"></script>
+</body>
+</html>

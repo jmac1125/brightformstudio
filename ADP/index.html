@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="global.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ambition Dance Productions</title>
+  <style>
+    /* ── BACKGROUND EFFECTS ── */
+    
+
+    
+
+    
+
+    /* ── CONTAINER ── */
+    
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      z-index: 10;
+      min-height: calc(100vh - 69px);
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 56px;
+      align-items: center;
+      padding: 72px 0 80px;
+      width: 100%;
+    }
+
+    /* ── LEFT COLUMN ── */
+    .hero-left {
+      animation: fadeUp 0.7s ease both;
+    }
+
+    
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    
+
+    
+
+    
+
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(44px, 6vw, 68px);
+      line-height: 1.0;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .subhead {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 24px 0 40px;
+    }
+
+    .ctas {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    
+
+    
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.65);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 13.5px;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .btn-secondary::after {
+      content: '→';
+      color: var(--gold);
+      transition: transform 0.2s;
+    }
+
+    .btn-secondary:hover {
+      color: #fff;
+    }
+
+    .btn-secondary:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* ── STATS ── */
+    .stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 56px;
+      padding-top: 36px;
+      border-top: 0.5px solid var(--border);
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 30px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.38);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* ── RIGHT COLUMN ── */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    .card-main {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border-gold);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .card-image {
+      height: 210px;
+      background: linear-gradient(135deg, #1a1020 0%, #0f1525 50%, #181010 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .card-image-label {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      font-family: var(--font-body);
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.18);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .card-
+
+    .card-badge {
+      display: inline-block;
+      background: rgba(200, 169, 110, 0.10);
+      border: 0.5px solid rgba(200, 169, 110, 0.28);
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .card-sub {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.38);
+      line-height: 1.5;
+    }
+
+    /* ── MINI CARDS ── */
+    .mini-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .mini-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      transition: border-color 0.2s, background 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .mini-card:hover {
+      border-color: var(--border-gold);
+      background: rgba(200, 169, 110, 0.04);
+    }
+
+    .mini-icon {
+      width: 26px;
+      height: 26px;
+      margin-bottom: 10px;
+    }
+
+    .mini-title {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .mini-sub {
+      font-family: var(--font-body);
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, 0.32);
+      line-height: 1.4;
+    }
+
+    /* ── TICKER ── */
+    
+
+    
+
+    
+
+    
+
+    
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── DANCE FIGURE SVG ── */
+    .dance-figure {
+      opacity: 0.85;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 48px 0 60px;
+        gap: 48px;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow-2" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+<!-- Hero -->
+  <main class="hero">
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- Left: Copy -->
+        <div class="hero-left">
+      <div class="eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Grapevine, TX &middot; Est. 2015</span>
+      </div>
+
+      <h1>Move.<br>Grow.<br><em>Perform.</em></h1>
+
+      <p class="subhead">
+        DFW's premier dance education studio — offering ballet, jazz, hip hop, contemporary, drill team prep, and more for ages 2 and up. Exceptional technique, passionate instructors, real results.
+      </p>
+
+      <div class="ctas">
+        <a class="btn-primary" href="https://app.thestudiodirector.com/ambitiondancepro/portal.sd">
+          Register for Fall
+        </a>
+        <a class="btn-secondary" href="https://ambitiondancepro.com/schedule/">
+          Explore Classes
+        </a>
+      </div>
+
+      <div class="stats">
+        <div>
+          <div class="stat-num">8+</div>
+          <div class="stat-label">Years in DFW</div>
+        </div>
+        <div>
+          <div class="stat-num">12</div>
+          <div class="stat-label">Dance Styles</div>
+        </div>
+        <div>
+          <div class="stat-num">Age 2+</div>
+          <div class="stat-label">All Levels</div>
+        </div>
+        <div>
+          <div class="stat-num">Free</div>
+          <div class="stat-label">Trial Class</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Visual Cards -->
+    <div class="hero-right">
+
+      <div class="card-main">
+        <div class="card-image">
+          <!-- Replace this SVG with a real photo using <img> or background-image -->
+          <svg class="dance-figure" width="80" height="145" viewBox="0 0 80 145" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <ellipse cx="40" cy="14" rx="12" ry="12" fill="rgba(200,169,110,0.5)"/>
+            <path d="M40 26 L40 72" stroke="rgba(200,169,110,0.65)" stroke-width="4.5" stroke-linecap="round"/>
+            <path d="M40 72 L18 108" stroke="rgba(200,169,110,0.65)" stroke-width="4" stroke-linecap="round"/>
+            <path d="M40 72 L62 108" stroke="rgba(200,169,110,0.65)" stroke-width="4" stroke-linecap="round"/>
+            <path d="M40 44 L15 62" stroke="rgba(200,169,110,0.5)" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M40 44 L65 58" stroke="rgba(200,169,110,0.5)" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="18" cy="110" r="6" fill="rgba(200,169,110,0.35)"/>
+            <circle cx="62" cy="110" r="6" fill="rgba(200,169,110,0.35)"/>
+          </svg>
+          <span class="card-image-label">Replace with studio photo</span>
+        </div>
+        <div class="card-body">
+          <div class="card-badge">Fall 2025 &middot; Open Enrollment</div>
+          <p class="card-title">First Trial Class is Free</p>
+          <p class="card-sub">1217 W State Hwy 114, Suite 118<br>Grapevine, TX 76051</p>
+        </div>
+      </div>
+
+      <div class="mini-cards">
+        <a class="mini-card" href="https://ambitiondancepro.com/company/">
+          <svg class="mini-icon" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+            <path d="M13 2L16.5 10H25L18.5 14.5L21 23L13 18L5 23L7.5 14.5L1 10H9.5L13 2Z" fill="rgba(200,169,110,0.6)"/>
+          </svg>
+          <div class="mini-title">Company</div>
+          <div class="mini-sub">Competitive dance team</div>
+        </a>
+        <a class="mini-card" href="https://ambitiondancepro.com/about-us/faculty/">
+          <svg class="mini-icon" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+            <path d="M13 3C15.8 3 18 5.2 18 8C18 10.8 15.8 13 13 13C10.2 13 8 10.8 8 8C8 5.2 10.2 3 13 3Z" stroke="rgba(200,169,110,0.65)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M4 23C4 19.1 8.1 16 13 16C17.9 16 22 19.1 22 23" stroke="rgba(200,169,110,0.65)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="mini-title">Mentorship</div>
+          <div class="mini-sub">College &amp; pro career track</div>
+        </a>
+      </div>
+
+    </div><!-- /.hero-inner -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Ticker -->
+  <div class="ticker-wrap" aria-label="Dance styles offered">
+    <div class="ticker-track">
+      <!-- Duplicated for seamless loop -->
+      <span class="ticker-item">Ballet &middot; Jazz &middot; Tap &middot; <strong>Contemporary</strong> &middot; Lyrical &middot; Hip Hop &middot; Musical Theater &middot; <strong>Drill Team Prep</strong> &middot; Tumbling &middot; Acro &middot; Modern &middot; Pointe &middot; Stretch &amp; Conditioning &middot;&nbsp;</span>
+      <span class="ticker-item">Ballet &middot; Jazz &middot; Tap &middot; <strong>Contemporary</strong> &middot; Lyrical &middot; Hip Hop &middot; Musical Theater &middot; <strong>Drill Team Prep</strong> &middot; Tumbling &middot; Acro &middot; Modern &middot; Pointe &middot; Stretch &amp; Conditioning &middot;&nbsp;</span>
+      <span class="ticker-item">Ballet &middot; Jazz &middot; Tap &middot; <strong>Contemporary</strong> &middot; Lyrical &middot; Hip Hop &middot; Musical Theater &middot; <strong>Drill Team Prep</strong> &middot; Tumbling &middot; Acro &middot; Modern &middot; Pointe &middot; Stretch &amp; Conditioning &middot;&nbsp;</span>
+    </div>
+  </div>
+
+  <script src="nav.js"></script>
+</body>
+</html>

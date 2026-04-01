@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="global.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drill Team Prep — Ambition Dance Productions</title>
+  <style>
+    /* ── BACKGROUNDS ── */
+    
+    
+    
+
+    /* ── CONTAINER ── */
+    
+
+    /* ── BREADCRUMB ── */
+    
+    
+    
+    
+    
+
+    /* ── HERO STRIP ── */
+    .hero-strip {
+      position: relative; z-index: 5;
+      padding: 40px 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 56px; align-items: end;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .cat-pill {
+      display: inline-flex; align-items: center;
+      gap: 10px; margin-bottom: 18px;
+    }
+    .cat-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+    .cat-text {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    }
+    .class-title {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: clamp(38px, 5vw, 56px);
+      text-transform: uppercase; letter-spacing: -0.01em;
+      color: #fff; line-height: 1.0; margin-bottom: 20px;
+    }
+    .class-title em { font-style: normal; color: var(--gold); }
+    .class-desc {
+      font-size: 15px; font-weight: 300;
+      color: rgba(255,255,255,0.5); max-width: 580px; line-height: 1.8;
+    }
+
+    /* ── HERO META (right column) ── */
+    .hero-meta {
+      display: flex; flex-direction: column;
+      gap: 10px; padding-bottom: 4px;
+    }
+    .meta-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8px; margin-bottom: 4px;
+    }
+    .meta-pill {
+      background: rgba(255,255,255,0.04);
+      border: 0.5px solid rgba(255,255,255,0.1);
+      border-radius: 4px; padding: 14px 16px;
+    }
+    .meta-pill.gold { border-color: var(--border-gold); background: rgba(200,169,110,0.06); }
+    .meta-label {
+      font-size: 9px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 5px;
+    }
+    .meta-value {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 14px; color: #fff;
+    }
+    .meta-value.gold { color: var(--gold); }
+    .register-btn {
+      width: 100%;
+      background: var(--gold); color: var(--bg);
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 12px; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 15px 24px;
+      border-radius: 2px; border: none; cursor: pointer;
+      transition: background 0.2s; text-align: center;
+      display: block; text-decoration: none;
+    }
+    .register-btn:hover { background: var(--gold-dark); }
+    .contact-note {
+      font-size: 11.5px; color: rgba(255,255,255,0.3);
+      text-align: center; line-height: 1.5;
+    }
+    .contact-note a {
+      color: rgba(200,169,110,0.7); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-note a:hover { color: var(--gold); }
+
+    /* ── MAIN CONTENT GRID ── */
+    .content-grid {
+      position: relative; z-index: 5;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 56px; padding: 52px 0 0;
+    }
+
+    /* ── SECTION HEADS ── */
+    .section-head {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .section-head::after {
+      content: ''; flex: 1; height: 0.5px;
+      background: rgba(200,169,110,0.18);
+    }
+
+    /* ── SKILLS GRID ── */
+    .skills-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-bottom: 48px;
+    }
+    .skill-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 20px;
+      transition: border-color 0.18s;
+    }
+    .skill-card:hover { border-color: rgba(200,169,110,0.22); }
+    .skill-icon {
+      width: 22px; height: 22px; margin-bottom: 12px; opacity: 0.8;
+    }
+    .skill-name {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 11.5px; text-transform: uppercase;
+      letter-spacing: 0.05em; color: #fff; margin-bottom: 6px;
+    }
+    .skill-desc {
+      font-size: 12px; color: rgba(255,255,255,0.38); line-height: 1.6;
+    }
+
+    /* ── WHAT TO EXPECT ── */
+    .expect-list { list-style: none; margin-bottom: 48px; }
+    .expect-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.05);
+    }
+    .expect-item:last-child { border-bottom: none; }
+    .check-icon { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+    .expect-item p {
+      font-size: 14px; font-weight: 300;
+      color: rgba(255,255,255,0.58); line-height: 1.65;
+    }
+
+    /* ── GOOD FOR ── */
+    .goals-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-bottom: 52px;
+    }
+    .goal-item {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid rgba(255,255,255,0.07);
+      border-radius: 4px; padding: 14px 16px;
+    }
+    .goal-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .goal-item span {
+      font-size: 12.5px; font-weight: 400;
+      color: rgba(255,255,255,0.55); line-height: 1.4;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { display: flex; flex-direction: column; gap: 14px; }
+    .side-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 22px;
+    }
+    .side-card.gold { border-color: var(--border-gold); background: rgba(200,169,110,0.04); }
+    .side-card.accent { background: rgba(200,169,110,0.06); border-color: rgba(200,169,110,0.22); }
+    .side-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;
+    }
+    .side-title.gold-text { color: var(--gold); }
+    .side-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 9px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.05);
+    }
+    .side-row:last-child { border-bottom: none; }
+    .side-key {
+      font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.04em;
+    }
+    .side-val {
+      font-size: 12px; font-weight: 500; color: #fff;
+    }
+    .side-val.gold { color: var(--gold); }
+    .side-text {
+      font-size: 12.5px; font-weight: 300;
+      color: rgba(255,255,255,0.42); line-height: 1.65;
+    }
+    .side-contact {
+      margin-top: 14px; padding-top: 14px;
+      border-top: 0.5px solid rgba(200,169,110,0.15);
+    }
+    .side-contact a {
+      display: block; font-size: 13px; font-weight: 500;
+      color: var(--gold); text-decoration: none;
+      transition: color 0.2s; margin-bottom: 3px;
+    }
+    .side-contact a:hover { color: #fff; }
+    .side-contact span {
+      font-size: 12px; color: rgba(255,255,255,0.35);
+    }
+
+    /* ── ALSO IN CATEGORY ── */
+    .also-section {
+      position: relative; z-index: 5;
+      padding: 56px 0 80px;
+      border-top: 0.5px solid rgba(255,255,255,0.06);
+      margin-top: 56px;
+    }
+    .also-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-top: 20px;
+    }
+    .also-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 20px;
+      text-decoration: none; display: block;
+      transition: border-color 0.18s, background 0.18s, transform 0.18s;
+    }
+    .also-card:hover {
+      border-color: rgba(200,169,110,0.3);
+      background: rgba(200,169,110,0.04);
+      transform: translateY(-2px);
+    }
+    .also-age {
+      font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+    }
+    .also-name {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 13px; text-transform: uppercase;
+      letter-spacing: 0.04em; color: #fff; margin-bottom: 8px;
+    }
+    .also-desc {
+      font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.55;
+    }
+    .also-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 12px; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      color: rgba(200,169,110,0.45); transition: color 0.18s;
+    }
+    .also-card:hover .also-link { color: var(--gold); }
+
+    /* ── TICKER ── */
+    
+    
+    
+    
+    
+      to   { transform: translateX(-33.333%); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-strip { grid-template-columns: 1fr; gap: 36px; }
+      .hero-meta { flex-direction: row; flex-wrap: wrap; }
+      .meta-grid { flex: 1; min-width: 240px; }
+      .content-grid { grid-template-columns: 1fr; gap: 40px; }
+      .also-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      
+
+      .skills-grid { grid-template-columns: 1fr; }
+      .goals-grid { grid-template-columns: 1fr; }
+      .also-grid { grid-template-columns: 1fr; }
+      .meta-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow-2" aria-hidden="true"></div>
+
+  <!-- Nav -->
+<div class="container">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="ambition-dance-hero.html">Home</a>
+      <span class="sep">›</span>
+      <a href="ambition-dance-classes.html">Classes</a>
+      <span class="sep">›</span>
+      <span class="current">Performance &amp; Career</span>
+      <span class="sep">›</span>
+      <span class="current">Drill Team Prep</span>
+    </div>
+
+    <!-- Hero Strip -->
+    <div class="hero-strip">
+      <div>
+        <div class="cat-pill">
+          <div class="cat-dot"></div>
+          <span class="cat-text">Performance &amp; Career Preparation</span>
+        </div>
+        <h1 class="class-title">Drill Team <em>Prep</em></h1>
+        <p class="class-desc">Designed for dancers interested in middle school, high school, or collegiate drill team auditions. Dancers focus on kicks, turns, jumps, flexibility, precision-based choreography, and performance confidence — with instruction from faculty who have real drill team experience.</p>
+      </div>
+
+      <div class="hero-meta">
+        <div class="meta-grid">
+          <div class="meta-pill">
+            <div class="meta-label">Ages</div>
+            <div class="meta-value">10 &amp; Up</div>
+          </div>
+          <div class="meta-pill">
+            <div class="meta-label">Level</div>
+            <div class="meta-value">All Levels</div>
+          </div>
+          <div class="meta-pill">
+            <div class="meta-label">Category</div>
+            <div class="meta-value">Career Prep</div>
+          </div>
+          <div class="meta-pill gold">
+            <div class="meta-label">Trial Class</div>
+            <div class="meta-value gold">Free</div>
+          </div>
+        </div>
+        <a class="register-btn" href="https://app.thestudiodirector.com/ambitiondancepro/portal.sd">
+          Register for This Class →
+        </a>
+        <p class="contact-note">
+          Questions? <a href="/cdn-cgi/l/email-protection#5a2d3f343e231a3b3738332e3335343e3b34393f2a283574393537">Email Wendy</a> or call <a href="tel:4692182400">469-218-2400</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Main content + sidebar -->
+    <div class="content-grid">
+
+      <!-- Main column -->
+      <div>
+
+        <div class="section-head">What You'll Develop</div>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <svg class="skill-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M11 2L11 20M4 9L11 2L18 9" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="skill-name">Kicks &amp; Jumps</div>
+            <div class="skill-desc">High kicks, extensions, and explosive jump technique developed through progressive drills designed for competition-level height and control.</div>
+          </div>
+          <div class="skill-card">
+            <svg class="skill-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" stroke="#c8a96e" stroke-width="1.5"/>
+              <path d="M11 7L11 11L14 14" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div class="skill-name">Turns &amp; Technique</div>
+            <div class="skill-desc">Clean, controlled turns with proper spotting and full-body alignment — the foundation of sharp, impressive drill team performance.</div>
+          </div>
+          <div class="skill-card">
+            <svg class="skill-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M4 18L11 4L18 18" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 13H15" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div class="skill-name">Precision &amp; Lines</div>
+            <div class="skill-desc">Sharp, uniform execution and synchronized movement for team-based performance. The hallmark of elite drill team training.</div>
+          </div>
+          <div class="skill-card">
+            <svg class="skill-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M5 14C5 10.7 7.7 8 11 8C14.3 8 17 10.7 17 14" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M11 17C11 17 8 15 8 12" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div class="skill-name">Flexibility &amp; Stamina</div>
+            <div class="skill-desc">Targeted stretching and conditioning specific to drill team requirements — full range of motion and the stamina to perform under pressure.</div>
+          </div>
+          <div class="skill-card">
+            <svg class="skill-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M11 3L14 9H20L15 13L17 19L11 15L5 19L7 13L2 9H8L11 3Z" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="skill-name">Performance Presence</div>
+            <div class="skill-desc">Energy, confidence, and stage command developed through performance-focused training — because judges notice how you carry yourself.</div>
+          </div>
+          <div class="skill-card">
+            <svg class="skill-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <rect x="3" y="4" width="16" height="14" rx="2" stroke="#c8a96e" stroke-width="1.5"/>
+              <path d="M7 9H15M7 13H12" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div class="skill-name">Audition Readiness</div>
+            <div class="skill-desc">Learn what judges look for and how to walk into any audition room with the confidence and preparation to succeed.</div>
+          </div>
+        </div>
+
+        <div class="section-head">What to Expect in Class</div>
+        <ul class="expect-list">
+          <li class="expect-item">
+            <svg class="check-icon" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <circle cx="9" cy="9" r="8" fill="rgba(200,169,110,0.12)" stroke="rgba(200,169,110,0.35)" stroke-width="0.75"/>
+              <path d="M5.5 9L7.5 11L12.5 6.5" stroke="#c8a96e" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Audition-style combinations that mirror the actual formats used at middle school, high school, and collegiate tryouts</p>
+          </li>
+          <li class="expect-item">
+            <svg class="check-icon" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <circle cx="9" cy="9" r="8" fill="rgba(200,169,110,0.12)" stroke="rgba(200,169,110,0.35)" stroke-width="0.75"/>
+              <path d="M5.5 9L7.5 11L12.5 6.5" stroke="#c8a96e" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Kick technique progressions built from foundational mechanics up to competition-level height and extension</p>
+          </li>
+          <li class="expect-item">
+            <svg class="check-icon" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <circle cx="9" cy="9" r="8" fill="rgba(200,169,110,0.12)" stroke="rgba(200,169,110,0.35)" stroke-width="0.75"/>
+              <path d="M5.5 9L7.5 11L12.5 6.5" stroke="#c8a96e" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Flexibility and conditioning work specific to drill team requirements — splits, oversplits, and functional range of motion</p>
+          </li>
+          <li class="expect-item">
+            <svg class="check-icon" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <circle cx="9" cy="9" r="8" fill="rgba(200,169,110,0.12)" stroke="rgba(200,169,110,0.35)" stroke-width="0.75"/>
+              <path d="M5.5 9L7.5 11L12.5 6.5" stroke="#c8a96e" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Precision-based choreography taught with the attention to detail and uniformity that judges reward</p>
+          </li>
+          <li class="expect-item">
+            <svg class="check-icon" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <circle cx="9" cy="9" r="8" fill="rgba(200,169,110,0.12)" stroke="rgba(200,169,110,0.35)" stroke-width="0.75"/>
+              <path d="M5.5 9L7.5 11L12.5 6.5" stroke="#c8a96e" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Faculty with real collegiate and professional drill team experience — not just theory, but lived knowledge of what it takes</p>
+          </li>
+          <li class="expect-item">
+            <svg class="check-icon" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <circle cx="9" cy="9" r="8" fill="rgba(200,169,110,0.12)" stroke="rgba(200,169,110,0.35)" stroke-width="0.75"/>
+              <path d="M5.5 9L7.5 11L12.5 6.5" stroke="#c8a96e" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Performance confidence training — presence, energy, and the mental preparation to stand out in a crowded audition room</p>
+          </li>
+        </ul>
+
+        <div class="section-head">Who This Class Is For</div>
+        <div class="goals-grid">
+          <div class="goal-item"><div class="goal-dot"></div><span>Middle school drill team hopefuls</span></div>
+          <div class="goal-item"><div class="goal-dot"></div><span>High school drill team candidates</span></div>
+          <div class="goal-item"><div class="goal-dot"></div><span>Collegiate drill team auditions</span></div>
+          <div class="goal-item"><div class="goal-dot"></div><span>Dancers building audition confidence</span></div>
+          <div class="goal-item"><div class="goal-dot"></div><span>Dancers refining kicks and technique</span></div>
+          <div class="goal-item"><div class="goal-dot"></div><span>Anyone who wants precision training</span></div>
+        </div>
+
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+
+        <div class="side-card gold">
+          <div class="side-title">Class Details</div>
+          <div class="side-row">
+            <span class="side-key">Category</span>
+            <span class="side-val">Performance &amp; Career</span>
+          </div>
+          <div class="side-row">
+            <span class="side-key">Ages</span>
+            <span class="side-val">10 &amp; Up</span>
+          </div>
+          <div class="side-row">
+            <span class="side-key">Level</span>
+            <span class="side-val">All Levels</span>
+          </div>
+          <div class="side-row">
+            <span class="side-key">Trial Class</span>
+            <span class="side-val gold">Free</span>
+          </div>
+          <div class="side-row">
+            <span class="side-key">Studio</span>
+            <span class="side-val">Grapevine, TX</span>
+          </div>
+          <div class="side-row">
+            <span class="side-key">Address</span>
+            <span class="side-val" style="text-align:right;font-size:11px;">1217 W State Hwy 114<br>Suite 118</span>
+          </div>
+        </div>
+
+        <div class="side-card">
+          <div class="side-title">Pair It With</div>
+          <p class="side-text">Dancers in Drill Team Prep often also train in Jazz &amp; Lyrical, Leaps &amp; Turns, and Acro &amp; Flexibility to build a complete skill set for auditions.</p>
+        </div>
+
+        <div class="side-card accent">
+          <div class="side-title gold-text">Ready to Join?</div>
+          <p class="side-text">Registration is open for Fall. First trial class is completely free — no commitment required.</p>
+          <div class="side-contact">
+            <a href="/cdn-cgi/l/email-protection#fc8b99929885bc9d919e9588959392989d929f998c8e93d29f9391"><span class="__cf_email__" data-cfemail="6e190b000a172e0f030c071a0701000a0f000d0b1e1c01400d0103">[email&#160;protected]</span></a>
+            <a href="tel:4692182400">469-218-2400</a>
+            <span>Questions welcome — we're happy to help find the right fit.</span>
+          </div>
+        </div>
+
+        <a class="register-btn" href="https://app.thestudiodirector.com/ambitiondancepro/portal.sd" style="margin-top:4px;">
+          Register Now →
+        </a>
+
+      </div>
+    </div><!-- /.content-grid -->
+
+    <!-- Also in category -->
+    <div class="also-section">
+      <div class="section-head">Also in Performance &amp; Career</div>
+      <div class="also-grid">
+        <a class="also-card" href="ambition-dance-class-detail.html">
+          <div class="also-age">Audition Prep</div>
+          <div class="also-name">Company Prep</div>
+          <div class="also-desc">Technique, performance quality, and work ethic for competitive dance auditions. Builds the skills needed for company tryouts.</div>
+          <div class="also-link">View Class ↗</div>
+        </a>
+        <a class="also-card" href="ambition-dance-class-detail.html">
+          <div class="also-age">College Track</div>
+          <div class="also-name">College Dance Team Prep</div>
+          <div class="also-desc">Audition-style combinations and performance skills built for collegiate dance team programs. Jazz, turns, kicks, and stamina.</div>
+          <div class="also-link">View Class ↗</div>
+        </a>
+        <a class="also-card" href="ambition-dance-class-detail.html">
+          <div class="also-age">Professional</div>
+          <div class="also-name">Pro Style</div>
+          <div class="also-desc">NFL &amp; NBA dance team training. Powerful jazz-based choreography, precision, and the stage presence required for professional entertainment.</div>
+          <div class="also-link">View Class ↗</div>
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+
+  <!-- Ticker -->
+  <div class="ticker-wrap" aria-label="Dance styles offered">
+    <div class="ticker-track">
+      <span class="ticker-item">Ballet &middot; Jazz &middot; Tap &middot; <strong>Contemporary</strong> &middot; Lyrical &middot; Hip Hop &middot; Musical Theater &middot; <strong>Drill Team Prep</strong> &middot; Tumbling &middot; Acro &middot; Modern &middot; Pointe &middot; Stretch &amp; Conditioning &middot;&nbsp;</span>
+      <span class="ticker-item">Ballet &middot; Jazz &middot; Tap &middot; <strong>Contemporary</strong> &middot; Lyrical &middot; Hip Hop &middot; Musical Theater &middot; <strong>Drill Team Prep</strong> &middot; Tumbling &middot; Acro &middot; Modern &middot; Pointe &middot; Stretch &amp; Conditioning &middot;&nbsp;</span>
+      <span class="ticker-item">Ballet &middot; Jazz &middot; Tap &middot; <strong>Contemporary</strong> &middot; Lyrical &middot; Hip Hop &middot; Musical Theater &mi
+  <script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="global.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classes — Ambition Dance Productions</title>
+  <style>
+    /* ── BACKGROUNDS ── */
+    
+    
+    
+
+    /* ── CONTAINER ── */
+    
+
+    /* ── BREADCRUMB ── */
+    
+    
+    
+    
+    
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      position: relative; z-index: 5;
+      padding: 40px 0 0;
+    }
+    
+    
+    
+    .page-header h1 {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: clamp(36px, 5vw, 52px);
+      text-transform: uppercase; letter-spacing: -0.01em;
+      color: #fff; line-height: 1.0;
+    }
+    .page-header h1 em { font-style: normal; color: var(--gold); }
+    .page-header p {
+      font-size: 15px; font-weight: 300;
+      color: rgba(255,255,255,0.5); max-width: 560px;
+      line-height: 1.75; margin-top: 16px;
+    }
+    .free-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 20px;
+      background: rgba(200,169,110,0.1);
+      border: 0.5px solid rgba(200,169,110,0.3);
+      border-radius: 2px; padding: 8px 16px;
+    }
+    .free-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+    .free-pill span {
+      font-family: var(--font-body); font-size: 12px;
+      font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--gold);
+    }
+
+    /* ── FILTER BAR ── */
+    .filter-wrap {
+      position: relative; z-index: 5;
+      padding: 36px 0 0;
+    }
+    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-btn {
+      font-family: var(--font-body); font-size: 11px;
+      font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 9px 18px;
+      border-radius: 2px; border: 0.5px solid rgba(255,255,255,0.15);
+      background: transparent; color: rgba(255,255,255,0.45);
+      cursor: pointer; transition: all 0.18s;
+    }
+    .filter-btn:hover { border-color: rgba(200,169,110,0.35); color: rgba(255,255,255,0.8); }
+    .filter-btn.active {
+      background: var(--gold); border-color: var(--gold); color: var(--bg);
+      font-weight: 700;
+    }
+
+    /* ── SECTIONS ── */
+    .classes-wrap { position: relative; z-index: 5; padding-bottom: 80px; }
+    .class-section { padding-top: 48px; }
+    
+    
+    .section-desc {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.38); max-width: 600px;
+      line-height: 1.65; margin-bottom: 24px;
+    }
+
+    /* ── CARDS ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .class-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 22px;
+      cursor: pointer; text-decoration: none; display: block;
+      transition: border-color 0.18s, background 0.18s, transform 0.18s;
+      position: relative; overflow: hidden;
+    }
+    .class-card:hover {
+      border-color: rgba(200,169,110,0.32);
+      background: rgba(200,169,110,0.04);
+      transform: translateY(-2px);
+    }
+    .card-age {
+      display: inline-block; font-size: 9.5px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 2px; margin-bottom: 14px;
+      background: rgba(200,169,110,0.1);
+      border: 0.5px solid rgba(200,169,110,0.22);
+      color: var(--gold);
+    }
+    .class-card h3 {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 13.5px; text-transform: uppercase;
+      letter-spacing: 0.04em; color: #fff; margin-bottom: 10px;
+    }
+    .class-card p {
+      font-size: 12.5px; font-weight: 300;
+      color: rgba(255,255,255,0.42); line-height: 1.65;
+    }
+    .card-link {
+      display: flex; align-items: center; gap: 6px;
+      margin-top: 16px; padding-top: 14px;
+      border-top: 0.5px solid rgba(255,255,255,0.06);
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(200,169,110,0.5); transition: color 0.18s;
+    }
+    .class-card:hover .card-link { color: var(--gold); }
+    .card-arrow { transition: transform 0.18s; }
+    .class-card:hover .card-arrow { transform: translate(3px, -3px); }
+
+    /* ── BOTTOM CTA ── */
+    
+    .bottom-cta-text strong {
+      display: block; font-family: var(--font-display);
+      font-weight: 800; font-size: 18px;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      color: #fff; margin-bottom: 6px;
+    }
+    .bottom-cta-text p {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.45); line-height: 1.6;
+    }
+    .bottom-cta-actions {
+      display: flex; gap: 12px; align-items: center; flex-shrink: 0;
+    }
+    
+    
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: rgba(255,255,255,0.55); font-family: var(--font-body);
+      font-weight: 500; font-size: 13px;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .btn-secondary:hover { color: #fff; }
+
+    /* ── TICKER ── */
+    
+    
+    
+    
+    
+      to   { transform: translateX(-33.333%); }
+    
+
+    /* ── HIDDEN ── */
+    .hidden { display: none !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      
+
+      .cards-grid { grid-template-columns: 1fr; }
+      
+      .bottom-cta-actions { flex-direction: column; width: 100%; }
+      
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow-2" aria-hidden="true"></div>
+
+  <!-- Nav -->
+<!-- Page header -->
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="ambition-dance-hero.html">Home</a>
+      <span class="sep">›</span>
+      <span class="current">Classes</span>
+    </div>
+
+    <div class="page-header">
+      <div class="eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">All Classes · Grapevine, TX</span>
+      </div>
+      <h1>Find Your <em>Class</em></h1>
+      <p>Technique classes for every age and level — from first steps to professional performance. All instructors are highly qualified with college degrees in dance or significant professional experience.</p>
+      <div class="free-pill">
+        <div class="free-pill-dot"></div>
+        <span>First Trial Class is Always Free</span>
+      </div>
+    </div>
+
+    <!-- Filter -->
+    <div class="filter-wrap">
+      <div class="filter-bar" role="tablist" aria-label="Filter classes by category">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Classes</button>
+        <button class="filter-btn" data-filter="young" role="tab" aria-selected="false">Young Children</button>
+        <button class="filter-btn" data-filter="technique" role="tab" aria-selected="false">Technique &amp; Training</button>
+        <button class="filter-btn" data-filter="performance" role="tab" aria-selected="false">Performance &amp; Career</button>
+      </div>
+    </div>
+
+    <!-- Classes -->
+    <div class="classes-wrap">
+
+      <!-- Young Children -->
+      <div class="class-section" id="sec-young" data-section="young">
+        <div class="section-label">Young Children's Program · Ages 2–8</div>
+        <p class="section-desc">Introduces dancers to the joy of movement in a fun, nurturing environment while building foundational skills in coordination, rhythm, balance, and musicality.</p>
+        <div class="cards-grid">
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="young">
+            <div class="card-age">Ages 3–5</div>
+            <h3>Ballet, Tap &amp; Tumble</h3>
+            <p>Coordination, balance, rhythm, and basic movement skills — all in one fun and engaging class. Confidence and classroom structure in a supportive environment.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="young">
+            <div class="card-age">Ages 5–8</div>
+            <h3>Ballet, Tap &amp; Jazz</h3>
+            <p>Three foundational styles in one class. Basic ballet technique, rhythmic tap movement, and energetic jazz combinations. Coordination, musicality, and confidence.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="young">
+            <div class="card-age">Ages 3+</div>
+            <h3>Pre-Ballet</h3>
+            <p>Fundamentals of ballet through imaginative movement, music, and basic technique. Coordination, balance, rhythm, and a love for dance in a nurturing environment.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="young">
+            <div class="card-age">Ages 4+</div>
+            <h3>Beginner Hip Hop</h3>
+            <p>High-energy introduction to hip hop movement in a fun, age-appropriate environment. Rhythm, coordination, and confidence through foundational steps and simple choreography.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="young">
+            <div class="card-age">Ages 4+</div>
+            <h3>Intro to Acro</h3>
+            <p>Basic acrobatic skills — strength, flexibility, and body control. Rolls, bridges, balances, and beginner acro movements in a safe and supportive setting.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="young">
+            <div class="card-age">Ages 5+</div>
+            <h3>Intro to Leaps &amp; Turns</h3>
+            <p>Foundational techniques for jumps, leaps, and turns. Strength, balance, coordination, and flexibility — the building blocks for advanced technique classes.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Technique -->
+      <div class="class-section" id="sec-technique" data-section="technique">
+        <div class="section-label">Technique &amp; Training</div>
+        <p class="section-desc">Focused on developing strong dance technique, strength, flexibility, and performance quality. Supporting dancers of all levels — including those training for competitive dance, college programs, and professional careers.</p>
+        <div class="cards-grid">
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+            <div class="card-age">All Levels</div>
+            <h3>Ballet</h3>
+            <p>The foundation of all dance styles. Technique, alignment, strength, flexibility, and artistry through barre work, center exercises, and across-the-floor combinations.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+            <div class="card-age">All Levels</div>
+            <h3>Tap</h3>
+            <p>Musicality, timing, and intricate footwork. Create rhythms and patterns with your feet while developing coordination, clarity of sound, and speed.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+            <div class="card-age">All Levels</div>
+            <h3>Jazz &amp; Lyrical</h3>
+            <p>The strength and energy of jazz combined with the expressive movement of lyrical dance. Turns, leaps, flexibility, and musicality in one powerful class.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+            <div class="card-age">All Levels</div>
+            <h3>Hip Hop</h3>
+            <p>Street-style movement and current dance trends. Rhythm, coordination, and confidence through dynamic choreography and freestyle movement.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+            <div class="card-age">All Levels</div>
+            <h3>Musical Theater</h3>
+            <p>Dance, acting, and performance inspired by Broadway-style productions. Expressive choreography, stage presence, character, and storytelling through movement.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+            <div class="card-age">Intermediate+</div>
+            <h3>Leaps &amp; Turns</h3>
+            <p>Drills and progressions to improve essential skills — turns, jumps, leaps, balance, and flexibility — designed to build strength and control.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+            <div class="card-age">All Levels</div>
+            <h3>Acro &amp; Flexibility</h3>
+            <p>Dance technique combined with acrobatic elements and flexibility training. Strength, control, and skills such as balances, limbers, and walkovers.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+            <div class="card-age">All Levels</div>
+            <h3>Tumbling</h3>
+            <p>Floor-based acrobatic skills — cartwheels, walkovers, and handsprings. Strength, coordination, and body control while safely progressing your tumbling abilities.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+            <div class="card-age">Intermediate</div>
+            <h3>Pre-Pointe</h3>
+            <p>Strengthening exercises and technical training to safely prepare for pointe work. Foot and ankle strength, alignment, and balance.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="technique">
+            <div class="card-age">Advanced</div>
+            <h3>Pointe</h3>
+            <p>Advanced ballet technique for dancers with the strength and control required to dance on pointe shoes. Classical technique on foot, ankle, and artistry.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Performance & Career -->
+      <div class="class-section" id="sec-performance" data-section="performance">
+        <div class="section-label">Performance &amp; Career Preparation</div>
+        <p class="section-desc">For dancers interested in competitive dance, collegiate dance teams, and professional performance opportunities. Real pathways to real stages.</p>
+        <div class="cards-grid">
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="performance">
+            <div class="card-age">Audition Prep</div>
+            <h3>Company Prep</h3>
+            <p>Prepares dancers for the expectations of competitive dance. Technique, performance quality, work ethic, and versatility for company auditions.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="performance">
+            <div class="card-age">MS · HS · College</div>
+            <h3>Drill Team Prep</h3>
+            <p>For dancers interested in middle school, high school, or collegiate drill team auditions. Kicks, turns, jumps, flexibility, precision, and performance confidence.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="performance">
+            <div class="card-age">College Track</div>
+            <h3>College Dance Team Prep</h3>
+            <p>Technique and performance skills required for collegiate dance team auditions. Jazz technique, turns, jumps, kicks, and audition-style combinations.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+          <a class="class-card" href="ambition-dance-class-detail.html" data-cat="performance">
+            <div class="card-age">Professional</div>
+            <h3>Pro Style</h3>
+            <p>Training for professional dance teams — NFL and NBA cheer and dance. Powerful jazz-based choreography, kicks, turns, precision, and professional stage presence.</p>
+            <div class="card-link">View Class <span class="card-arrow">↗</span></div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Bottom CTA -->
+      <div class="bottom-cta">
+        <div class="bottom-cta-text">
+          <strong>Not Sure Which Class Is Right?</strong>
+          <p>Contact us and we'll help find the perfect fit for your dancer's age, level, and goals. First trial class is always free.</p>
+        </div>
+        <div class="bottom-cta-actions">
+          <a class="btn-primary" href="https://app.thestudiodirector.com/ambitiondancepro/portal.sd">Register Now</a>
+          <a class="btn-secondary" href="/cdn-cgi/l/email-protection#37405259534e77565a555e435e585953565954524745581954585a">Email Us →</a>
+        </div>
+      </div>
+
+    </div><!-- /.classes-wrap -->
+  </div><!-- /.container -->
+
+  <!-- Ticker -->
+  <div class="ticker-wrap" aria-label="Dance styles offered">
+    <div class="ticker-track">
+      <span class="ticker-item">Ballet &middot; Jazz &middot; Tap &middot; <strong>Contemporary</strong> &middot; Lyrical &middot; Hip Hop &middot; Musical Theater &middot; <strong>Drill Team Prep</strong> &middot; Tumbling &middot; Acro &middot; Modern &middot; Pointe &middot; Stretch &amp; Conditioning &middot;&nbsp;</span>
+      <span class="ticker-item">Ballet &middot; Jazz &middot; Tap &middot; <strong>Contemporary</strong> &middot; Lyrical &middot; Hip Hop &middot; Musical Theater &middot; <strong>Drill Team Prep</strong> &middot; Tumbling &middot; Acro &middot; Modern &middot; Pointe &middot; Stretch &amp; Conditioning &middot;&nbsp;</span>
+      <span class="ticker-item">Ballet &middot; Jazz &middot; Tap &middot; <strong>Contemporary</strong> &middot; Lyrical &middot; Hip Hop &middot; Musical Theater &middot; <strong>Drill Team Prep</strong> &middot; Tumbling &middot; Acro &middot; Modern &middot; Pointe &middot; Stretch &amp; Conditioning &middot;&nbsp;</span>
+    </div>
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const sections = document.querySelectorAll('.class-section');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        const filter = btn.dataset.filter;
+
+        sections.forEach(sec => {
+          if (filter === 'all' || sec.dataset.section === filter) { 
+            sec.classList.remove('hidden');
+          } else {
+            sec.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+         
+  <script src="nav.js"></script>
+</body>
+</html>

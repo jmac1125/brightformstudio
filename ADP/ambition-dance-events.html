@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="global.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spring Showcase — Ambition Dance Productions</title>
+  <style>
+    :root {
+    /* ── Show colour coding ── */
+    --s1: #7a9fd4;
+    --s2: #9f7ad4;
+    --s3: #d47a9f;
+    --s4: #c8a96e;
+    }
+
+    /* ── BACKGROUNDS ── */
+    
+    
+    
+
+    /* ── CONTAINER ── */
+    
+
+    /* ── BREADCRUMB ── */
+    
+    
+    
+    
+    
+
+    /* ── SECTION LABEL ── */
+    
+    
+
+    /* ── PAGE HERO ── */
+    
+    .page-hero-grid {
+      display: grid; grid-template-columns: 1fr 380px;
+      gap: 56px; align-items: start;
+    }
+    
+    
+    
+    
+    
+    
+
+    /* ── HERO META PILLS ── */
+    .hero-meta-row {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px;
+    }
+    .meta-pill {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 4px; padding: 10px 14px;
+    }
+    .meta-pill-icon { width: 14px; height: 14px; opacity: 0.6; flex-shrink: 0; }
+    .meta-pill span {
+      font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.7);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── TICKET DEADLINE ALERT ── */
+    .deadline-alert {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(200,169,110,0.08);
+      border: 0.5px solid rgba(200,169,110,0.3);
+      border-radius: 4px; padding: 14px 18px; margin-bottom: 28px;
+    }
+    .deadline-pulse {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.4; transform: scale(0.7); }
+    }
+    .deadline-text {
+      font-size: 13px; font-weight: 500; color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+    .deadline-text strong { font-weight: 700; color: #fff; }
+
+    .hero-cta-row {
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    }
+    
+    
+    
+    
+
+    /* ── VENUE CARD (right col) ── */
+    .venue-card {
+      background: var(--gold-light);
+      border: 0.5px solid var(--gold-border);
+      border-radius: 6px; padding: 28px;
+    }
+    .venue-label {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .venue-name {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 18px; text-transform: uppercase; letter-spacing: 0.04em;
+      color: #fff; line-height: 1.15; margin-bottom: 6px;
+    }
+    .venue-address {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.45); line-height: 1.6; margin-bottom: 20px;
+    }
+    .venue-divider {
+      height: 0.5px; background: rgba(200,169,110,0.2); margin-bottom: 18px;
+    }
+    .venue-note {
+      font-size: 12.5px; font-weight: 300;
+      color: rgba(255,255,255,0.42); line-height: 1.65; margin-bottom: 16px;
+    }
+    .venue-note strong { color: rgba(255,255,255,0.7); font-weight: 500; }
+    .venue-dates {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px;
+    }
+    .venue-date-chip {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 6px 13px; border-radius: 2px;
+      background: rgba(200,169,110,0.1); border: 0.5px solid rgba(200,169,110,0.25);
+      color: var(--gold);
+    }
+
+    /* ── DRESS REHEARSALS ── */
+    .rehearsals-section {
+      position: relative; z-index: 5;
+      padding: 64px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .rehearsal-note {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: rgba(200,169,110,0.06);
+      border: 0.5px solid rgba(200,169,110,0.2);
+      border-radius: 4px; padding: 16px 20px;
+      margin-bottom: 28px; max-width: 760px;
+    }
+    .rehearsal-note-icon { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+    .rehearsal-note p {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.6); line-height: 1.65;
+    }
+    .rehearsal-note strong { color: var(--gold); font-weight: 600; }
+    .rehearsals-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    }
+    .rehearsal-card {
+      border-radius: 6px; padding: 22px; border: 0.5px solid;
+      transition: transform 0.18s;
+    }
+    .rehearsal-card:hover { transform: translateY(-2px); }
+
+    /* show colour helpers */
+    .show-1 { background: rgba(122,159,212,0.07); border-color: rgba(122,159,212,0.22); }
+    .show-2 { background: rgba(159,122,212,0.07); border-color: rgba(159,122,212,0.22); }
+    .show-3 { background: rgba(212,122,159,0.07); border-color: rgba(212,122,159,0.22); }
+    .show-4 { background: rgba(200,169,110,0.07); border-color: rgba(200,169,110,0.22); }
+
+    .reh-show-badge {
+      display: inline-block;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 2px; margin-bottom: 14px;
+    }
+    .badge-s1 { background: rgba(122,159,212,0.15); color: var(--s1); border: 0.5px solid rgba(122,159,212,0.25); }
+    .badge-s2 { background: rgba(159,122,212,0.15); color: var(--s2); border: 0.5px solid rgba(159,122,212,0.25); }
+    .badge-s3 { background: rgba(212,122,159,0.15); color: var(--s3); border: 0.5px solid rgba(212,122,159,0.25); }
+    .badge-s4 { background: rgba(200,169,110,0.15); color: var(--s4); border: 0.5px solid rgba(200,169,110,0.25); }
+
+    .reh-day {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em;
+      color: #fff; margin-bottom: 4px;
+    }
+    .reh-date {
+      font-size: 11px; font-weight: 400;
+      color: rgba(255,255,255,0.35); margin-bottom: 14px;
+      letter-spacing: 0.04em;
+    }
+    .reh-checkin-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.28);
+      margin-bottom: 4px;
+    }
+    .reh-checkin-time {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 22px; color: #fff; line-height: 1;
+    }
+
+    /* ── PERFORMANCES ── */
+    .performances-section {
+      position: relative; z-index: 5;
+      padding: 64px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .perf-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    }
+    .perf-card {
+      border-radius: 6px; overflow: hidden;
+      border: 0.5px solid; transition: transform 0.18s;
+    }
+    .perf-card:hover { transform: translateY(-2px); }
+    .perf-header {
+      padding: 16px 20px 14px;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .perf-show-num {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .perf-showtime {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 28px; color: #fff; line-height: 1;
+      margin-bottom: 2px;
+    }
+    .perf-day {
+      font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.4);
+      letter-spacing: 0.04em;
+    }
+    .perf-
+    .perf-row {
+      display: flex; justify-content: space-between;
+      align-items: baseline; padding: 7px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.05);
+    }
+    .perf-row:last-child { border-bottom: none; }
+    .perf-key {
+      font-size: 11px; color: rgba(255,255,255,0.3);
+      letter-spacing: 0.05em; text-transform: uppercase;
+      font-weight: 500;
+    }
+    .perf-val {
+      font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.7);
+    }
+
+    /* ── DOWNLOADS ── */
+    .downloads-section {
+      position: relative; z-index: 5;
+      padding: 64px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .downloads-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    }
+    .download-card {
+      display: flex; align-items: flex-start; gap: 16px;
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 22px;
+      text-decoration: none;
+      transition: border-color 0.18s, background 0.18s, transform 0.18s;
+    }
+    .download-card:hover {
+      border-color: var(--gold-border);
+      background: rgba(200,169,110,0.05);
+      transform: translateY(-2px);
+    }
+    .download-icon-wrap {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border-radius: 4px; display: flex; align-items: center; justify-content: center;
+      background: rgba(200,169,110,0.1); border: 0.5px solid var(--gold-border);
+    }
+    .download-icon { width: 22px; height: 22px; }
+    .download-info { flex: 1; min-width: 0; }
+    .download-label {
+      font-size: 9.5px; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+    }
+    .download-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em;
+      color: #fff; line-height: 1.3; margin-bottom: 6px;
+    }
+    .download-desc {
+      font-size: 12px; font-weight: 300;
+      color: rgba(255,255,255,0.38); line-height: 1.5;
+    }
+    .download-arrow {
+      font-size: 16px; color: rgba(200,169,110,0.4);
+      align-self: center; flex-shrink: 0;
+      transition: color 0.18s, transform 0.18s;
+    }
+    .download-card:hover .download-arrow { color: var(--gold); transform: translate(2px,-2px); }
+
+    /* ── ARRIVAL GUIDE ── */
+    .arrival-section {
+      position: relative; z-index: 5;
+      padding: 64px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .arrival-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    }
+    .arrival-card {
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 24px;
+    }
+    .arrival-step-num {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 36px; color: rgba(200,169,110,0.15);
+      line-height: 1; margin-bottom: 10px;
+    }
+    .arrival-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .arrival-desc {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.5); line-height: 1.7;
+    }
+    .arrival-desc strong { color: rgba(255,255,255,0.75); font-weight: 500; }
+
+    /* ── BOTTOM CTA ── */
+    
+    
+    
+    
+    
+    
+    
+    
+
+    /* ── TICKER ── */
+    
+    
+    
+    
+    
+      to   { transform: translateX(-33.333%); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .rehearsals-grid,
+      .perf-grid { grid-template-columns: 1fr 1fr; }
+      .downloads-grid,
+      .arrival-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .page-hero-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 768px) {
+      
+
+      .rehearsals-grid,
+      .perf-grid,
+      .downloads-grid,
+      .arrival-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow-2" aria-hidden="true"></div>
+
+<div class="container">
+
+    <!-- ══ BREADCRUMB ══ -->
+    <div class="breadcrumb">
+      <a href="ambition-dance-hero.html">Home</a>
+      <span class="sep">›</span>
+      <span class="current">Spring Showcase</span>
+    </div>
+
+    <!-- ══ PAGE HERO ══ -->
+    <div class="page-hero">
+      <div class="page-hero-grid">
+
+        <!-- Left -->
+        <div>
+          <div class="eyebrow">
+            <div class="eyebrow-line"></div>
+            <span class="eyebrow-text">Spring Showcase 2025</span>
+          </div>
+          <h1>The <em>Stage</em><br>Is Set</h1>
+          <p class="hero-desc">Our annual Spring Showcase — four performances across three days at Grapevine High School. Everything you need to know about show times, check-in, costumes, and tickets is right here.</p>
+
+          <div class="hero-meta-row">
+            <div class="meta-pill">
+              <svg class="meta-pill-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <rect x="1" y="2" width="12" height="10" rx="1.5" stroke="#c8a96e" stroke-width="1.2"/>
+                <path d="M1 5H13M4 1V3M10 1V3" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+              <span>June 12–14, 2025</span>
+            </div>
+            <div class="meta-pill">
+              <svg class="meta-pill-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M7 1.5C4.5 1.5 2.5 3.5 2.5 6C2.5 9 7 12.5 7 12.5C7 12.5 11.5 9 11.5 6C11.5 3.5 9.5 1.5 7 1.5Z" stroke="#c8a96e" stroke-width="1.2"/>
+                <circle cx="7" cy="6" r="1.5" fill="#c8a96e" opacity="0.6"/>
+              </svg>
+              <span>Grapevine High School</span>
+            </div>
+            <div class="meta-pill">
+              <svg class="meta-pill-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <rect x="1" y="4" width="12" height="9" rx="1.5" stroke="#c8a96e" stroke-width="1.2"/>
+                <path d="M1 7H13M4 1.5V4M10 1.5V4" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+                <circle cx="4.5" cy="10" r="1" fill="#c8a96e" opacity="0.6"/>
+                <circle cx="7" cy="10" r="1" fill="#c8a96e" opacity="0.6"/>
+                <circle cx="9.5" cy="10" r="1" fill="#c8a96e" opacity="0.6"/>
+              </svg>
+              <span>4 Shows</span>
+            </div>
+          </div>
+
+          <div class="deadline-alert">
+            <div class="deadline-pulse"></div>
+            <span class="deadline-text"><strong>Ticket sales close midnight June 9th.</strong> Purchase before the deadline to secure your seats.</span>
+          </div>
+
+          <div class="hero-cta-row">
+            <a class="btn-primary" href="https://form.jotform.com/251533925228155" target="_blank" rel="noopener">Purchase Tickets</a>
+            <a class="btn-outline" href="https://ambitiondancepro.com/wp-content/uploads/2025/06/2025-Spring-Show-Info-FINAL-v0611-1.pdf" target="_blank" rel="noopener">Final Show Info PDF ↗</a>
+          </div>
+        </div>
+
+        <!-- Right: Venue card -->
+        <div class="venue-card">
+          <div class="venue-label">Venue</div>
+          <div class="venue-name">Grapevine<br>High School</div>
+          <div class="venue-address">3223 Mustang Drive<br>Grapevine, TX 76051</div>
+          <div class="venue-divider"></div>
+          <p class="venue-note">
+            <strong>Enter at the main entrance</strong> (front office area). All non-company dancers will use the library as the dressing area.
+          </p>
+          <p class="venue-note">
+            <strong>Arrive in full costume, hair &amp; makeup</strong> for both dress rehearsals and performances.
+          </p>
+          <div class="venue-dates">
+            <span class="venue-date-chip">Thu Jun 12</span>
+            <span class="venue-date-chip">Fri Jun 13</span>
+            <span class="venue-date-chip">Sat Jun 14</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ DRESS REHEARSALS ══ -->
+    <div class="rehearsals-section">
+      <div class="section-label">Dress Rehearsals · Dancer Check-In Times</div>
+
+      <div class="rehearsal-note">
+        <svg class="rehearsal-note-icon" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <circle cx="9" cy="9" r="7.5" stroke="#c8a96e" stroke-width="1.2"/>
+          <path d="M9 5V9.5L11.5 12" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <p><strong>Please arrive in full costume, hair &amp; makeup</strong> for both dress rehearsals and performances. Enter at the main entrance (front office area). All non-company dancers will be in the library for dressing area space.</p>
+      </div>
+
+      <div class="rehearsals-grid">
+
+        <div class="rehearsal-card show-1">
+          <div class="reh-show-badge badge-s1">Show 1 · Rehearsal</div>
+          <div class="reh-day">Thursday</div>
+          <div class="reh-date">June 12, 2025</div>
+          <div class="reh-checkin-label">Dancer Check-In</div>
+          <div class="reh-checkin-time">4:00 PM</div>
+        </div>
+
+        <div class="rehearsal-card show-2">
+          <div class="reh-show-badge badge-s2">Show 2 · Rehearsal</div>
+          <div class="reh-day">Friday</div>
+          <div class="reh-date">June 13, 2025</div>
+          <div class="reh-checkin-label">Dancer Check-In</div>
+          <div class="reh-checkin-time">3:30 PM</div>
+        </div>
+
+        <div class="rehearsal-card show-3">
+          <div class="reh-show-badge badge-s3">Show 3 · Rehearsal</div>
+          <div class="reh-day">Thursday</div>
+          <div class="reh-date">June 12, 2025</div>
+          <div class="reh-checkin-label">Dancer Check-In</div>
+          <div class="reh-checkin-time">6:00 PM</div>
+        </div>
+
+        <div class="rehearsal-card show-4">
+          <div class="reh-show-badge badge-s4">Show 4 · Rehearsal</div>
+          <div class="reh-day">Thursday</div>
+          <div class="reh-date">June 12, 2025</div>
+          <div class="reh-checkin-label">Dancer Check-In</div>
+          <div class="reh-checkin-time">7:00 PM</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ PERFORMANCES ══ -->
+    <div class="performances-section">
+      <div class="section-label">Performances · Show Times &amp; Audience Info</div>
+
+      <div class="perf-grid">
+
+        <!-- Show 1 -->
+        <div class="perf-card show-1">
+          <div class="perf-header show-1">
+            <div class="perf-show-num" style="color:var(--s1);">Show 1</div>
+            <div class="perf-showtime">7:00 PM</div>
+            <div class="perf-day">Friday, June 13</div>
+          </div>
+          <div class="perf-body">
+            <div class="perf-row">
+              <span class="perf-key">Dancer Check-In</span>
+              <span class="perf-val">6:00 PM</span>
+            </div>
+            <div class="perf-row">
+              <span class="perf-key">Doors Open</span>
+              <span class="perf-val">6:30 PM</span>
+            </div>
+            <div class="perf-row">
+              <span class="perf-key">Showtime</span>
+              <span class="perf-val" style="color:#fff;font-weight:600;">7:00 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Show 2 -->
+        <div class="perf-card show-2">
+          <div class="perf-header show-2">
+            <div class="perf-show-num" style="color:var(--s2);">Show 2</div>
+            <div class="perf-showtime">10:00 AM</div>
+            <div class="perf-day">Saturday, June 14</div>
+          </div>
+          <div class="perf-body">
+            <div class="perf-row">
+              <span class="perf-key">Dancer Check-In</span>
+              <span class="perf-val">9:00 AM</span>
+            </div>
+            <div class="perf-row">
+              <span class="perf-key">Doors Open</span>
+              <span class="perf-val">9:30 AM</span>
+            </div>
+            <div class="perf-row">
+              <span class="perf-key">Showtime</span>
+              <span class="perf-val" style="color:#fff;font-weight:600;">10:00 AM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Show 3 -->
+        <div class="perf-card show-3">
+          <div class="perf-header show-3">
+            <div class="perf-show-num" style="color:var(--s3);">Show 3</div>
+            <div class="perf-showtime">1:00 PM</div>
+            <div class="perf-day">Saturday, June 14</div>
+          </div>
+          <div class="perf-body">
+            <div class="perf-row">
+              <span class="perf-key">Dancer Check-In</span>
+              <span class="perf-val">12:00 PM</span>
+            </div>
+            <div class="perf-row">
+              <span class="perf-key">Doors Open</span>
+              <span class="perf-val">12:30 PM</span>
+            </div>
+            <div class="perf-row">
+              <span class="perf-key">Showtime</span>
+              <span class="perf-val" style="color:#fff;font-weight:600;">1:00 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Show 4 -->
+        <div class="perf-card show-4">
+          <div class="perf-header show-4">
+            <div class="perf-show-num" style="color:var(--s4);">Show 4</div>
+            <div class="perf-showtime">4:00 PM</div>
+            <div class="perf-day">Saturday, June 14</div>
+          </div>
+          <div class="perf-body">
+            <div class="perf-row">
+              <span class="perf-key">Dancer Check-In</span>
+              <span class="perf-val">3:00 PM</span>
+            </div>
+            <div class="perf-row">
+              <span class="perf-key">Doors Open</span>
+              <span class="perf-val">3:30 PM</span>
+            </div>
+            <div class="perf-row">
+              <span class="perf-key">Showtime</span>
+              <span class="perf-val" style="color:#fff;font-weight:600;">4:00 PM</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ DOWNLOADS ══ -->
+    <div class="downloads-section">
+      <div class="section-label">Important Documents</div>
+      <p style="font-size:14px;font-weight:300;color:var(--text-muted);line-height:1.75;max-width:600px;margin-bottom:28px;">Everything you need for the showcase — show orders, costume assignments, and hair &amp; makeup guides — all in one place.</p>
+
+      <div class="downloads-grid">
+
+        <a class="download-card" href="https://ambitiondancepro.com/wp-content/uploads/2025/06/2025-Spring-Show-Info-FINAL-v0611-1.pdf" target="_blank" rel="noopener">
+          <div class="download-icon-wrap">
+            <svg class="download-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M13 2H5C4 2 3 3 3 4V18C3 19 4 20 5 20H17C18 20 19 19 19 18V8L13 2Z" stroke="#c8a96e" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M13 2V8H19" stroke="#c8a96e" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M11 11V17M8 14L11 17L14 14" stroke="#c8a96e" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="download-info">
+            <div class="download-label">PDF · Updated June 11</div>
+            <div class="download-title">Final Show Information &amp; Show Orders</div>
+            <div class="download-desc">Complete show orders, running times, and all final performance details.</div>
+          </div>
+          <div class="download-arrow">↗</div>
+        </a>
+
+        <a class="download-card" href="https://ambitiondancepro.com/wp-content/uploads/2025/06/2025-Spring-Showcase-Costume-Tights-Shoes-Show-Assignment-060225-1.pdf" target="_blank" rel="noopener">
+          <div class="download-icon-wrap">
+            <svg class="download-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M13 2H5C4 2 3 3 3 4V18C3 19 4 20 5 20H17C18 20 19 19 19 18V8L13 2Z" stroke="#c8a96e" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M13 2V8H19" stroke="#c8a96e" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M7 13H15M7 10H10" stroke="#c8a96e" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="download-info">
+            <div class="download-label">PDF · Costume List</div>
+            <div class="download-title">Costumes, Tights, Shoes &amp; Show Assignments</div>
+            <div class="download-desc">Full costume list including required shoes, tights, and which show each dancer performs in.</div>
+          </div>
+          <div class="download-arrow">↗</div>
+        </a>
+
+        <a class="download-card" href="https://ambitiondancepro.com/wp-content/uploads/2024/05/2024-Spring-Concert-Hair-and-Makeup-1.pdf" target="_blank" rel="noopener">
+          <div class="download-icon-wrap">
+            <svg class="download-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <circle cx="11" cy="9" r="5" stroke="#c8a96e" stroke-width="1.4"/>
+              <path d="M11 14V19" stroke="#c8a96e" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M8 17H14" stroke="#c8a96e" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M9 7C9 7 10 9 11 9C12 9 13 7 13 7" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="download-info">
+            <div class="download-label">PDF · Style Guide</div>
+            <div class="download-title">Hair &amp; Makeup Instructions</div>
+            <div class="download-desc">Step-by-step hair and makeup guide for all showcase performances.</div>
+          </div>
+          <div class="download-arrow">↗</div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ══ ARRIVAL GUIDE ══ -->
+    <div class="arrival-section">
+      <div class="section-label">Arrival Guide</div>
+      <div class="arrival-grid">
+
+        <div class="arrival-card">
+          <div class="arrival-step-num">01</div>
+          <div class="arrival-title">Enter at the Main Entrance</div>
+          <p class="arrival-desc">All dancers and families enter Grapevine High School at the <strong>main entrance (front office area)</strong>. Do not use side or rear entrances.</p>
+        </div>
+
+        <div class="arrival-card">
+          <div class="arrival-step-num">02</div>
+          <div class="arrival-title">Arrive Show-Ready</div>
+          <p class="arrival-desc">All dancers must arrive in <strong>full costume, hair, and makeup</strong> for both dress rehearsals and performances. No dressing at the venue except touch-ups.</p>
+        </div>
+
+        <div class="arrival-card">
+          <div class="arrival-step-num">03</div>
+          <div class="arrival-title">Dressing Area — Library</div>
+          <p class="arrival-desc"><strong>Non-company dancers</strong> will use the school library as the designated dressing and waiting area. Company dancers will be directed separately by staff.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ BOTTOM CTA ══ -->
+    <div class="bottom-cta">
+      <h2>Get Your <em>Tickets</em></h2>
+      <p>Ticket sales close at midnight on June 9th. Don't miss your dancer's big moment — secure your seats now.</p>
+      <div class="cta-buttons">
+        <a class="btn-primary" href="https://form.jotform.com/251533925228155" target="_blank" rel="noopener">Purchase Tickets Now</a>
+        <a class="btn-text-link" href="/cdn-cgi/l/email-protection#790e1c171d003918141b100d1016171d18171a1c090b16571a1614">Questions? Email Wendy</a>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+
+  <!-- ══ TICKER ══ -->
+  <div class="ticker-wrap" aria-label="Spring showcase details">
+    <div class="ticker-track">
+      <span class="ticker-item">2025 Spring Showcase · <strong>June 12–14</strong> · Grapevine High School · <strong>4 Shows</strong> · Tickets Close June 9th · Show 1 Fri 7PM · Show 2 Sat 10AM · <strong>Show 3 Sat 1PM</strong> · Show 4 Sat 4PM ·&nbsp;</span>
+      <span class="ticker-item">2025 Spring Showcase · <strong>June 12–14</strong> · Grapevine High School · <strong>4 Shows</strong> · Tickets Close June 9th · Show 1 Fri 7PM · Show 2 Sat 10AM · <strong>Show 3 Sat 1PM</strong> · Show 4 Sat 4PM ·&nbsp;</span>
+      <span class="ticker-item">2025 Spring Showcase · <strong>June 12–14</strong> · Grapevine High School · <strong>4 Shows</strong> · Tickets Close June 9th · Show 1 Fri 7PM · Show 2 Sat 10AM · <strong>Show 3 Sat 1PM</strong> · Show 4 Sat 4PM ·&n
+  <script src="nav.js"></script>
+</body>
+</html>

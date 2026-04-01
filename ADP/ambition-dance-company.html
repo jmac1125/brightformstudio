@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="global.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Company — Ambition Dance Productions</title>
+  <style>
+    :root {
+    /* ── Program accent colours ── */
+    --sparks:         #e8924a;
+    --sparks-bg:      rgba(232, 146, 74, 0.08);
+    --sparks-border:  rgba(232, 146, 74, 0.22);
+    --elevate:        #7a6fd4;
+    --elevate-bg:     rgba(122, 111, 212, 0.08);
+    --elevate-border: rgba(122, 111, 212, 0.22);
+    --summit:         #c8a96e;
+    --summit-bg:      rgba(200, 169, 110, 0.08);
+    --summit-border:  rgba(200, 169, 110, 0.22);
+    --allstars:       #4a9ed4;
+    --allstars-bg:    rgba(74, 158, 212, 0.08);
+    --allstars-border:rgba(74, 158, 212, 0.22);
+    }
+
+    /* ── BACKGROUNDS ── */
+    
+    
+    
+
+    /* ── CONTAINER ── */
+    
+
+    /* ── BREADCRUMB ── */
+    
+    
+    
+    
+    
+
+    /* ── PAGE HERO ── */
+    
+    
+    
+    
+    .page-hero-grid {
+      display: grid; grid-template-columns: 1fr 380px;
+      gap: 64px; align-items: start;
+    }
+    
+    
+    .page-hero-desc {
+      font-size: 15px; font-weight: 300;
+      color: var(--text-muted); line-height: 1.8; max-width: 520px;
+    }
+
+    /* ── AUDITION ALERT ── */
+    .audition-box {
+      background: rgba(200,169,110,0.07);
+      border: 0.5px solid var(--gold-border);
+      border-radius: 6px; padding: 24px;
+    }
+    .audition-box-label {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 9.5px; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .audition-pulse {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .audition-date {
+      display: block; margin-bottom: 12px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid rgba(255,255,255,0.08);
+      border-radius: 4px; text-decoration: none;
+      transition: border-color 0.18s, background 0.18s;
+    }
+    .audition-date:hover {
+      border-color: var(--gold-border);
+      background: rgba(200,169,110,0.05);
+    }
+    .audition-date:last-of-type { margin-bottom: 0; }
+    .audition-location {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em;
+      color: #fff; margin-bottom: 3px;
+    }
+    .audition-when {
+      font-size: 12px; color: var(--gold); font-weight: 500;
+    }
+    .audition-cta {
+      margin-top: 16px; padding-top: 16px;
+      border-top: 0.5px solid rgba(200,169,110,0.15);
+      font-size: 12px; color: var(--text-faint); line-height: 1.55;
+    }
+    .audition-cta a { color: var(--gold); text-decoration: none; }
+    .audition-cta a:hover { color: #fff; }
+
+    /* ── MISSION / VISION ── */
+    .mission-section {
+      position: relative; z-index: 5;
+      padding: 64px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .mission-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px; margin-top: 32px;
+    }
+    .mission-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 28px;
+      transition: border-color 0.18s;
+    }
+    .mission-card:hover { border-color: var(--gold-border); }
+    .mission-card-icon {
+      width: 32px; height: 32px; margin-bottom: 16px;
+    }
+    .mission-card-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .mission-card p {
+      font-size: 13.5px; font-weight: 300;
+      color: var(--text-muted); line-height: 1.75;
+    }
+    .differentiators {
+      margin-top: 40px;
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .diff-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 16px;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+    }
+    .diff-check {
+      width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px;
+    }
+    .diff-item span {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.6); line-height: 1.5;
+    }
+
+    /* ── SECTION LABEL ── */
+    
+    
+    .section-subtitle {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: clamp(28px, 4vw, 40px);
+      text-transform: uppercase; letter-spacing: -0.01em;
+      color: #fff; line-height: 1.05; margin-bottom: 12px;
+    }
+    .section-subtitle em { font-style: italic; font-weight: 300; color: var(--gold); }
+    .section-tagline {
+      font-size: 13px; font-weight: 300; font-style: italic;
+      color: var(--text-faint); margin-bottom: 6px; letter-spacing: 0.04em;
+    }
+    .section-desc {
+      font-size: 14px; font-weight: 300;
+      color: var(--text-muted); line-height: 1.8; max-width: 680px;
+    }
+
+    /* ── PROGRAM SECTIONS shared ── */
+    .program-section {
+      position: relative; z-index: 5;
+      padding: 72px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .program-header { margin-bottom: 40px; }
+
+    /* colored accent bar on left of header */
+    .program-accent-bar {
+      width: 3px; height: 100%; border-radius: 2px;
+      position: absolute; left: 0; top: 0; bottom: 0;
+    }
+
+    /* ── TEAM CARDS ── */
+    .teams-grid {
+      display: grid; gap: 12px;
+    }
+    .teams-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .teams-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .teams-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .team-card {
+      border-radius: 6px; padding: 24px;
+      border: 0.5px solid;
+      transition: transform 0.18s;
+      position: relative; overflow: hidden;
+    }
+    .team-card:hover { transform: translateY(-2px); }
+
+    .team-card.sparks-style {
+      background: var(--sparks-bg); border-color: var(--sparks-border);
+    }
+    .team-card.elevate-style {
+      background: var(--elevate-bg); border-color: var(--elevate-border);
+    }
+    .team-card.summit-style {
+      background: var(--summit-bg); border-color: var(--summit-border);
+    }
+    .team-card.allstars-style {
+      background: var(--allstars-bg); border-color: var(--allstars-border);
+    }
+
+    .team-name {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 20px; text-transform: uppercase; letter-spacing: 0.04em;
+      color: #fff; margin-bottom: 4px;
+    }
+    .team-tagline {
+      font-size: 12px; font-style: italic; font-weight: 300;
+      color: rgba(255,255,255,0.45); margin-bottom: 14px; line-height: 1.4;
+    }
+    .team-desc {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 16px;
+    }
+    .team-reqs {
+      padding-top: 14px;
+      border-top: 0.5px solid rgba(255,255,255,0.08);
+    }
+    .team-req-row {
+      display: flex; align-items: flex-start; gap: 8px;
+      margin-bottom: 6px;
+    }
+    .team-req-row:last-child { margin-bottom: 0; }
+    .req-bullet {
+      width: 4px; height: 4px; border-radius: 50%;
+      flex-shrink: 0; margin-top: 7px;
+    }
+    .req-bullet.sparks-c { background: var(--sparks); }
+    .req-bullet.elevate-c { background: var(--elevate); }
+    .req-bullet.summit-c { background: var(--summit); }
+    .req-bullet.allstars-c { background: var(--allstars); }
+    .team-req-row span {
+      font-size: 12px; color: rgba(255,255,255,0.42); line-height: 1.5;
+    }
+    .team-req-row strong {
+      color: rgba(255,255,255,0.65); font-weight: 500;
+    }
+
+    /* ── AGES BADGE ── */
+    .ages-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 2px; margin-bottom: 14px;
+      font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .ages-badge.sparks-b { background: rgba(232,146,74,0.12); color: var(--sparks); border: 0.5px solid rgba(232,146,74,0.25); }
+    .ages-badge.elevate-b { background: rgba(122,111,212,0.12); color: var(--elevate); border: 0.5px solid rgba(122,111,212,0.25); }
+    .ages-badge.summit-b { background: rgba(200,169,110,0.12); color: var(--summit); border: 0.5px solid rgba(200,169,110,0.25); }
+    .ages-badge.allstars-b { background: rgba(74,158,212,0.12); color: var(--allstars); border: 0.5px solid rgba(74,158,212,0.25); }
+
+    /* ── REQUIREMENTS PANEL ── */
+    .req-panel {
+      border-radius: 6px; padding: 24px;
+      border: 0.5px solid; margin-top: 20px;
+    }
+    .req-panel.sparks-r { background: var(--sparks-bg); border-color: var(--sparks-border); }
+    .req-panel.elevate-r { background: var(--elevate-bg); border-color: var(--elevate-border); }
+    .req-panel.summit-r { background: var(--summit-bg); border-color: var(--summit-border); }
+    .req-panel.allstars-r { background: var(--allstars-bg); border-color: var(--allstars-border); }
+
+    .req-panel-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .req-panel-title.sparks-t { color: var(--sparks); }
+    .req-panel-title.elevate-t { color: var(--elevate); }
+    .req-panel-title.summit-t { color: var(--summit); }
+    .req-panel-title.allstars-t { color: var(--allstars); }
+
+    .req-panel-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .req-stat-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.3);
+      margin-bottom: 5px;
+    }
+    .req-stat-value {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 15px; color: #fff;
+    }
+
+    /* ── JOURNEY STRIP ── */
+    .journey-strip {
+      position: relative; z-index: 5;
+      padding: 56px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .journey-path {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; margin-top: 36px; position: relative;
+    }
+    .journey-path::before {
+      content: '';
+      position: absolute; top: 28px; left: calc(12.5% + 8px);
+      right: calc(12.5% + 8px); height: 1px;
+      background: linear-gradient(90deg, var(--sparks), var(--elevate), var(--summit), var(--allstars));
+      z-index: 0;
+    }
+    .journey-step {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 0 16px; position: relative; z-index: 1;
+    }
+    .journey-dot {
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid; margin-bottom: 16px;
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+      position: relative; z-index: 2;
+    }
+    .journey-dot.s1 { background: rgba(232,146,74,0.12); border-color: var(--sparks); color: var(--sparks); }
+    .journey-dot.s2 { background: rgba(122,111,212,0.12); border-color: var(--elevate); color: var(--elevate); }
+    .journey-dot.s3 { background: rgba(200,169,110,0.12); border-color: var(--summit); color: var(--summit); }
+    .journey-dot.s4 { background: rgba(74,158,212,0.12); border-color: var(--allstars); color: var(--allstars); }
+    .journey-step-name {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;
+      color: #fff; margin-bottom: 4px;
+    }
+    .journey-step-ages {
+      font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.35);
+      margin-bottom: 8px; letter-spacing: 0.04em;
+    }
+    .journey-step-desc {
+      font-size: 12px; font-weight: 300;
+      color: rgba(255,255,255,0.38); line-height: 1.55;
+    }
+
+    /* ── FOCUS LIST (Summit) ── */
+    .focus-list {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8px; margin-top: 16px;
+    }
+    .focus-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid rgba(255,255,255,0.07);
+      border-radius: 4px;
+    }
+    .focus-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .focus-item span { font-size: 12.5px; color: rgba(255,255,255,0.52); font-weight: 300; }
+
+    /* ── ALL STARS PILLARS ── */
+    .pillars-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-top: 28px;
+    }
+    .pillar-card {
+      background: var(--allstars-bg);
+      border: 0.5px solid var(--allstars-border);
+      border-radius: 6px; padding: 22px;
+      transition: transform 0.18s;
+    }
+    .pillar-card:hover { transform: translateY(-2px); }
+    .pillar-num {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 28px; color: rgba(74,158,212,0.25);
+      line-height: 1; margin-bottom: 8px;
+    }
+    .pillar-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--allstars); margin-bottom: 10px;
+    }
+    .pillar-desc {
+      font-size: 12.5px; font-weight: 300;
+      color: rgba(255,255,255,0.45); line-height: 1.65;
+    }
+
+    /* ── BOTTOM CTA ── */
+    
+    
+    
+    
+    
+    
+    
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: rgba(255,255,255,0.55); font-weight: 500;
+      font-size: 13px; text-decoration: none; transition: color 0.2s;
+    }
+    .btn-secondary::after { content: '→'; color: var(--gold); }
+    .btn-secondary:hover { color: #fff; }
+
+    /* ── TICKER ── */
+    
+    
+    
+    
+    
+      to   { transform: translateX(-33.333%); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .page-hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .mission-grid { grid-template-columns: 1fr 1fr; }
+      .teams-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+      .teams-grid.cols-4 { grid-template-columns: 1fr 1fr; }
+      .pillars-grid { grid-template-columns: 1fr 1fr; }
+      .journey-path { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .journey-path::before { display: none; }
+    }
+    @media (max-width: 768px) {
+      
+
+      .mission-grid { grid-template-columns: 1fr; }
+      .differentiators { grid-template-columns: 1fr; }
+      .teams-grid.cols-2,
+      .teams-grid.cols-3,
+      .teams-grid.cols-4 { grid-template-columns: 1fr; }
+      .req-panel-grid { grid-template-columns: 1fr 1fr; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .journey-path { grid-template-columns: 1fr; }
+      .focus-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow-2" aria-hidden="true"></div>
+
+<div class="container">
+
+    <!-- ══ BREADCRUMB ══ -->
+    <div class="breadcrumb">
+      <a href="ambition-dance-hero.html">Home</a>
+      <span class="sep">›</span>
+      <span class="current">Company</span>
+    </div>
+
+    <!-- ══ PAGE HERO ══ -->
+    <div class="page-hero">
+      <div class="page-hero-grid">
+        <div>
+          <div class="eyebrow">
+            <div class="eyebrow-line"></div>
+            <span class="eyebrow-text">Ambition Dance Company</span>
+          </div>
+          <h1>From <em>Spark</em><br>to Summit</h1>
+          <p class="page-hero-desc">A dancer's journey through our company — growth, artistry, and excellence at every level. We believe dancers reach their greatest potential when challenged technically and nurtured emotionally. Three thoughtfully designed programs, one clear path forward.</p>
+        </div>
+
+        <!-- Audition alert box -->
+        <div class="audition-box">
+          <div class="audition-box-label">
+            <div class="audition-pulse"></div>
+            2026–27 Audition Dates
+          </div>
+          <a class="audition-date" href="https://ambitiondancepro.com/wp-content/uploads/2026/03/SAVE-THE-DATE-GRPV-AUDITION-POST.pdf" target="_blank" rel="noopener">
+            <div class="audition-location">Grapevine Auditions</div>
+            <div class="audition-when">June 6–7, 2026</div>
+          </a>
+          <a class="audition-date" href="https://ambitiondancepro.com/wp-content/uploads/2026/03/SAVE-THE-DATE-HV-AUDITION-POST.pdf" target="_blank" rel="noopener">
+            <div class="audition-location">Highland Village Auditions</div>
+            <div class="audition-when">May 30–31, 2026</div>
+          </a>
+          <div class="audition-cta">
+            Questions about auditions? Email <a href="/cdn-cgi/l/email-protection#3f485a515b467f5e525d564b5650515b5e515c5a4f4d50115c5052"><span class="__cf_email__" data-cfemail="0552606b617c454468676c716c6a6b61646b666075776a2b666a68">[email&#160;protected]</span></a> for more information.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ MISSION / VISION ══ -->
+    <div class="mission-section">
+      <div class="section-label">Philosophy, Mission &amp; Vision</div>
+      <div class="mission-grid">
+        <div class="mission-card">
+          <svg class="mission-card-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M16 4L19.5 12H28L21.5 17L24 25L16 20L8 25L10.5 17L4 12H12.5L16 4Z" stroke="#c8a96e" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <div class="mission-card-title">Mission</div>
+          <p>We are dedicated to cultivating strong, technically proficient dancers while nurturing their individual artistry and expression. Through expert instruction and a kind, supportive environment we empower every dancer to grow with purpose, perform with heart, and thrive as both artists and individuals.</p>
+        </div>
+        <div class="mission-card">
+          <svg class="mission-card-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="10" stroke="#c8a96e" stroke-width="1.5"/>
+            <circle cx="16" cy="16" r="4" fill="rgba(200,169,110,0.3)" stroke="#c8a96e" stroke-width="1"/>
+            <path d="M16 2V6M16 26V30M2 16H6M26 16H30" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="mission-card-title">Vision</div>
+          <p>A studio where technical excellence and artistic expression go hand in hand. We develop dancers who are not only strong and skilled but also confident, creative, and kind. Through a culture of ambition, integrity, and encouragement, we shape the next generation of artists and leaders — on stage and beyond.</p>
+        </div>
+        <div class="mission-card">
+          <svg class="mission-card-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M16 6C16 6 8 12 8 20C8 24.4 11.6 28 16 28C20.4 28 24 24.4 24 20C24 12 16 6 16 6Z" stroke="#c8a96e" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M16 14V22M12 18H20" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="mission-card-title">Our Philosophy</div>
+          <p>Every dancer is seen, valued, and inspired to grow. We nurture dancers every step of the way — from their very first class to the highest levels of competitive performance. Each level encourages progress, technical development, artistry, and confidence while reinforcing teamwork, respect, and joy.</p>
+        </div>
+      </div>
+
+      <div class="differentiators">
+        <div class="diff-item">
+          <svg class="diff-check" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="9" cy="9" r="8" fill="rgba(200,169,110,0.1)" stroke="rgba(200,169,110,0.3)" stroke-width="0.75"/>
+            <path d="M5.5 9L7.5 11L12.5 6.5" stroke="#c8a96e" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Strong technical foundations from day one</span>
+        </div>
+        <div class="diff-item">
+          <svg class="diff-check" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="9" cy="9" r="8" fill="rgba(200,169,110,0.1)" stroke="rgba(200,169,110,0.3)" stroke-width="0.75"/>
+            <path d="M5.5 9L7.5 11L12.5 6.5" stroke="#c8a96e" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Opportunities to perform, compete, and grow at all levels</span>
+        </div>
+        <div class="diff-item">
+          <svg class="diff-check" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="9" cy="9" r="8" fill="rgba(200,169,110,0.1)" stroke="rgba(200,169,110,0.3)" stroke-width="0.75"/>
+            <path d="M5.5 9L7.5 11L12.5 6.5" stroke="#c8a96e" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>A clear dancer journey from beginner to pre-professional</span>
+        </div>
+        <div class="diff-item">
+          <svg class="diff-check" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="9" cy="9" r="8" fill="rgba(200,169,110,0.1)" stroke="rgba(200,169,110,0.3)" stroke-width="0.75"/>
+            <path d="M5.5 9L7.5 11L12.5 6.5" stroke="#c8a96e" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>A family community where dancers feel safe, supported, and challenged</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ JOURNEY OVERVIEW STRIP ══ -->
+    <div class="journey-strip">
+      <div class="section-label">The Company Pathway</div>
+      <p style="font-size:14px;font-weight:300;color:var(--text-muted);margin-bottom:0;line-height:1.7;">Every dancer enters at the right level and grows through a structured, encouraging path — Sparks to All Stars.</p>
+      <div class="journey-path">
+        <div class="journey-step">
+          <div class="journey-dot s1">Sparks</div>
+          <div class="journey-step-name">Sparks</div>
+          <div class="journey-step-ages">Ages 5–9</div>
+          <div class="journey-step-desc">Where passion ignites — joyful discovery, fundamentals, and early team building</div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-dot s2">Elevate</div>
+          <div class="journey-step-name">Elevate</div>
+          <div class="journey-step-ages">Ages 9+</div>
+          <div class="journey-step-desc">Rising through technical training and artistic growth — the heart of our program</div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-dot s3">Summit</div>
+          <div class="journey-step-name">Summit</div>
+          <div class="journey-step-ages">Advanced</div>
+          <div class="journey-step-desc">The peak — technical mastery, artistry, and leadership at the highest level</div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-dot s4">All Stars</div>
+          <div class="journey-step-name">All Stars</div>
+          <div class="journey-step-ages">High School</div>
+          <div class="journey-step-desc">Collegiate dance team training — a launchpad for college and professional careers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SPARKS ══ -->
+    <div class="program-section">
+      <div class="program-header">
+        <div class="section-label" style="color:var(--sparks);">
+          Sparks Dance Company
+          <span style="flex:0;font-style:italic;font-weight:300;color:rgba(255,255,255,0.25);font-size:10px;letter-spacing:.04em;">Where passion ignites</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:48px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:280px;">
+            <div class="ages-badge sparks-b">Ages 5–9</div>
+            <div class="section-subtitle">Sparks <em>Dance</em></div>
+            <p class="section-tagline">The beginning — where passion ignites one step at a time</p>
+            <p class="section-desc">Sparks is where the journey begins — a vibrant and welcoming space for young dancers to build skills, creativity, and love for dance. Age-appropriate technique, choreography, and costuming in a nurturing, high-energy environment. Classes emphasize rhythm, creativity, coordination, and technique.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="teams-grid cols-2">
+        <div class="team-card sparks-style">
+          <div class="team-name">Flicker</div>
+          <div class="team-tagline">Every flame starts with a flicker · Ages 5–7</div>
+          <p class="team-desc">A team where tiny sparks of potential begin to shine. Flicker celebrates the joy of discovery, curiosity, and first flickers of passion for dance. Confidence growing, movement glowing, and learning to shine from within.</p>
+          <div class="team-reqs">
+            <div class="team-req-row">
+              <div class="req-bullet sparks-c"></div>
+              <span><strong>Weekly Classes:</strong> 2.75 hours — Tap, Jazz &amp; Pre-Ballet</span>
+            </div>
+            <div class="team-req-row">
+              <div class="req-bullet sparks-c"></div>
+              <span><strong>Summer:</strong> 10 hours &amp; Summer Intensive</span>
+            </div>
+          </div>
+        </div>
+        <div class="team-card sparks-style">
+          <div class="team-name">Flame</div>
+          <div class="team-tagline">Fueling the fire · Ages 7–9</div>
+          <p class="team-desc">Flame represents the growing fire within each dancer — stronger, more confident, and bursting with vibrant energy that fuels focused skills and lights up every performance to shine brilliantly on stage.</p>
+          <div class="team-reqs">
+            <div class="team-req-row">
+              <div class="req-bullet sparks-c"></div>
+              <span><strong>Weekly Classes:</strong> Tap, Ballet, Jazz &amp; Leaps &amp; Turns</span>
+            </div>
+            <div class="team-req-row">
+              <div class="req-bullet sparks-c"></div>
+              <span><strong>Rehearsals:</strong> Saturday weekly</span>
+            </div>
+            <div class="team-req-row">
+              <div class="req-bullet sparks-c"></div>
+              <span><strong>Summer:</strong> 12 hours &amp; Summer Intensive</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="req-panel sparks-r">
+        <div class="req-panel-title sparks-t">Sparks Competition &amp; Events</div>
+        <p style="font-size:13px;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.65;">These groups attend 3–4 local competitions and 1 combined dance convention / competition per season.</p>
+      </div>
+    </div>
+
+    <!-- ══ ELEVATE ══ -->
+    <div class="program-section">
+      <div class="program-header">
+        <div class="section-label" style="color:var(--elevate);">
+          Elevate Dance Company
+          <span style="flex:0;font-style:italic;font-weight:300;color:rgba(255,255,255,0.25);font-size:10px;letter-spacing:.04em;">Where dancers rise</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:48px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:280px;">
+            <div class="ages-badge elevate-b">Ages 9+</div>
+            <div class="section-subtitle">Elevate <em>Dance</em></div>
+            <p class="section-tagline">Where dancers rise through technical training and artistic growth</p>
+            <p class="section-desc">Elevate is the heart of our training program. Here, dancers build strength, alignment, and versatility, preparing them for more advanced movement and meaningful performance. Classes emphasize clean lines, musicality, and detailed corrections — always delivered with support and encouragement. Growth, foundation, and rising together — building strong technique and artistry with heart and teamwork.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="teams-grid cols-3">
+        <div class="team-card elevate-style">
+          <div class="team-name">Ascend</div>
+          <div class="team-tagline">Celebrates growth, resilience, and reaching new heights</div>
+          <p class="team-desc">Embodies determination and the excitement of pushing beyond limits, mastering skills and lifting each other up. Dancers are gaining strength, starting to rise. Every step is a climb towards confidence and brilliance.</p>
+        </div>
+        <div class="team-card elevate-style">
+          <div class="team-name">Soar</div>
+          <div class="team-tagline">Unleashing courage, daring to be bold</div>
+          <p class="team-desc">Encouraging dancers to push boundaries, express their unique style and rise with confidence and power. Gaining momentum in movement, technique, mindset, and artistry.</p>
+        </div>
+        <div class="team-card elevate-style">
+          <div class="team-name">Radiate</div>
+          <div class="team-tagline">Confidence and presence — every dancer shines</div>
+          <p class="team-desc">A confidence that comes from dedication and growth, inspiring dancers to illuminate the stage with their unique presence, emotional connection, and unstoppable energy. Poised, refining technique, and artistically bold.</p>
+        </div>
+      </div>
+
+      <div class="req-panel elevate-r" style="margin-top:12px;">
+        <div class="req-panel-title elevate-t">Elevate Requirements</div>
+        <div class="req-panel-grid">
+          <div>
+            <div class="req-stat-label">Weekly Training</div>
+            <div class="req-stat-value">4–6 Hours</div>
+          </div>
+          <div>
+            <div class="req-stat-label">Summer Requirement</div>
+            <div class="req-stat-value">15–20 Hours</div>
+          </div>
+          <div>
+            <div class="req-stat-label">Competitions</div>
+            <div class="req-stat-value">4–5 Events</div>
+          </div>
+        </div>
+        <p style="font-size:12.5px;font-weight:300;color:rgba(255,255,255,0.4);line-height:1.6;margin-top:14px;padding-top:14px;border-top:0.5px solid rgba(122,111,212,0.2);">Elevate attends 4–5 local dance competitions with one being a combined dance competition / convention. They may also attend local performances. Summer requirements depend on team assignment plus company intensive.</p>
+      </div>
+    </div>
+
+    <!-- ══ SUMMIT ══ -->
+    <div class="program-section">
+      <div class="program-header">
+        <div class="section-label" style="color:var(--summit);">
+          Summit Collective
+          <span style="flex:0;font-style:italic;font-weight:300;color:rgba(255,255,255,0.25);font-size:10px;letter-spacing:.04em;">The peak of performance</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:48px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:280px;">
+            <div class="ages-badge summit-b">Advanced</div>
+            <div class="section-subtitle">Summit <em>Collective</em></div>
+            <p class="section-tagline">The peak — where technical mastery, artistry, and leadership converge</p>
+            <p class="section-desc">Summit is the next chapter — a team for dancers ready to refine their craft at the peak of performance, embracing advanced challenges and leadership opportunities. These teams embrace challenges with purpose and passion, setting the standard for dedication and growth. Summit dancers inspire others and represent the pinnacle of our dance community.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="teams-grid cols-4">
+        <div class="team-card summit-style">
+          <div class="team-name">Surge</div>
+          <div class="team-tagline">Fueled by passion and potential</div>
+          <p class="team-desc">First steps upward. Reaching higher, building confidence and skill. Learning. Growing. Surging Forward with unstoppable energy and fearless movement.</p>
+        </div>
+        <div class="team-card summit-style">
+          <div class="team-name">Edge</div>
+          <div class="team-tagline">Pushing boundaries with precision, power &amp; passion</div>
+          <p class="team-desc">Edge lives where intensity meets control. Sharp focus, fearless expression, and a commanding presence that sets them apart. Dancing on the Edge of Excellence.</p>
+        </div>
+        <div class="team-card summit-style">
+          <div class="team-name">Synergy</div>
+          <div class="team-tagline">Connection and unity in motion</div>
+          <p class="team-desc">Unity in motion — where powerful individuals create something greater than themselves. Precision, technique, passion, and connection performing as one.</p>
+        </div>
+        <div class="team-card summit-style">
+          <div class="team-name">Force</div>
+          <div class="team-tagline">The height of artistry. The peak of performance.</div>
+          <p class="team-desc">Refinement, leadership, and innovation. Elevated artistry and technical excellence setting the standard for what's possible. Full Out. All In. Pure Force.</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+        <div class="req-panel summit-r">
+          <div class="req-panel-title summit-t">Training Requirements</div>
+          <div class="req-panel-grid" style="grid-template-columns:1fr 1fr;">
+            <div>
+              <div class="req-stat-label">Weekly Hours</div>
+              <div class="req-stat-value">6–10+ Hrs</div>
+            </div>
+            <div>
+              <div class="req-stat-label">Summer Hours</div>
+              <div class="req-stat-value">15–25 Hrs</div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:rgba(255,255,255,0.38);line-height:1.6;margin-top:12px;padding-top:12px;border-top:0.5px solid rgba(200,169,110,0.18);">2 Ballet Classes, Tap, Jazz, Leaps &amp; Turns. Additional styles may include Contemporary, Technique, Conditioning, and Hip Hop if cast.</p>
+        </div>
+        <div class="req-panel summit-r">
+          <div class="req-panel-title summit-t">Focus of Training</div>
+          <div class="focus-list" style="margin-top:0;">
+            <div class="focus-item"><div class="focus-dot"></div><span>Advanced technical development</span></div>
+            <div class="focus-item"><div class="focus-dot"></div><span>Performance mastery &amp; artistry</span></div>
+            <div class="focus-item"><div class="focus-dot"></div><span>Strength &amp; conditioning</span></div>
+            <div class="focus-item"><div class="focus-dot"></div><span>Team unity &amp; leadership</span></div>
+            <div class="focus-item"><div class="focus-dot"></div><span>Collegiate &amp; pro prep</span></div>
+            <div class="focus-item"><div class="focus-dot"></div><span>Regional &amp; national competitions</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;padding:14px 20px;background:rgba(200,169,110,0.05);border:.5px solid rgba(200,169,110,0.15);border-radius:4px;">
+        <p style="font-size:13px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.6;"><strong style="color:rgba(255,255,255,0.7);font-weight:500;">Solos, duos, and trios</strong> are optional for all Summit company members. Performance opportunities include regional and national competitions, conventions, and local performances.</p>
+      </div>
+    </div>
+
+    <!-- ══ ALL STARS ══ -->
+    <div class="program-section" style="border-bottom:none;">
+      <div class="program-header">
+        <div class="section-label" style="color:var(--allstars);">
+          Ambition All Stars
+          <span style="flex:0;font-style:italic;font-weight:300;color:rgba(255,255,255,0.25);font-size:10px;letter-spacing:.04em;">Collegiate Dance Team Training</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:48px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:280px;">
+            <div class="ages-badge allstars-b">High School</div>
+            <div class="section-subtitle">All Stars <em>Collegiate</em></div>
+            <p class="section-tagline">Preparing dancers for collegiate dance success with enhanced training and performance</p>
+            <p class="section-desc">An advanced training program designed for high school dancers with their sights set on college dance teams. We cultivate the technique, performance presence, sideline strength, and audition readiness needed to shine at the highest levels of college dance (UDA/NDA style). This is not just prep — it's a launchpad. College preparation and mentoring for dance teams and dance majors is available starting as early as 9th grade.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-num">01</div>
+          <div class="pillar-title">Technique Elevation</div>
+          <div class="pillar-desc">Intensive focus on turns, jumps, advanced skills, and core strength. Building the technical foundation required for college-level performance.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">02</div>
+          <div class="pillar-title">Style Versatility</div>
+          <div class="pillar-desc">Training across multiple styles — jazz technique, pom, hip hop, contemporary. Guest choreography from current and former collegiate dancers. Exposure to different team aesthetics.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">03</div>
+          <div class="pillar-title">College Audition Prep</div>
+          <div class="pillar-desc">Mock auditions with feedback from college alumni and judges. Personalized audition reel planning and filming. Technique, etiquette, attire, and communication coaching.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">04</div>
+          <div class="pillar-title">Recruitment &amp; College Coaching</div>
+          <div class="pillar-desc">1:1 strategy sessions, school research and guidance, recruitment timeline tracking starting freshman year. Parent information sessions and resources.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">05</div>
+          <div class="pillar-title">Game Day Readiness</div>
+          <div class="pillar-desc">Sideline choreography training with high energy and stamina. Pom technique and the performance presence required for collegiate game day environments.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">06</div>
+          <div class="pillar-title">Fitness &amp; Conditioning</div>
+          <div class="pillar-desc">Injury prevention and collegiate-level endurance training. Building the physical foundation needed to sustain a demanding college dance team schedule.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ BOTTOM CTA ══ -->
+    <div class="bottom-cta">
+      <h2>Ready to <em>Audition?</em></h2>
+      <p>Join a community where confidence, character, and artistry are built together. Auditions for the 2026–27 season are coming up — we'd love to meet you.</p>
+      <div class="cta-buttons">
+        <a class="btn-primary" href="https://app.thestudiodirector.com/ambitiondancepro/portal.sd">Register Now</a>
+        <a class="btn-secondary" href="/cdn-cgi/l/email-protection#d6a1b3b8b2af96b7bbb4bfa2bfb9b8b2b7b8b5b3a6a4b9f8b5b9bb">Email Wendy About Auditions</a>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+
+  <!-- ══ TICKER ══ -->
+  <div class="ticker-wrap" aria-label="Company programs">
+    <div class="ticker-track">
+      <span class="ticker-item"><strong>Sparks</strong> · Flicker · Flame · <strong>Elevate</strong> · Ascend · Soar · Radiate · <strong>Summit Collective</strong> · Surge · Edge · Synergy · Force · <strong>All Stars Collegiate</strong> ·&nbsp;</span>
+      <span class="ticker-item"><strong>Sparks</strong> · Flicker · Flame · <strong>Elevate</strong> · Ascend · Soar · Radiate · <strong>Summit Collective</strong> · Surge · Edge · Synergy · Force · <strong>All Stars Collegiate</strong> ·&nbsp;</span>
+      <span class="ticker-item"><strong>Sparks</strong> · Flicker · Flame · <strong>Elevate</strong> 
+  <script src="nav.js"></script>
+</body>
+</html>
