@@ -316,7 +316,7 @@ body {
 
 .bottom-cta h2 em {
   font-style: normal;
-  color: var(--gold);
+  color: var(--teal);
 }
 
 .bottom-cta p {
@@ -394,7 +394,7 @@ body {
 
 .page-hero h1 em {
   font-style: normal;
-  color: var(--gold);
+  color: var(--teal);
 }
 
 .hero-desc {
