@@ -20,9 +20,12 @@
 :root {
   /* ── Core palette ── */
   --gold:           #c8a96e;
+  /* --gold:           #d7d48a;  */
   --gold-dark:      #a8893e;
   --gold-light:     rgba(200, 169, 110, 0.10);
   --gold-border:    rgba(200, 169, 110, 0.25);
+
+  --teal: #8ad7d4;
 
   /* ── Backgrounds ── */
   --bg:             #0a0a0f;
@@ -360,7 +363,8 @@ body {
 }
 
 .ticker-item strong {
-  color: var(--gold);
+  /* color: var(--gold); */
+  color: var(--teal);
   font-weight: 600;
 }
 

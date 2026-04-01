@@ -90,6 +90,11 @@
       margin-top: 3px;
     }
 
+    .nav-logo img {
+    display: block;
+    height: 40px;
+}
+
     /* ── DESKTOP LINKS ── */
     #adp-nav .nav-links {
       display: flex;
@@ -405,8 +410,7 @@
       <div class="nav-container">
         <div class="nav-inner">
           <a class="nav-logo" href="${LOGO_HREF}">
-            Ambition
-            <span>Dance Productions</span>
+            <img src="./img/ADPLogo.svg" alt="Ambition Dance Productions Logo">
           </a>
           <ul class="nav-links">
             ${linksHTML}

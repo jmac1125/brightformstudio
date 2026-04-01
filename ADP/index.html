@@ -20,9 +20,12 @@
     .hero {
       position: relative;
       z-index: 10;
-      min-height: calc(100vh - 69px);
+      min-height: calc(100vh - 130px);
       display: flex;
       align-items: center;
+      background: url(./img/danceBG2.webp);
+      background-size: cover;
+      background-blend-mode: luminosity;
     }
 
     .hero-inner {
@@ -41,13 +44,26 @@
 
     
       to   { opacity: 1; transform: translateY(0); }
+
+      .card-body {
+      padding: 20px 22px 22px;
+      border-top: 0.5px solid var(--border-gold);
     }
 
-    
-
-    
-
-    
+    .card-badge {
+      display: inline-block;
+      background: rgba(200, 169, 110, 0.10);
+      border: 0.5px solid rgba(200, 169, 110, 0.28);
+      color: var(--teal);
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
 
     h1 {
       font-family: var(--font-display);
@@ -62,7 +78,8 @@
 
     h1 em {
       font-style: normal;
-      color: var(--gold);
+      /* color: var(--gold); */
+      color: var(--teal);
     }
 
     .subhead {
@@ -159,7 +176,11 @@
 
     .card-image {
       height: 210px;
-      background: linear-gradient(135deg, #1a1020 0%, #0f1525 50%, #181010 100%);
+      /* background: linear-gradient(135deg, #1a1020 0%, #0f1525 50%, #181010 100%); */
+      background-image: url(./img/headstand.webp);
+      background-size: cover;
+      background-position-y: -20px;
+      background-repeat: no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -357,7 +378,7 @@
       <div class="card-main">
         <div class="card-image">
           <!-- Replace this SVG with a real photo using <img> or background-image -->
-          <svg class="dance-figure" width="80" height="145" viewBox="0 0 80 145" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- <svg class="dance-figure" width="80" height="145" viewBox="0 0 80 145" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <ellipse cx="40" cy="14" rx="12" ry="12" fill="rgba(200,169,110,0.5)"/>
             <path d="M40 26 L40 72" stroke="rgba(200,169,110,0.65)" stroke-width="4.5" stroke-linecap="round"/>
             <path d="M40 72 L18 108" stroke="rgba(200,169,110,0.65)" stroke-width="4" stroke-linecap="round"/>
@@ -366,8 +387,8 @@
             <path d="M40 44 L65 58" stroke="rgba(200,169,110,0.5)" stroke-width="3.5" stroke-linecap="round"/>
             <circle cx="18" cy="110" r="6" fill="rgba(200,169,110,0.35)"/>
             <circle cx="62" cy="110" r="6" fill="rgba(200,169,110,0.35)"/>
-          </svg>
-          <span class="card-image-label">Replace with studio photo</span>
+          </svg> -->
+          <!-- <span class="card-image-label">Replace with studio photo</span> -->
         </div>
         <div class="card-body">
           <div class="card-badge">Fall 2025 &middot; Open Enrollment</div>
@@ -377,17 +398,17 @@
       </div>
 
       <div class="mini-cards">
-        <a class="mini-card" href="https://ambitiondancepro.com/company/">
+        <a class="mini-card" href="./ambition-dance-company.html">
           <svg class="mini-icon" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-            <path d="M13 2L16.5 10H25L18.5 14.5L21 23L13 18L5 23L7.5 14.5L1 10H9.5L13 2Z" fill="rgba(200,169,110,0.6)"/>
+            <path d="M13 2L16.5 10H25L18.5 14.5L21 23L13 18L5 23L7.5 14.5L1 10H9.5L13 2Z" fill="rgba(138, 215, 212, 0.6)"/>
           </svg>
           <div class="mini-title">Company</div>
           <div class="mini-sub">Competitive dance team</div>
         </a>
-        <a class="mini-card" href="https://ambitiondancepro.com/about-us/faculty/">
+        <a class="mini-card" href="./ambition-dance-about.html">
           <svg class="mini-icon" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-            <path d="M13 3C15.8 3 18 5.2 18 8C18 10.8 15.8 13 13 13C10.2 13 8 10.8 8 8C8 5.2 10.2 3 13 3Z" stroke="rgba(200,169,110,0.65)" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M4 23C4 19.1 8.1 16 13 16C17.9 16 22 19.1 22 23" stroke="rgba(200,169,110,0.65)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M13 3C15.8 3 18 5.2 18 8C18 10.8 15.8 13 13 13C10.2 13 8 10.8 8 8C8 5.2 10.2 3 13 3Z" stroke="rgba(138, 215, 212, 0.6)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M4 23C4 19.1 8.1 16 13 16C17.9 16 22 19.1 22 23" stroke="rgba(138, 215, 212, 0.6)" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
           <div class="mini-title">Mentorship</div>
           <div class="mini-sub">College &amp; pro career track</div>
