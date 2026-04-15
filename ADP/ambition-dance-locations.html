@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="global.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Locations — Ambition Dance Productions</title>
+  <style>
+    :root {
+      --gv:    #c8a96e;
+      --gv-bg: rgba(200,169,110,0.08);
+      --gv-bd: rgba(200,169,110,0.22);
+      --hv:    #7a9fd4;
+      --hv-bg: rgba(122,159,212,0.08);
+      --hv-bd: rgba(122,159,212,0.22);
+    }
+
+    /* ── PAGE HERO ── */
+    .loc-hero {
+      position: relative; z-index: 5;
+      padding: 48px 0 44px;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .loc-hero h1 {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: clamp(36px,5vw,58px);
+      text-transform: uppercase; letter-spacing: -0.02em;
+      color: #fff; line-height: 1; margin-bottom: 14px;
+    }
+    .loc-hero h1 em { font-style: normal; color: var(--gold); }
+    .loc-hero p {
+      font-size: 15px; font-weight: 300;
+      color: var(--text-muted); line-height: 1.75; max-width: 560px;
+    }
+    .loc-pills {
+      display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap;
+    }
+    .loc-pill {
+      display: flex; align-items: center; gap: 7px;
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 4px; padding: 9px 14px; text-decoration: none;
+      transition: border-color 0.18s;
+    }
+    .loc-pill:hover { border-color: rgba(255,255,255,0.2); }
+    .loc-pill-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .loc-pill span {
+      font-family: var(--font-display); font-size: 10.5px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── LOCATION BLOCK ── */
+    .location-block {
+      position: relative; z-index: 5;
+      padding: 64px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .location-block:last-of-type { border-bottom: none; }
+
+    /* Location header */
+    .loc-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 32px;
+      margin-bottom: 36px; flex-wrap: wrap;
+    }
+    .loc-header-left { flex: 1; min-width: 260px; }
+    .loc-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-display); font-size: 9.5px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .loc-tag-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .loc-name {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: clamp(28px,3.5vw,42px);
+      text-transform: uppercase; letter-spacing: -0.01em;
+      color: #fff; line-height: 1; margin-bottom: 10px;
+    }
+    .loc-sub {
+      font-size: 14px; font-weight: 300;
+      color: var(--text-muted); line-height: 1.65; max-width: 440px;
+    }
+    .loc-header-right {
+      display: flex; flex-direction: column; gap: 10px;
+      align-items: flex-end; flex-shrink: 0;
+    }
+
+    /* Quick facts row */
+    .loc-facts {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px;
+    }
+    .loc-fact {
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 16px 20px;
+      display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 130px;
+    }
+    .fact-value {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 22px; color: #fff; line-height: 1;
+    }
+    .fact-label {
+      font-size: 11px; font-weight: 300;
+      color: rgba(255,255,255,0.38); letter-spacing: 0.04em;
+    }
+
+    /* ── PHOTO GRID ── */
+    .loc-photos {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+    .loc-photo {
+      position: relative; border-radius: 6px; overflow: hidden;
+      border: 0.5px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.025);
+      cursor: default;
+    }
+    .loc-photo.main {
+      grid-row: 1 / 3;
+      min-height: 380px;
+    }
+    .loc-photo.secondary { min-height: 184px; }
+
+    /* The actual image — replace placeholder with a real <img> */
+    .loc-photo img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+
+    /* Placeholder shown when no img src is set */
+    .loc-photo-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px;
+    }
+    .loc-photo-placeholder svg { opacity: 0.12; }
+    .loc-photo-placeholder span {
+      font-family: var(--font-display); font-size: 8px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* Caption overlay on hover */
+    .photo-cap-overlay {
+      position: absolute; inset: 0;
+      background: rgba(10,10,15,0.55);
+      display: flex; align-items: flex-end;
+      padding: 14px; opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .loc-photo:hover .photo-cap-overlay { opacity: 1; }
+    .photo-cap-inner {}
+    .photo-cap-label {
+      font-family: var(--font-display); font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em; color: #fff;
+    }
+    .photo-cap-type {
+      font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 2px;
+    }
+
+    /* Interior / Exterior badge */
+    .photo-type-badge {
+      position: absolute; top: 10px; right: 10px;
+      font-family: var(--font-display); font-size: 8px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 2px;
+      background: rgba(10,10,15,0.7); color: rgba(255,255,255,0.55);
+      border: 0.5px solid rgba(255,255,255,0.12);
+    }
+
+    /* ── INFO + MAP GRID ── */
+    .loc-info-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+      margin-bottom: 14px;
+    }
+    .loc-info-card {
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 22px;
+    }
+    .loc-info-card.accent-gv {
+      background: var(--gv-bg); border-color: var(--gv-bd);
+    }
+    .loc-info-card.accent-hv {
+      background: var(--hv-bg); border-color: var(--hv-bd);
+    }
+    .info-card-heading {
+      font-family: var(--font-display); font-size: 9.5px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+    }
+    .info-card-heading.hv { color: var(--hv); }
+
+    /* Address block */
+    .address-name {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 14px; text-transform: uppercase; letter-spacing: 0.04em;
+      color: #fff; margin-bottom: 6px;
+    }
+    .address-lines {
+      font-size: 13.5px; font-weight: 300;
+      color: rgba(255,255,255,0.52); line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .address-note {
+      font-size: 11.5px; color: rgba(255,255,255,0.32);
+      margin-bottom: 16px; line-height: 1.55;
+    }
+    .directions-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--font-display); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 11px 20px; border-radius: 2px;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .directions-btn.gv {
+      background: var(--gold); color: var(--bg);
+    }
+    .directions-btn.gv:hover { background: var(--gold-dark); }
+    .directions-btn.hv {
+      background: var(--hv); color: #0a0a0f;
+    }
+    .directions-btn.hv:hover { background: #5a8fc4; }
+
+    /* Hours */
+    .hours-row {
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 7px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.05);
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day {
+      font-size: 12.5px; color: rgba(255,255,255,0.45);
+    }
+    .hours-time {
+      font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.75);
+    }
+    .hours-time.closed { color: rgba(255,255,255,0.25); font-weight: 300; }
+
+    /* Features list */
+    .features-list { display: flex; flex-direction: column; gap: 8px; }
+    .feature-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.55);
+    }
+    .feature-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .feature-dot.gv { background: var(--gv); }
+    .feature-dot.hv { background: var(--hv); }
+
+    /* ── MAP EMBED ── */
+    .loc-map {
+      border-radius: 6px; overflow: hidden;
+      border: 0.5px solid rgba(255,255,255,0.08);
+      height: 240px;
+    }
+    .loc-map iframe {
+      width: 100%; height: 100%; display: block; border: none;
+      filter: grayscale(1) invert(1) brightness(0.85) contrast(0.9);
+    }
+
+    /* ── COMPARE STRIP ── */
+    .compare-section {
+      position: relative; z-index: 5;
+      padding: 56px 0 72px;
+    }
+    .compare-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+      margin-top: 24px;
+    }
+    .compare-card {
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: 6px; padding: 24px;
+      transition: border-color 0.18s;
+    }
+    .compare-card.gv { border-color: var(--gv-bd); background: var(--gv-bg); }
+    .compare-card.hv { border-color: var(--hv-bd); background: var(--hv-bg); }
+    .compare-card-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+    }
+    .compare-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .compare-title {
+      font-family: var(--font-display); font-weight: 900;
+      font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; color: #fff;
+    }
+    .compare-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 8px 0; border-bottom: 0.5px solid rgba(255,255,255,0.05); gap: 12px;
+    }
+    .compare-row:last-child { border-bottom: none; }
+    .compare-key { font-size: 12px; color: rgba(255,255,255,0.38); flex-shrink: 0; }
+    .compare-val { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.75); text-align: right; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .loc-photos { grid-template-columns: 1fr 1fr; }
+      .loc-photo.main { grid-row: auto; min-height: 260px; grid-column: 1 / 3; }
+    }
+    @media (max-width: 860px) {
+      .loc-info-grid { grid-template-columns: 1fr; }
+      .compare-grid   { grid-template-columns: 1fr; }
+      .loc-header     { flex-direction: column; }
+      .loc-header-right { align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .loc-photos { grid-template-columns: 1fr; }
+      .loc-photo.main { grid-column: auto; }
+    }
+  </style>
+  <!-- ═══════════════════════════════════════════════════════════════
+       PLACEHOLDER IMAGES — REPLACE WITH YOUR OWN PHOTOS
+       ───────────────────────────────────────────────────────────────
+       All <img> tags in .loc-photo blocks currently use free Unsplash
+       placeholder images via source.unsplash.com.
+
+       To replace: set src="your-image-path.jpg" on the <img> tag.
+       Each photo slot has a comment above it describing what it's for.
+
+       Recommended sizes:
+         Main (exterior) slot:  900×600px or larger, landscape
+         Secondary (interior):  600×400px or larger, landscape
+       ═══════════════════════════════════════════════════════════════ -->
+</head>
+<body>
+
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow-2" aria-hidden="true"></div>
+
+  <div class="container">
+
+    <div class="breadcrumb">
+      <a href="ambition-dance-hero.html">Home</a>
+      <span class="sep">›</span>
+      <span class="current">Locations</span>
+    </div>
+
+    <!-- ══ HERO ══ -->
+    <div class="loc-hero">
+      <div class="eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Our Studios · DFW</span>
+      </div>
+      <h1>Two Studios.<br><em>One Community.</em></h1>
+      <p>We operate two purpose-built dance facilities in the DFW area — serving families across Grapevine, Southlake, Colleyville, Flower Mound, Lewisville, Keller, Argyle, and beyond.</p>
+      <div class="loc-pills">
+        <a class="loc-pill" href="#grapevine">
+          <span class="loc-pill-dot" style="background:var(--gv);"></span>
+          <span>Grapevine Studio</span>
+        </a>
+        <a class="loc-pill" href="#highland-village">
+          <span class="loc-pill-dot" style="background:var(--hv);"></span>
+          <span>Highland Village Studio</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         GRAPEVINE STUDIO
+    ══════════════════════════════════════════════════════ -->
+    <div class="location-block" id="grapevine">
+
+      <div class="loc-header">
+        <div class="loc-header-left">
+          <div class="loc-tag" style="color:var(--gv);">
+            <span class="loc-tag-dot" style="background:var(--gv);"></span>
+            Grapevine Studio
+          </div>
+          <div class="loc-name">Grapevine<br>Town Center</div>
+          <div class="loc-sub">Our flagship facility — a brand-new, purpose-built dance studio with 7 dedicated rooms, sprung wood floors, and everything designed from the ground up for serious dance training.</div>
+        </div>
+        <div class="loc-header-right">
+          <a class="btn-primary" href="https://maps.google.com/?q=1217+W+State+Hwy+114+Suite+118+Grapevine+TX+76051" target="_blank" rel="noopener">Get Directions ↗</a>
+          <a class="btn-text-link" href="ambition-dance-contact.html">Contact Us</a>
+        </div>
+      </div>
+
+      <!-- Quick facts -->
+      <div class="loc-facts">
+        <div class="loc-fact">
+          <span class="fact-value" style="color:var(--gv);">7</span>
+          <span class="fact-label">Dedicated dance rooms</span>
+        </div>
+        <div class="loc-fact">
+          <span class="fact-value">2,500+</span>
+          <span class="fact-label">Square feet of studio space</span>
+        </div>
+        <div class="loc-fact">
+          <span class="fact-value">Free</span>
+          <span class="fact-label">On-site parking</span>
+        </div>
+        <div class="loc-fact">
+          <span class="fact-value">Hwy 114</span>
+          <span class="fact-label">Easy highway access</span>
+        </div>
+        <div class="loc-fact">
+          <span class="fact-value">Mon–Sat</span>
+          <span class="fact-label">Open most days</span>
+        </div>
+      </div>
+
+      <!--
+      ═══════════════════════════════════════════════════════════════
+      GRAPEVINE STUDIO PHOTOS
+      ───────────────────────────────────────────────────────────────
+      Each .loc-photo block has an <img> tag ready for your image.
+      Set src="path/to/image.jpg" or a full URL on the <img> tag.
+
+      MAIN photo (left, tall):     Exterior / hero shot of the building
+      TOP-RIGHT photo:             Interior — main studio floor / ballet room
+      MIDDLE-RIGHT photo:          Interior — another room or waiting area
+      BOTTOM-LEFT photo:           Interior — hallway, lobby, or detail
+      BOTTOM-MIDDLE photo:         Interior — room with mirror and barre
+      BOTTOM-RIGHT photo:          Any additional interior or aerial
+
+      Recommended image sizes:
+        Main (exterior): 900×700px landscape
+        Secondary:       600×400px landscape
+      ═══════════════════════════════════════════════════════════════
+      -->
+      <div class="loc-photos">
+
+        <!-- Main: exterior -->
+        <div class="loc-photo main">
+          <!-- Replace src="" with your exterior photo -->
+          <img src="https://communityimpact.com/uploads/images/2024/08/21/323383.jpg" alt="Grapevine studio exterior — placeholder, replace with your own photo">
+          <div class="loc-photo-placeholder">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+              <rect x="4" y="12" width="48" height="34" rx="3" stroke="#c8a96e" stroke-width="1.4"/>
+              <circle cx="20" cy="27" r="5.5" stroke="#c8a96e" stroke-width="1.4"/>
+              <path d="M4 38L17 25L27 35L37 24L52 38" stroke="#c8a96e" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <span>Exterior Photo · Grapevine</span>
+          </div>
+          <span class="photo-type-badge">Exterior</span>
+          <div class="photo-cap-overlay">
+            <div class="photo-cap-inner">
+              <div class="photo-cap-label">Grapevine Town Center Plaza</div>
+              <div class="photo-cap-type">Exterior · Suite 118</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top-right: interior room -->
+        <div class="loc-photo secondary">
+          <!-- Replace src="" with your interior photo -->
+          <img src="https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/463833028_122107497998564875_6182561737606947679_n.png?_nc_cat=110&ccb=1-7&_nc_sid=2a1932&_nc_ohc=ed4__dPEUUIQ7kNvwEFAD6B&_nc_oc=Adpl59G9_LJpEPedaKPlZj1a3j8isWGvvZXtWZ-KLCv6L97ZIxOVeGOi4oxthBIqPgE&_nc_zt=23&_nc_ht=scontent-dfw5-1.xx&_nc_gid=IB-TmI44mhIDCZSIxd7yWw&_nc_ss=7a389&oh=00_Af1tCmcqZLVvtBmGCI5Eq10WGYmLTHtdEd1mlgdxyE-COQ&oe=69E59E80" alt="Grapevine main dance floor — placeholder">
+          <div class="loc-photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="2" y="8" width="36" height="24" rx="2" stroke="#c8a96e" stroke-width="1.2"/>
+              <circle cx="13" cy="18" r="4" stroke="#c8a96e" stroke-width="1.2"/>
+              <path d="M2 27L11 18L19 26L26 19L38 28" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>Interior Photo</span>
+          </div>
+          <span class="photo-type-badge">Interior</span>
+          <div class="photo-cap-overlay">
+            <div class="photo-cap-inner">
+              <div class="photo-cap-label">Main Ballet Studio</div>
+              <div class="photo-cap-type">Interior · Sprung wood floors</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle-right: another room -->
+        <div class="loc-photo secondary">
+          <img src="https://communityimpact.com/uploads/images/2026/03/18/415402.jpg" alt="Grapevine jazz studio — placeholder">
+          <div class="loc-photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="2" y="8" width="36" height="24" rx="2" stroke="#c8a96e" stroke-width="1.2"/>
+              <circle cx="13" cy="18" r="4" stroke="#c8a96e" stroke-width="1.2"/>
+              <path d="M2 27L11 18L19 26L26 19L38 28" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>Interior Photo</span>
+          </div>
+          <span class="photo-type-badge">Interior</span>
+          <div class="photo-cap-overlay">
+            <div class="photo-cap-inner">
+              <div class="photo-cap-label">Jazz &amp; Hip Hop Studio</div>
+              <div class="photo-cap-type">Interior · Full-length mirrors</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom-left: interior detail -->
+        <div class="loc-photo secondary">
+          <img src="https://ambitiondancepro.com/wp-content/uploads/2015/07/Jacob-1-1080x675.jpg" alt="Grapevine waiting area — placeholder">
+          <div class="loc-photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="2" y="8" width="36" height="24" rx="2" stroke="#c8a96e" stroke-width="1.2"/>
+              <circle cx="13" cy="18" r="4" stroke="#c8a96e" stroke-width="1.2"/>
+              <path d="M2 27L11 18L19 26L26 19L38 28" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>Interior Photo</span>
+          </div>
+          <span class="photo-type-badge">Interior</span>
+          <div class="photo-cap-overlay">
+            <div class="photo-cap-inner">
+              <div class="photo-cap-label">Waiting Area</div>
+              <div class="photo-cap-type">Interior · Parent viewing</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom-middle: barre room -->
+        <div class="loc-photo secondary">
+          <img src="https://ambitiondancepro.com/wp-content/uploads/2016/03/Laurel-4-681x1024.jpg" alt="Grapevine ballet barre room — placeholder">
+          <div class="loc-photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="2" y="8" width="36" height="24" rx="2" stroke="#c8a96e" stroke-width="1.2"/>
+              <circle cx="13" cy="18" r="4" stroke="#c8a96e" stroke-width="1.2"/>
+              <path d="M2 27L11 18L19 26L26 19L38 28" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>Interior Photo</span>
+          </div>
+          <span class="photo-type-badge">Interior</span>
+          <div class="photo-cap-overlay">
+            <div class="photo-cap-inner">
+              <div class="photo-cap-label">Ballet Room</div>
+              <div class="photo-cap-type">Interior · Barres &amp; mirrors</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom-right: additional -->
+        <div class="loc-photo secondary">
+          <img src="https://www.grapevinetownecenter.com/wp-content/uploads/2024/03/AdobeStock_59752635.jpeg" alt="Grapevine acro room — placeholder">
+          <div class="loc-photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="2" y="8" width="36" height="24" rx="2" stroke="#c8a96e" stroke-width="1.2"/>
+              <circle cx="13" cy="18" r="4" stroke="#c8a96e" stroke-width="1.2"/>
+              <path d="M2 27L11 18L19 26L26 19L38 28" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>Interior Photo</span>
+          </div>
+          <span class="photo-type-badge">Interior</span>
+          <div class="photo-cap-overlay">
+            <div class="photo-cap-inner">
+              <div class="photo-cap-label">Acro &amp; Tumbling Room</div>
+              <div class="photo-cap-type">Interior · Sprung floor</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.loc-photos -->
+
+      <!-- Info cards + map -->
+      <div class="loc-info-grid">
+
+        <!-- Address + directions -->
+        <div class="loc-info-card accent-gv">
+          <div class="info-card-heading">Address</div>
+          <div class="address-name">Grapevine Town Center Plaza</div>
+          <div class="address-lines">
+            1217 W State Hwy 114, Suite 118<br>
+            Grapevine, TX 76051
+          </div>
+          <div class="address-note">Located next to PopShelf in Grapevine Town Center Plaza, off Highway 114. Free parking directly in front of Suite 118.</div>
+          <a class="directions-btn gv" href="https://maps.google.com/?q=1217+W+State+Hwy+114+Suite+118+Grapevine+TX+76051" target="_blank" rel="noopener">Get Directions ↗</a>
+        </div>
+
+        <!-- Hours -->
+        <div class="loc-info-card">
+          <div class="info-card-heading">Studio Hours</div>
+          <div class="hours-row"><span class="hours-day">Monday</span><span class="hours-time">4:00 PM – 9:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Tuesday</span><span class="hours-time">4:00 PM – 9:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">4:00 PM – 9:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">4:00 PM – 9:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time closed">Closed</span></div>
+          <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">9:00 AM – 2:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time closed">By Appointment</span></div>
+          <p style="font-size:11px;color:rgba(255,255,255,.25);margin-top:12px;line-height:1.55;">Hours vary during holidays and performance season.</p>
+        </div>
+
+        <!-- Studio features -->
+        <div class="loc-info-card">
+          <div class="info-card-heading">Studio Features</div>
+          <div class="features-list">
+            <div class="feature-item"><span class="feature-dot gv"></span>7 dedicated dance rooms</div>
+            <div class="feature-item"><span class="feature-dot gv"></span>Sprung wood floors throughout</div>
+            <div class="feature-item"><span class="feature-dot gv"></span>Full-length wall mirrors</div>
+            <div class="feature-item"><span class="feature-dot gv"></span>Barres in every ballet room</div>
+            <div class="feature-item"><span class="feature-dot gv"></span>Acro &amp; tumbling room</div>
+            <div class="feature-item"><span class="feature-dot gv"></span>Dedicated parent waiting area</div>
+            <div class="feature-item"><span class="feature-dot gv"></span>Climate controlled throughout</div>
+            <div class="feature-item"><span class="feature-dot gv"></span>Free on-site parking</div>
+            <div class="feature-item"><span class="feature-dot gv"></span>Accessible entrance</div>
+          </div>
+        </div>
+
+        <!-- Nearby landmarks -->
+        <div class="loc-info-card">
+          <div class="info-card-heading">Getting Here</div>
+          <div class="features-list">
+            <div class="feature-item"><span class="feature-dot gv"></span>Next to PopShelf on Hwy 114</div>
+            <div class="feature-item"><span class="feature-dot gv"></span>5 min from Southlake Town Square</div>
+            <div class="feature-item"><span class="feature-dot gv"></span>10 min from Colleyville</div>
+            <div class="feature-item"><span class="feature-dot gv"></span>10 min from Keller</div>
+            <div class="feature-item"><span class="feature-dot gv"></span>15 min from Fort Worth</div>
+            <div class="feature-item"><span class="feature-dot gv"></span>Exit Hwy 114 at William D Tate Ave</div>
+          </div>
+        </div>
+
+      </div><!-- /.loc-info-grid -->
+
+      <!-- Map -->
+      <div class="loc-map">
+        <iframe
+          title="Grapevine Studio Map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3352.5!2d-97.0786!3d32.9343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e836a6b5f3f3f%3A0x0!2s1217+W+State+Hwy+114%2C+Suite+118%2C+Grapevine%2C+TX+76051!5e0!3m2!1sen!2sus!4v1"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+    </div><!-- /#grapevine -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         HIGHLAND VILLAGE STUDIO
+    ══════════════════════════════════════════════════════ -->
+    <div class="location-block" id="highland-village">
+
+      <div class="loc-header">
+        <div class="loc-header-left">
+          <div class="loc-tag" style="color:var(--hv);">
+            <span class="loc-tag-dot" style="background:var(--hv);"></span>
+            Highland Village Studio
+          </div>
+          <div class="loc-name">Highland<br>Village</div>
+          <div class="loc-sub">Our second home — serving dancers across Flower Mound, Lewisville, Argyle, and Denton. A full-service studio with the same Ambition standard, closer to the north DFW corridor.</div>
+        </div>
+        <div class="loc-header-right">
+          <a class="btn-primary" style="background:var(--hv);color:#0a0a0f;" href="https://maps.google.com/?q=2800+Village+Pkwy+Suite+710+Highland+Village+TX+75077" target="_blank" rel="noopener">Get Directions ↗</a>
+          <a class="btn-text-link" href="ambition-dance-contact.html">Contact Us</a>
+        </div>
+      </div>
+
+      <!-- Quick facts -->
+      <div class="loc-facts">
+        <div class="loc-fact">
+          <span class="fact-value" style="color:var(--hv);">4</span>
+          <span class="fact-label">Dedicated dance rooms</span>
+        </div>
+        <div class="loc-fact">
+          <span class="fact-value">Free</span>
+          <span class="fact-label">On-site parking</span>
+        </div>
+        <div class="loc-fact">
+          <span class="fact-value">FM 407</span>
+          <span class="fact-label">Easy access from Lewisville</span>
+        </div>
+        <div class="loc-fact">
+          <span class="fact-value">Mon–Sat</span>
+          <span class="fact-label">Open most days</span>
+        </div>
+      </div>
+
+      <!--
+      ═══════════════════════════════════════════════════════════════
+      HIGHLAND VILLAGE STUDIO PHOTOS
+      ───────────────────────────────────────────────────────────────
+      Same structure as Grapevine — set src="" on each <img> tag.
+
+      MAIN photo (left, tall):     Exterior of the Village Pkwy building
+      TOP-RIGHT:                   Interior — main studio room
+      MIDDLE-RIGHT:                Interior — second room or waiting area
+      BOTTOM-LEFT:                 Interior — barre / mirror detail
+      BOTTOM-MIDDLE:               Interior — another room or signage
+      BOTTOM-RIGHT:                Interior or additional exterior angle
+      ═══════════════════════════════════════════════════════════════
+      -->
+      <div class="loc-photos">
+
+        <!-- Main: exterior -->
+        <div class="loc-photo main" style="border-color:rgba(122,159,212,0.15);">
+          <img src="https://source.unsplash.com/900x600/?dance,studio,building,entrance&sig=hv1" alt="Highland Village studio exterior — placeholder, replace with your own photo">
+          <div class="loc-photo-placeholder">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+              <rect x="4" y="12" width="48" height="34" rx="3" stroke="#7a9fd4" stroke-width="1.4"/>
+              <circle cx="20" cy="27" r="5.5" stroke="#7a9fd4" stroke-width="1.4"/>
+              <path d="M4 38L17 25L27 35L37 24L52 38" stroke="#7a9fd4" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <span>Exterior Photo · Highland Village</span>
+          </div>
+          <span class="photo-type-badge">Exterior</span>
+          <div class="photo-cap-overlay">
+            <div class="photo-cap-inner">
+              <div class="photo-cap-label">Village Pkwy · Suite 710</div>
+              <div class="photo-cap-type">Exterior · Highland Village, TX</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top-right: interior -->
+        <div class="loc-photo secondary" style="border-color:rgba(122,159,212,0.1);">
+          <img src="https://source.unsplash.com/600x400/?dance,class,studio,mirror&sig=hv2" alt="Highland Village main studio — placeholder">
+          <div class="loc-photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="2" y="8" width="36" height="24" rx="2" stroke="#7a9fd4" stroke-width="1.2"/>
+              <circle cx="13" cy="18" r="4" stroke="#7a9fd4" stroke-width="1.2"/>
+              <path d="M2 27L11 18L19 26L26 19L38 28" stroke="#7a9fd4" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>Interior Photo</span>
+          </div>
+          <span class="photo-type-badge">Interior</span>
+          <div class="photo-cap-overlay">
+            <div class="photo-cap-inner">
+              <div class="photo-cap-label">Ballet &amp; Technique Studio</div>
+              <div class="photo-cap-type">Interior · Sprung floors</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle-right: interior -->
+        <div class="loc-photo secondary" style="border-color:rgba(122,159,212,0.1);">
+          <img src="https://source.unsplash.com/600x400/?hiphop,dance,studio,floor&sig=hv3" alt="Highland Village jazz room — placeholder">
+          <div class="loc-photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="2" y="8" width="36" height="24" rx="2" stroke="#7a9fd4" stroke-width="1.2"/>
+              <circle cx="13" cy="18" r="4" stroke="#7a9fd4" stroke-width="1.2"/>
+              <path d="M2 27L11 18L19 26L26 19L38 28" stroke="#7a9fd4" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>Interior Photo</span>
+          </div>
+          <span class="photo-type-badge">Interior</span>
+          <div class="photo-cap-overlay">
+            <div class="photo-cap-inner">
+              <div class="photo-cap-label">Jazz &amp; Hip Hop Studio</div>
+              <div class="photo-cap-type">Interior · Full-length mirrors</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom-left: interior -->
+        <div class="loc-photo secondary" style="border-color:rgba(122,159,212,0.1);">
+          <img src="https://source.unsplash.com/600x400/?studio,interior,lobby,waiting&sig=hv4" alt="Highland Village waiting area — placeholder">
+          <div class="loc-photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="2" y="8" width="36" height="24" rx="2" stroke="#7a9fd4" stroke-width="1.2"/>
+              <circle cx="13" cy="18" r="4" stroke="#7a9fd4" stroke-width="1.2"/>
+              <path d="M2 27L11 18L19 26L26 19L38 28" stroke="#7a9fd4" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>Interior Photo</span>
+          </div>
+          <span class="photo-type-badge">Interior</span>
+          <div class="photo-cap-overlay">
+            <div class="photo-cap-inner">
+              <div class="photo-cap-label">Parent Waiting Area</div>
+              <div class="photo-cap-type">Interior · Lobby</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom-middle: room -->
+        <div class="loc-photo secondary" style="border-color:rgba(122,159,212,0.1);">
+          <img src="https://source.unsplash.com/600x400/?children,dance,class,studio&sig=hv5" alt="Highland Village young children studio — placeholder">
+          <div class="loc-photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="2" y="8" width="36" height="24" rx="2" stroke="#7a9fd4" stroke-width="1.2"/>
+              <circle cx="13" cy="18" r="4" stroke="#7a9fd4" stroke-width="1.2"/>
+              <path d="M2 27L11 18L19 26L26 19L38 28" stroke="#7a9fd4" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>Interior Photo</span>
+          </div>
+          <span class="photo-type-badge">Interior</span>
+          <div class="photo-cap-overlay">
+            <div class="photo-cap-inner">
+              <div class="photo-cap-label">Young Children's Studio</div>
+              <div class="photo-cap-type">Interior · Ages 2.5+</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom-right: additional -->
+        <div class="loc-photo secondary" style="border-color:rgba(122,159,212,0.1);">
+          <img src="https://source.unsplash.com/600x400/?dance,studio,performance,training&sig=hv6" alt="Highland Village drill team room — placeholder">
+          <div class="loc-photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="2" y="8" width="36" height="24" rx="2" stroke="#7a9fd4" stroke-width="1.2"/>
+              <circle cx="13" cy="18" r="4" stroke="#7a9fd4" stroke-width="1.2"/>
+              <path d="M2 27L11 18L19 26L26 19L38 28" stroke="#7a9fd4" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>Interior Photo</span>
+          </div>
+          <span class="photo-type-badge">Interior</span>
+          <div class="photo-cap-overlay">
+            <div class="photo-cap-inner">
+              <div class="photo-cap-label">Drill Team &amp; Flex Room</div>
+              <div class="photo-cap-type">Interior · Large format floor</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.loc-photos -->
+
+      <!-- Info cards + map -->
+      <div class="loc-info-grid">
+
+        <!-- Address -->
+        <div class="loc-info-card accent-hv">
+          <div class="info-card-heading hv">Address</div>
+          <div class="address-name">Village Pkwy</div>
+          <div class="address-lines">
+            2800 Village Pkwy, Suite 710<br>
+            Highland Village, TX 75077
+          </div>
+          <div class="address-note">Free on-site parking. Easily accessible from Flower Mound, Lewisville, Argyle, and Denton via FM 407 and FM 2499.</div>
+          <a class="directions-btn hv" href="https://maps.google.com/?q=2800+Village+Pkwy+Suite+710+Highland+Village+TX+75077" target="_blank" rel="noopener">Get Directions ↗</a>
+        </div>
+
+        <!-- Hours -->
+        <div class="loc-info-card">
+          <div class="info-card-heading hv">Studio Hours</div>
+          <div class="hours-row"><span class="hours-day">Monday</span><span class="hours-time">4:00 PM – 9:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Tuesday</span><span class="hours-time">4:00 PM – 9:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">4:00 PM – 9:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">4:00 PM – 9:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time closed">Closed</span></div>
+          <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">9:00 AM – 2:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time closed">By Appointment</span></div>
+          <p style="font-size:11px;color:rgba(255,255,255,.25);margin-top:12px;line-height:1.55;">Hours vary during holidays and performance season.</p>
+        </div>
+
+        <!-- Features -->
+        <div class="loc-info-card">
+          <div class="info-card-heading hv">Studio Features</div>
+          <div class="features-list">
+            <div class="feature-item"><span class="feature-dot hv"></span>4 dedicated dance rooms</div>
+            <div class="feature-item"><span class="feature-dot hv"></span>Sprung wood floors throughout</div>
+            <div class="feature-item"><span class="feature-dot hv"></span>Full-length wall mirrors</div>
+            <div class="feature-item"><span class="feature-dot hv"></span>Barres in ballet rooms</div>
+            <div class="feature-item"><span class="feature-dot hv"></span>Young children's studio</div>
+            <div class="feature-item"><span class="feature-dot hv"></span>Parent waiting area</div>
+            <div class="feature-item"><span class="feature-dot hv"></span>Climate controlled throughout</div>
+            <div class="feature-item"><span class="feature-dot hv"></span>Free on-site parking</div>
+          </div>
+        </div>
+
+        <!-- Getting here -->
+        <div class="loc-info-card">
+          <div class="info-card-heading hv">Getting Here</div>
+          <div class="features-list">
+            <div class="feature-item"><span class="feature-dot hv"></span>Off Village Pkwy (FM 2499)</div>
+            <div class="feature-item"><span class="feature-dot hv"></span>5 min from Flower Mound</div>
+            <div class="feature-item"><span class="feature-dot hv"></span>10 min from Lewisville</div>
+            <div class="feature-item"><span class="feature-dot hv"></span>15 min from Argyle</div>
+            <div class="feature-item"><span class="feature-dot hv"></span>20 min from Denton</div>
+            <div class="feature-item"><span class="feature-dot hv"></span>Exit I-35E at FM 407 heading west</div>
+          </div>
+        </div>
+
+      </div><!-- /.loc-info-grid -->
+
+      <!-- Map -->
+      <div class="loc-map">
+        <iframe
+          title="Highland Village Studio Map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.0!2d-97.0572!3d33.0923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c3e3f3f3f3f3f%3A0x0!2s2800+Village+Pkwy%2C+Suite+710%2C+Highland+Village%2C+TX+75077!5e0!3m2!1sen!2sus!4v1"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+    </div><!-- /#highland-village -->
+
+
+    <!-- ══ COMPARE STRIP ══ -->
+    <div class="compare-section">
+      <div class="section-label">At a Glance · Both Studios</div>
+      <div class="compare-grid">
+
+        <div class="compare-card gv">
+          <div class="compare-card-header">
+            <span class="compare-dot" style="background:var(--gv);"></span>
+            <span class="compare-title">Grapevine</span>
+          </div>
+          <div class="compare-row"><span class="compare-key">Address</span><span class="compare-val">1217 W State Hwy 114, Ste 118</span></div>
+          <div class="compare-row"><span class="compare-key">City</span><span class="compare-val">Grapevine, TX 76051</span></div>
+          <div class="compare-row"><span class="compare-key">Landmark</span><span class="compare-val">Next to PopShelf</span></div>
+          <div class="compare-row"><span class="compare-key">Studios</span><span class="compare-val">7 dance rooms</span></div>
+          <div class="compare-row"><span class="compare-key">Parking</span><span class="compare-val">Free, in front of suite</span></div>
+          <div class="compare-row"><span class="compare-key">Phone</span><span class="compare-val">469-218-2400</span></div>
+          <div class="compare-row"><span class="compare-key">Weekdays</span><span class="compare-val">4:00 PM – 9:00 PM</span></div>
+          <div class="compare-row"><span class="compare-key">Saturday</span><span class="compare-val">9:00 AM – 2:00 PM</span></div>
+          <div class="compare-row"><span class="compare-key">Nearest cities</span><span class="compare-val">Southlake · Colleyville · Keller</span></div>
+        </div>
+
+        <div class="compare-card hv">
+          <div class="compare-card-header">
+            <span class="compare-dot" style="background:var(--hv);"></span>
+            <span class="compare-title">Highland Village</span>
+          </div>
+          <div class="compare-row"><span class="compare-key">Address</span><span class="compare-val">2800 Village Pkwy, Ste 710</span></div>
+          <div class="compare-row"><span class="compare-key">City</span><span class="compare-val">Highland Village, TX 75077</span></div>
+          <div class="compare-row"><span class="compare-key">Landmark</span><span class="compare-val">Village Pkwy (FM 2499)</span></div>
+          <div class="compare-row"><span class="compare-key">Studios</span><span class="compare-val">4 dance rooms</span></div>
+          <div class="compare-row"><span class="compare-key">Parking</span><span class="compare-val">Free, on-site</span></div>
+          <div class="compare-row"><span class="compare-key">Phone</span><span class="compare-val">469-218-2400</span></div>
+          <div class="compare-row"><span class="compare-key">Weekdays</span><span class="compare-val">4:00 PM – 9:00 PM</span></div>
+          <div class="compare-row"><span class="compare-key">Saturday</span><span class="compare-val">9:00 AM – 2:00 PM</span></div>
+          <div class="compare-row"><span class="compare-key">Nearest cities</span><span class="compare-val">Flower Mound · Lewisville · Argyle</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ BOTTOM CTA ══ -->
+    <div class="bottom-cta">
+      <h2>Come See Us <em>In Person</em></h2>
+      <p>The best way to experience Ambition Dance is to walk through the door. Your first class is free — no commitment needed.</p>
+      <div class="cta-buttons">
+        <a class="btn-primary" href="https://app.thestudiodirector.com/ambitiondancepro/portal.sd" target="_blank" rel="noopener">Register Now</a>
+        <a class="btn-text-link" href="ambition-dance-contact.html">Get in Touch</a>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+
+  <!-- ══ TICKER ══ -->
+  <div class="ticker-wrap" aria-label="Studio locations">
+    <div class="ticker-track">
+      <span class="ticker-item"><strong>Grapevine</strong> · 1217 W State Hwy 114, Suite 118 · Next to PopShelf · 469-218-2400 · &nbsp;<strong>Highland Village</strong> · 2800 Village Pkwy, Suite 710 · Free Parking · First Class Free ·&nbsp;</span>
+      <span class="ticker-item"><strong>Grapevine</strong> · 1217 W State Hwy 114, Suite 118 · Next to PopShelf · 469-218-2400 · &nbsp;<strong>Highland Village</strong> · 2800 Village Pkwy, Suite 710 · Free Parking · First Class Free ·&nbsp;</span>
+      <span class="ticker-item"><strong>Grapevine</strong> · 1217 W State Hwy 114, Suite 118 · Next to PopShelf · 469-218-2400 · &nbsp;<strong>Highland Village</strong> · 2800 Village Pkwy, Suite 710 · Free Parking · First Class Free ·&nbsp;</span>
+    </div>
+  </div>
+
+  <script src="nav.js"></script>
+</body>
+</html>

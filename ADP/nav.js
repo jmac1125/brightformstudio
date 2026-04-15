@@ -20,6 +20,8 @@
     { label: 'Company',    href: 'ambition-dance-company.html',   file: 'ambition-dance-company' },
     { label: 'Drill Team', href: 'ambition-dance-drillteam.html', file: 'ambition-dance-drillteam' },
     { label: 'Schedule',   href: 'ambition-dance-schedule.html',  file: 'ambition-dance-schedule' },
+    { label: 'Locations',   href: 'ambition-dance-locations.html',  file: 'ambition-dance-locations' },
+    { label: 'Media',   href: 'ambition-dance-media.html',  file: 'ambition-dance-media' },
     { label: 'Events',     href: 'ambition-dance-events.html',    file: 'ambition-dance-events' },
     { label: 'About',      href: 'ambition-dance-about.html',     file: 'ambition-dance-about' },
     { label: 'Contact',    href: 'ambition-dance-contact.html',   file: 'ambition-dance-contact' },
