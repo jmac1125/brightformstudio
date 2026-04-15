@@ -37,7 +37,7 @@
   /* ── DETECT ACTIVE PAGE ─────────────────────────────────────────── */
   const currentFile = window.location.pathname.split('/').pop().replace('.html', '');
   // Hero page active state
-  const isHome = currentFile === 'index' || currentFile === '';
+  const isHome = currentFile === 'index' || currentFile === ''; 
 
   /* ── STYLES ─────────────────────────────────────────────────────── */
   const css = `
